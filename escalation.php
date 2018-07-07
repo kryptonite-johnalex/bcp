@@ -4,12 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <?php include_once('assets/style.html'); ?>
-<style>
-body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
-body {font-size:16px;}
-.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
-.w3-half img:hover{opacity:1}
-</style>
 <body>
 
 <!-- Sidebar/menu -->
@@ -20,12 +14,12 @@ body {font-size:16px;}
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
-
+<div class="loading"></div>
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
 
   <!-- Header -->
-  <div class="w3-container" style="margin-top:80px" id="showcase">
+  <div class="w3-container" style="margin-top:80px" id="top">
     <h1 class="w3-jumbo"><b>Queensland Urban Utilities</b></h1>
     <h1 class="w3-xxxlarge w3-text-red"><b>Escalation Screen</b></h1>
     <hr style="width:50px;border:5px solid red" class="w3-round">
@@ -35,7 +29,8 @@ body {font-size:16px;}
   <div class="w3-container" id="escalation" style="margin-top:75px">
     <p>Enter the details of this calls into the QUU Citrix. Copy and paster the Incident Number and KIT wrap code into the relevant boxes
     at the end of the call.</p>
-    <form action="" method="POST">
+    <form action="php/mailer.php" method="POST">
+      <input class="w3-hide" type="text" name="form_type" value="escalation">
       <div class="w3-section">
         <label>QUU Incident Number</label>
         <input class="w3-input w3-border" type="text" name="incident_num" required="" placeholder="0000">
