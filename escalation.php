@@ -23,7 +23,13 @@
     <h1 class="w3-jumbo"><b>Queensland Urban Utilities</b></h1>
     <h1 class="w3-xxxlarge w3-text-red"><b>Escalation Screen</b></h1>
     <hr style="width:50px;border:5px solid red" class="w3-round">
- 
+  </div>
+
+  <div id="form-messages" class="w3-panel w3-hide w3-display-container">
+    <span onclick="$(this).parent().fadeOut()"
+    class="w3-button w3-large w3-display-topright">&times;</span>
+    <h3>Success!</h3>
+    <p>Green often indicates something successful or positive.</p>
   </div>
 
   <div class="w3-container" id="escalation" style="margin-top:75px">
