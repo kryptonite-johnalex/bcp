@@ -40,17 +40,17 @@
             $reason = $_POST['reason'];
 
             // Build the email content.
-            $email_content = "QUU Incident Number: $incident_num\n";
+            $email_content .= "QUU Incident Number: $incident_num\n";
             $email_content .= "QUU Wrap Code: $wrap_code\n";
             $email_content .= "Street and Suburb: $street\n\n";
             $email_content .= "Reasons:\n$reason\n";
-        } if else ($type = 'complaints') {
+        } else if ($type = 'complaints') {
 
             // Defining variables
             $name = 'TEST';
             $email = 'ladrajohnalex@gmail.com';
 
-            $firstname = $_POST['firstname'];
+            $firstname .= $_POST['firstname'];
             $surname = $_POST['surname'];
             $contact = $_POST['contact'];
             $number = $_POST['number'];
