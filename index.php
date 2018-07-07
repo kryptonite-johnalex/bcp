@@ -3,13 +3,12 @@
 <title>Initial Screen</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="../assets/css/style.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<?php include_once('assets/style.html'); ?>
 <style>
-body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
-body {font-size:16px;}
-.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
-.w3-half img:hover{opacity:1}
+  body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+  body {font-size:16px;}
+  .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+  .w3-half img:hover{opacity:1}
 </style>
 <body>
 
@@ -48,7 +47,7 @@ body {font-size:16px;}
         <button type="button" onclick="window.location.href = '/escalation.php'" class="w3-button w3-block w3-padding-32 w3-yellow w3-margin-bottom">All Other Calls</button>
       </div>
       <div class="w3-half" style="padding-left: 215px;">
-        <button type="button" onclick="" class="w3-button w3-block w3-padding-32 w3-green w3-margin-bottom">Send Senior Email</button>
+        <button type="button" onclick="window.location.href = '/senior.php'" class="w3-button w3-block w3-padding-32 w3-green w3-margin-bottom">Send Senior Email</button>
       </div>
     </div>
   </div>
@@ -60,26 +59,7 @@ body {font-size:16px;}
 <!-- W3.CSS Container -->
 <?php include_once('partials/footer.php'); ?>
 
-<script>
-// Script to open and close sidebar
-function w3_open() {
-    document.getElementById("mySidebar").style.display = "block";
-    document.getElementById("myOverlay").style.display = "block";
-}
- 
-function w3_close() {
-    document.getElementById("mySidebar").style.display = "none";
-    document.getElementById("myOverlay").style.display = "none";
-}
-
-// Modal Image Gallery
-function onClick(element) {
-  document.getElementById("img01").src = element.src;
-  document.getElementById("modal01").style.display = "block";
-  var captionText = document.getElementById("caption");
-  captionText.innerHTML = element.alt;
-}
-</script>
+<?php include_once('assets/scripts.html'); ?>
 
 </body>
 </html>

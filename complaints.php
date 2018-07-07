@@ -3,8 +3,7 @@
 <title>Complaints Screen</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="../assets/css/style.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<?php include_once('assets/style.html'); ?>
 <style>
 body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
 body {font-size:16px;}
@@ -33,7 +32,7 @@ body {font-size:16px;}
  
   </div>
 
-  <div class="w3-container" id="contact" style="margin-top:75px">
+  <div class="w3-container" id="complaints" style="margin-top:75px">
     <form action="" method="POST">
       <div class="w3-row-padding w3-margin-bottom">
         <div class="w3-third">
@@ -109,26 +108,7 @@ body {font-size:16px;}
 <!-- W3.CSS Container -->
 <?php include_once('partials/footer.php'); ?>
 
-<script>
-// Script to open and close sidebar
-function w3_open() {
-    document.getElementById("mySidebar").style.display = "block";
-    document.getElementById("myOverlay").style.display = "block";
-}
- 
-function w3_close() {
-    document.getElementById("mySidebar").style.display = "none";
-    document.getElementById("myOverlay").style.display = "none";
-}
-
-// Modal Image Gallery
-function onClick(element) {
-  document.getElementById("img01").src = element.src;
-  document.getElementById("modal01").style.display = "block";
-  var captionText = document.getElementById("caption");
-  captionText.innerHTML = element.alt;
-}
-</script>
+<?php include_once('assets/scripts.html'); ?>
 
 </body>
 </html>
