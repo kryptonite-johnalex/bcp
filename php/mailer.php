@@ -40,7 +40,7 @@
             $reason = $_POST['reason'];
 
             // Build the email content.
-            $email_content .= "QUU Incident Number: $incident_num\n";
+            $email_content = "QUU Incident Number: $incident_num\n";
             $email_content .= "QUU Wrap Code: $wrap_code\n";
             $email_content .= "Street and Suburb: $street\n\n";
             $email_content .= "Reasons:\n$reason\n";
@@ -64,7 +64,7 @@
             $cust_req = $_POST['cust_req'];
 
             // Build the email content.
-            $email_content .= "First Name : $firstname\n";
+            $email_content = "First Name : $firstname\n";
             $email_content .= "Surname : $surname\n";
             $email_content .= "Contact Number : $contact\n";
             $email_content .= "Number : $number\n";
@@ -77,7 +77,7 @@
             $email_content .= "Actions Taken : \n$act_taken\n\n";
             $email_content .= "What the customer would like to be actioned by QUU : \n$cust_req\n";
         } else {
-            
+
         }
 
         // Build the email headers.
