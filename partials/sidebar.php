@@ -11,11 +11,11 @@
     <div id="demoAcc" class="w3-hide w3-white w3-card">
       <a href="/" class="w3-bar-item w3-button">Link</a>
       <a href="/" class="w3-bar-item w3-button">Reports</a>
-    </div>
+    </div><--
     <a href="#showcase" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Showcase</a> 
     <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Services</a> 
     <a href="#designers" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Designers</a> 
     <a href="#packages" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Packages</a> 
     <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
-  </div>
+  </div>-->
 </nav>
