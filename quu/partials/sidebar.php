@@ -10,7 +10,7 @@
     </button>
     <div id="demoAcc" class="w3-hide w3-white w3-card">
       <a href="/quu/" class="w3-bar-item w3-button">Initial</a>
-      <a href="/" class="w3-bar-item w3-button">Reports</a>
+      <a href="/quu/report.php" class="w3-bar-item w3-button">Reports</a>
     </div><!--
     <a href="#showcase" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Showcase</a> 
     <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Services</a> 
