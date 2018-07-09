@@ -75,17 +75,17 @@ include_once('db_connect.php');
         $email_headers = "From: $name <$email>";
 
         // Send the email.
-        // if (mail($recipient, $subject, $email_content, $email_headers)) {
-        //     // Set a 200 (okay) response code.
-        //     http_response_code(200);
-        //     echo "Thank You! Your message has been sent.";
-        //     $sent_status = 1;
-        // } else {
-        //     // Set a 500 (internal server error) response code.
-        //     http_response_code(500);
-        //     echo "Oops! Something went wrong and we couldn't send your message.";
-        //     $sent_status = 0;
-        // }
+        if (mail($recipient, $subject, $email_content, $email_headers)) {
+            // Set a 200 (okay) response code.
+            http_response_code(200);
+            echo "Thank You! Your message has been sent.";
+            $sent_status = 1;
+        } else {
+            // Set a 500 (internal server error) response code.
+            http_response_code(500);
+            echo "Oops! Something went wrong and we couldn't send your message.";
+            $sent_status = 0;
+        }
 
         // Data Insert
 
