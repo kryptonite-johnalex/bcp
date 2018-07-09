@@ -36,7 +36,7 @@
   </div>
 
   <div class="w3-container" id="complaints" style="margin-top:75px">
-    <form action="php/mailer.php" method="POST">
+    <form action="php/complaints.php" method="POST">
       <input class="w3-hide" type="text" name="form_type" value="complaints">
       <div class="w3-row-padding w3-margin-bottom">
         <div class="w3-third">
