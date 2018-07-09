@@ -2,7 +2,8 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-    include_once('db_connect.php');
+
+include_once('db_connect.php');
 
     // My modifications to mailer script
     // Added input sanitizing to prevent injection
@@ -31,7 +32,7 @@ error_reporting(E_ALL);
         $recipient = "johnalexladra@gmail.com";
 
         // Set the email subject.
-        $subject = "New contact from $name";
+        $subject = "Complaints Form";
 
         // Filtering form type
         if ($type = 'complaints') {
@@ -40,7 +41,7 @@ error_reporting(E_ALL);
             $name = 'TEST';
             $email = 'ladrajohnalex@gmail.com';
 
-            $firstname .= $_POST['firstname'];
+            $firstname = $_POST['firstname'];
             $surname = $_POST['surname'];
             $contact = $_POST['contact'];
             $number = $_POST['number'];
@@ -74,35 +75,21 @@ error_reporting(E_ALL);
         $email_headers = "From: $name <$email>";
 
         // Send the email.
-        if (mail($recipient, $subject, $email_content, $email_headers)) {
-            // Set a 200 (okay) response code.
-            http_response_code(200);
-            echo "Thank You! Your message has been sent.";
-            $sent_status = 1;
-        } else {
-            // Set a 500 (internal server error) response code.
-            http_response_code(500);
-            echo "Oops! Something went wrong and we couldn't send your message.";
-            $sent_status = 0;
-        }
+        // if (mail($recipient, $subject, $email_content, $email_headers)) {
+        //     // Set a 200 (okay) response code.
+        //     http_response_code(200);
+        //     echo "Thank You! Your message has been sent.";
+        //     $sent_status = 1;
+        // } else {
+        //     // Set a 500 (internal server error) response code.
+        //     http_response_code(500);
+        //     echo "Oops! Something went wrong and we couldn't send your message.";
+        //     $sent_status = 0;
+        // }
 
         // Data Insert
 
-        $sql = "INSERT INTO quu_complaints (first_name, sur_name, contact_number, addr_number, addr_street, addr_suburb, postal_code, acct_number, job_number, compl_details, act_taken, cust_req, created_at, agent_id, sent_status)
-        VALUES ('".$firstname."',
-                '".$surname."',
-                '".$contact."',
-                '".$number."',
-                '".$street."',
-                '".$suburb."',
-                '".$postal."',
-                '".$account_num."',
-                '".$job_num."',
-                '".$details."',
-                '".$act_taken."',
-                '".$created_at."',
-                '".$agent_id."',
-                '".$sent_status."'");
+        $sql = "INSERT INTO quu_complaints (`first_name`, `sur_name`, `contact_number`, `addr_number`, `addr_street`, `addr_suburb`, `postal_code`, `acct_number`, `job_number`, `compl_details`, `act_taken`, `cust_request`, `created_at`, `agent_id`, `sent_status`) VALUES ('$firstname', '$surname', '$contact', '$number', '$street', '$suburb', '$postal', '$account_num', '$job_num', '$details', '$act_taken', 'cust_req', '$created_at', '$agent_id', '$sent_status')";
 
         if ($conn->query($sql) === TRUE) {
             echo "New record created successfully";
