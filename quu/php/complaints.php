@@ -92,7 +92,7 @@ include_once('db_connect.php');
         $sql = "INSERT INTO quu_complaints (`first_name`, `sur_name`, `contact_number`, `addr_number`, `addr_street`, `addr_suburb`, `postal_code`, `acct_number`, `job_number`, `compl_details`, `act_taken`, `cust_request`, `created_at`, `agent_id`, `sent_status`) VALUES ('$firstname', '$surname', '$contact', '$number', '$street', '$suburb', '$postal', '$account_num', '$job_num', '$details', '$act_taken', 'cust_req', '$created_at', '$agent_id', '$sent_status')";
 
         if ($conn->query($sql) === TRUE) {
-            echo "New record created successfully";
+            //echo "New record created successfully";
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
