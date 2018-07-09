@@ -25,7 +25,7 @@
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
 
   <!-- Header -->
-<!--   <div class="w3-container" style="margin-top:80px" id="top">
+  <div class="w3-container" style="margin-top:80px" id="top">
     <h1 class="w3-jumbo"><b>Queensland Urban Utilities</b></h1>
     <h1 class="w3-xxxlarge w3-text-red"><b>Initial Screen</b></h1>
     <hr style="width:50px;border:5px solid red" class="w3-round">
@@ -41,16 +41,16 @@
 
   <div class="w3-container" id="options" style="margin-top:75px">
     <button type="button" onclick="" class="w3-button w3-block w3-padding-24 w3-red w3-margin-bottom">No Water, Sudden Drop in Pressure, Burst Main, Dirty Water</button>
-    <button type="button" onclick="window.location.href = '/escalation.php'" class="w3-button w3-block w3-padding-24 w3-orange w3-margin-bottom">All Other A1 and A2 Jobs That Needs to be Logged</button>
+    <button type="button" onclick="window.location.href = '/quu/escalation.php'" class="w3-button w3-block w3-padding-24 w3-orange w3-margin-bottom">All Other A1 and A2 Jobs That Needs to be Logged</button>
     <div class="w3-row">
       <div class="w3-half">
-        <button type="button" onclick="window.location.href = '/escalation.php'" class="w3-button w3-block w3-padding-32 w3-yellow w3-margin-bottom">All Other Calls</button>
+        <button type="button" onclick="window.location.href = '/quu/escalation.php'" class="w3-button w3-block w3-padding-32 w3-yellow w3-margin-bottom">All Other Calls</button>
       </div>
       <div class="w3-half" style="padding-left: 215px;">
-        <button type="button" onclick="window.location.href = '/senior.php'" class="w3-button w3-block w3-padding-32 w3-green w3-margin-bottom">Send Senior Email</button>
+        <button type="button" onclick="window.location.href = '/quu/senior.php'" class="w3-button w3-block w3-padding-32 w3-green w3-margin-bottom">Send Senior Email</button>
       </div>
     </div>
-  </div> -->
+  </div>
 
 
 <!-- End page content -->

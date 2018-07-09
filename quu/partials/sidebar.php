@@ -9,7 +9,7 @@
     QUU <i class="fa fa-caret-down w3-right"></i>
     </button>
     <div id="demoAcc" class="w3-hide w3-white w3-card">
-      <a href="/" class="w3-bar-item w3-button">Link</a>
+      <a href="/quu/" class="w3-bar-item w3-button">Initial</a>
       <a href="/" class="w3-bar-item w3-button">Reports</a>
     </div><!--
     <a href="#showcase" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Showcase</a> 
