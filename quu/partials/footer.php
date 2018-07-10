@@ -1,1 +1,0 @@
-<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Copyright @ <a href="#" title="BCP" target="_blank" class="w3-hover-opacity">BCP</a>. All rights reserved</p></div>
