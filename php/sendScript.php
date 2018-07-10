@@ -46,6 +46,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     // Build the email headers.
+    $email_headers = "MIME-Version: 1.0" . "\n";
+    $email_headers .= "Content-type:text/html;charset=UTF-8" . "\n";
     $email_headers = "From: $name <$email>";
 
     // Send the email.
