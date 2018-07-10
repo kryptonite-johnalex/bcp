@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     echo $email_content;
 
-    $recipient = "johnalexladra@gmail.com,marveelou@gmail.com";
+    $recipient = "johnalexladra@gmail.com,marveelou@gmail.com,quu@contact121.com.au,blendedtl@contact121.com.au,overnight@contact121.com.au";
 
     // Set the email subject.
     $subject = "Note Script";
