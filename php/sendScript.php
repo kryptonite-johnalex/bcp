@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // output data of each row
             while($row = $result->fetch_assoc()) {                      
 
-                $email_content .= '<p><input class="w3-check" type="checkbox" value="'.$row['category_num'].'" ' . (in_array($row['category_num'], $value) ?: 'checked') . ' disabled><label> '.$row['category_list'].'</label></p>';
+                $email_content .= '<p><input class="w3-check" type="checkbox" value="'.$row['category_num'].'" ' . (!in_array($row['category_num'], $value) ?: 'checked') . ' disabled><label> '.$row['category_list'].'</label></p>';
             }
         }
 
