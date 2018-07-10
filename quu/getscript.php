@@ -13,10 +13,12 @@ $sql = "SELECT * FROM quu_script_list WHERE category_id = $script";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    // output data of each row
+    // Output data of each row
     while($row = $result->fetch_assoc()) {
-    	//var_dump($row['category_list'])
-    	echo '<p><input class="w3-check" type="checkbox"><label> '.$row['category_list'].'</label></p>';
+    	// This is my first option, but can load up db, so just assign number instead
+    	//echo '<p><input class="w3-check" type="checkbox" name="script_list[]" value="'.$row['category_list'].'"><label> '.$row['category_list'].'</label></p>';
+
+    	echo '<p><input class="w3-check" type="checkbox" name="script_list[]" value="'.$row['category_num'].'"><label> '.$row['category_list'].'</label></p>';
 	}
 }
 

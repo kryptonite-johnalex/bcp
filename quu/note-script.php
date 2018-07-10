@@ -59,55 +59,56 @@ $result2 = $conn->query($script);
       </ul>
     </div>
   </div>
-<form action="quu/php/mailer.php" method="POST">
-  <div class="w3-container" id="options" style="margin-top:50px">
+
+<form action="php/postData.php" method="POST">
+  <div class="w3-container w3-border" id="options" style="margin-top:50px">
   <h2>Details</h2>
 
     <div class="w3-container w3-margin-bottom w3-padding">
       <div class="w3-row">
         <div class="w3-col s2 w3-center w3-padding">
-          <button type="button" onclick="window.history.back()" class="w3-button w3-block w3-padding-16 w3-red w3-margin-bottom">Back</button>
+          <button type="button" onclick="window.history.back()" class="w3-button w3-block w3-padding-16 w3-red w3-margin-bottom w3-card">Back</button>
         </div>
         <div class="w3-col s2 w3-center w3-padding">
-          <button type="submit" class="w3-button w3-block w3-padding-16 w3-red w3-margin-bottom">Continue</button>
+          <button type="submit" class="w3-button w3-block w3-padding-16 w3-yellow w3-margin-bottom w3-card">Continue</button>
         </div>
         <div class="w3-col s4 w3-center w3-padding">
-          <button type="button" onclick="window.location.href = '/quu/complaints.php'" class="w3-button w3-block w3-padding-16 w3-red w3-margin-bottom">Complaints</button>
+          <button type="button" onclick="window.location.href = '/quu/complaints.php'" class="w3-button w3-block w3-padding-16 w3-green w3-margin-bottom w3-card">Complaints</button>
         </div>
         <div class="w3-col s2 w3-center w3-padding">
-          <button type="button" onclick="" class="w3-button w3-block w3-padding-16 w3-red w3-margin-bottom">Wrap</button>
+          <button type="button" onclick="" class="w3-button w3-block w3-padding-16 w3-light-gray w3-margin-bottom w3-card">Wrap</button>
         </div>
         <div class="w3-col s2 w3-center w3-padding">
-          <button type="button" onclick="window.location.href = '/quu/escalation.php'" class="w3-button w3-block w3-padding-16 w3-red w3-margin-bottom">Escalation</button>
+          <button type="button" onclick="window.location.href = '/quu/escalation.php'" class="w3-button w3-block w3-padding-16 w3-red w3-margin-bottom w3-card">Escalation</button>
         </div>
       </div>
       <div class="w3-row optionsButtons">
         <div class="w3-col s4 w3-center w3-padding">
-          <button type="button" onclick="getScript(1)" class="w3-button w3-block w3-padding-16 w3-red w3-margin-bottom">Burst Main</button>
+          <button type="button" onclick="getScript(1)" class="w3-button w3-block w3-padding-16 w3-pink w3-margin-bottom w3-card">Burst Main</button>
         </div>
         <div class="w3-col s4 w3-center w3-padding">
-          <button type="button" onclick="getScript(2)" class="w3-button w3-block w3-padding-16 w3-red w3-margin-bottom">Sewage Overflow</button>
+          <button type="button" onclick="getScript(2)" class="w3-button w3-block w3-padding-16 w3-orange w3-margin-bottom w3-card">Sewage Overflow</button>
         </div>
         <div class="w3-col s4 w3-center w3-padding">
-          <button type="button" onclick="getScript(3)" class="w3-button w3-block w3-padding-16 w3-red w3-margin-bottom">No Water</button>
+          <button type="button" onclick="getScript(3)" class="w3-button w3-block w3-padding-16 w3-yellow w3-margin-bottom w3-card">No Water</button>
         </div>
       </div>
 
       <div class="w3-row optionsButtons">
         <div class="w3-col s6 w3-center w3-padding">
-          <button type="button" onclick="getScript(4)" class="w3-button w3-block w3-padding-16 w3-red w3-margin-bottom">Leak: Footpath, Grass, Road</button>
+          <button type="button" onclick="getScript(4)" class="w3-button w3-block w3-padding-16 w3-purple w3-margin-bottom w3-card">Leak: Footpath, Grass, Road</button>
         </div>
         <div class="w3-col s6 w3-center w3-padding ">
-          <button type="button" onclick="getScript(5)" class="w3-button w3-block w3-padding-16 w3-red w3-margin-bottom">Leak at Meter</button>
+          <button type="button" onclick="getScript(5)" class="w3-button w3-block w3-padding-16 w3-deep-orange w3-margin-bottom w3-card">Leak at Meter</button>
         </div>
       </div>
 
       <div class="w3-row optionsButtons">
         <div class="w3-col s6 w3-center w3-padding">
-          <button type="button" onclick="getScript(6)" class="w3-button w3-block w3-padding-16 w3-red w3-margin-bottom">Faulty Stopcock</button>
+          <button type="button" onclick="getScript(6)" class="w3-button w3-block w3-padding-16 w3-blue w3-margin-bottom w3-card">Faulty Stopcock</button>
         </div>
         <div class="w3-col s6 w3-center w3-padding">
-          <button type="button" onclick="getScript(7)" class="w3-button w3-block w3-padding-16 w3-red w3-margin-bottom">Low Pressure</button>
+          <button type="button" onclick="getScript(7)" class="w3-button w3-block w3-padding-16 w3-light-green w3-margin-bottom w3-card">Low Pressure</button>
         </div>
       </div>
     </div>
