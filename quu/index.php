@@ -3,7 +3,8 @@
 <title>Initial Screen</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<?php include_once('assets/style.html'); ?>
+
+<?php include_once('../assets/style.html'); ?>
 <style>
   body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
   body {font-size:16px;}
@@ -13,10 +14,10 @@
 <body>
 
 <!-- Sidebar/menu -->
-<?php include_once('partials/sidebar.php'); ?>
+<?php include_once('../partials/sidebar.php'); ?>
 
 <!-- Top menu on small screens -->
-<?php include_once('partials/header.php'); ?>
+<?php include_once('../partials/header.php'); ?>
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
@@ -46,7 +47,8 @@
       <div class="w3-half">
         <button type="button" onclick="window.location.href = '/quu/escalation.php'" class="w3-button w3-block w3-padding-32 w3-yellow w3-margin-bottom">All Other Calls</button>
       </div>
-      <div class="w3-half" style="padding-left: 215px;">
+      <div class="w3-rest w3-quarter"><p></p></div>
+      <div class="w3-quarter">
         <button type="button" onclick="window.location.href = '/quu/senior.php'" class="w3-button w3-block w3-padding-32 w3-green w3-margin-bottom">Send Senior Email</button>
       </div>
     </div>
@@ -57,9 +59,9 @@
 </div>
 
 <!-- W3.CSS Container -->
-<?php include_once('partials/footer.php'); ?>
+<?php include_once('../partials/footer.php'); ?>
 
-<?php include_once('assets/scripts.html'); ?>
+<?php include_once('../assets/scripts.html'); ?>
 
 </body>
 </html>

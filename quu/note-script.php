@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require_once('php/db_connect.php');
+require_once('../php/db_connect.php');
 
 $sql = "SELECT * FROM quu_complaints";
 
@@ -20,7 +20,7 @@ $result2 = $conn->query($script);
 <title>Note Script Screen</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<?php include_once('assets/style.html'); ?>
+<?php include_once('../assets/style.html'); ?>
 <style>
   body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
   body {font-size:16px;}
@@ -32,10 +32,10 @@ $result2 = $conn->query($script);
 <body>
 
 <!-- Sidebar/menu -->
-<?php include_once('partials/sidebar.php'); ?>
+<?php include_once('../partials/sidebar.php'); ?>
 
 <!-- Top menu on small screens -->
-<?php include_once('partials/header.php'); ?>
+<?php include_once('../partials/header.php'); ?>
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
@@ -60,7 +60,7 @@ $result2 = $conn->query($script);
     </div>
   </div>
 
-<form action="php/postData.php" method="POST">
+<form action="../php/sendScript.php" method="POST">
   <div class="w3-container w3-border" id="options" style="margin-top:50px">
   <h2>Details</h2>
 
@@ -121,16 +121,16 @@ $result2 = $conn->query($script);
 </div>
 
 <!-- W3.CSS Container -->
-<?php include_once('partials/footer.php'); ?>
+<?php include_once('../partials/footer.php'); ?>
 
-<?php include_once('assets/scripts.html'); ?>
+<?php include_once('../assets/scripts.html'); ?>
 <script type="text/javascript">
 
 
 function getScript(options) {
   $.ajax({
     type: "GET",
-    url: "getscript.php",
+    url: "../php/getscript.php",
     data: { script: options },
     cache: false,
     success: function (data) {
@@ -144,10 +144,7 @@ function getScript(options) {
 $(document).ready(function(){
   // Add smooth scrolling to all links
   $(".optionsButtons > div > button").on('click', function(event) {
-    console.log('Test');
-          $('html,body').animate({
-        scrollTop: $("#scriptDiv").offset().top},
-        'slow');
+    $('html,body').animate({scrollTop: $("#scriptDiv").offset().top},'slow');
   });
 });
 </script>

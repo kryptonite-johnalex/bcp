@@ -3,14 +3,14 @@
 <title>Complaints Screen</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<?php include_once('assets/style.html'); ?>
+<?php include_once('../assets/style.html'); ?>
 <body>
 
 <!-- Sidebar/menu -->
-<?php include_once('partials/sidebar.php'); ?>
+<?php include_once('../partials/sidebar.php'); ?>
 
 <!-- Top menu on small screens -->
-<?php include_once('partials/header.php'); ?>
+<?php include_once('../partials/header.php'); ?>
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
@@ -110,9 +110,9 @@
 </div>
 
 <!-- W3.CSS Container -->
-<?php include_once('partials/footer.php'); ?>
+<?php include_once('../partials/footer.php'); ?>
 
-<?php include_once('assets/scripts.html'); ?>
+<?php include_once('../assets/scripts.html'); ?>
 
 </body>
 </html>

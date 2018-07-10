@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require_once('php/db_connect.php');
+require_once('../php/db_connect.php');
 
 $sql = "SELECT * FROM quu_complaints";
 
@@ -16,7 +16,7 @@ $result = $conn->query($sql);
 <title>Report Screen</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<?php include_once('assets/style.html'); ?>
+<?php include_once('../assets/style.html'); ?>
 <style>
   body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
   body {font-size:16px;}
@@ -26,10 +26,10 @@ $result = $conn->query($sql);
 <body>
 
 <!-- Sidebar/menu -->
-<?php include_once('partials/sidebar.php'); ?>
+<?php include_once('../partials/sidebar.php'); ?>
 
 <!-- Top menu on small screens -->
-<?php include_once('partials/header.php'); ?>
+<?php include_once('../partials/header.php'); ?>
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
@@ -44,7 +44,7 @@ $result = $conn->query($sql);
     <hr style="width:50px;border:5px solid red" class="w3-round">
   </div>
 
-  <div class="w3-container" id="report" style="margin-top:75px">
+  <div class="w3-container" id="report" style="margin-top:75px;margin-bottom: 15%">
   <h2>Details</h2>
 
   <div class="w3-container w3-border w3-margin-bottom w3-padding" style="display: none;">
@@ -92,9 +92,9 @@ if ($result->num_rows > 0) {
 </div>
 
 <!-- W3.CSS Container -->
-<?php include_once('partials/footer.php'); ?>
+<?php include_once('../partials/footer.php'); ?>
 
-<?php include_once('assets/scripts.html'); ?>
+<?php include_once('../assets/scripts.html'); ?>
 <script type="text/javascript">
 
 $(document).ready(function() {
