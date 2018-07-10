@@ -1,7 +1,7 @@
 $(function() {
 
-		// Define the loader/spinner
-		var loader = '<i class="fa fa-spinner w3-spin loader" style="font-size:64px"></i>';
+    // Define the loader/spinner
+	var loader = '<i class="fa fa-spinner w3-spin loader" style="font-size:64px"></i>';
 
     // Get the form.
     var form = $('form');
@@ -39,6 +39,7 @@ $(function() {
 
             // Clear the form.
             $('input[type=text], textarea').val('');
+            $('#scriptDiv > p > input[type=checkbox]').attr('checked', false);
 
             //hide the loader
             $('.loading').fadeOut();

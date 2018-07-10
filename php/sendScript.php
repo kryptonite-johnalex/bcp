@@ -14,12 +14,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "SELECT * FROM quu_script_list WHERE category_id = " . key($script_list);
         $result = $conn->query($sql);
 
-        $email_content = '';
+        foreach ($script_list as $key => $value) {}
+
+        $email_content = '<!DOCTYPE html><html><title>Initial Screen</title><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><body>';
 
         if ($result->num_rows > 0) {
             // output data of each row
-            while($row = $result->fetch_assoc()) {
-                $email_content .= '<p><input class="w3-check" type="checkbox" value="'.$row['category_num'].'" checked><label> '.$row['category_list'].'</label></p>';
+            while($row = $result->fetch_assoc()) {                      
+
+                $email_content .= '<p><input class="w3-check" type="checkbox" value="'.$row['category_num'].'" ' . (in_array($row['category_num'], $value) ?: 'checked') . ' disabled><label> '.$row['category_list'].'</label></p>';
             }
         }
 
@@ -29,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     echo $email_content;
 
-    $recipient = "johnalexladra@gmail.com";
+    $recipient = "johnalexladra@gmail.com,marveelou@gmail.com";
 
     // Set the email subject.
     $subject = "Note Script";
@@ -44,11 +47,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // $email_content .= "Street and Suburb: $street\n\n";
     // $email_content .= "Reasons:\n$reason\n";
 
+    $email_content .= '</body></html>';
 
     // Build the email headers.
     $email_headers = "MIME-Version: 1.0" . "\n";
     $email_headers .= "Content-type:text/html;charset=UTF-8" . "\n";
-    $email_headers = "From: $name <$email>";
+    $email_headers .= "From: $name <$email>";
 
     // Send the email.
     if (mail($recipient, $subject, $email_content, $email_headers)) {

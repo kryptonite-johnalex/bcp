@@ -40,6 +40,9 @@ $result2 = $conn->query($script);
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
+<!-- Loader/Spinner -->
+<div class="loading"></div>
+
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
 
@@ -58,6 +61,13 @@ $result2 = $conn->query($script);
         <li>Provide restoration if service information to customer if issue is identified through above steps, is already known to QUU and/or job does not need to be logged</li>
       </ul>
     </div>
+  </div>
+
+<div id="form-messages" class="w3-panel w3-hide w3-display-container">
+    <span onclick="$(this).parent().fadeOut()"
+    class="w3-button w3-large w3-display-topright">&times;</span>
+    <h3>Success!</h3>
+    <p>Green often indicates something successful or positive.</p>
   </div>
 
 <form action="../php/sendScript.php" method="POST">
@@ -126,6 +136,8 @@ $result2 = $conn->query($script);
 <?php include_once('../assets/scripts.html'); ?>
 <script type="text/javascript">
 
+// Define the loader/spinner
+var loader = '<i class="fa fa-spinner w3-spin loader" style="font-size:64px"></i>';
 
 function getScript(options) {
   $.ajax({
@@ -133,8 +145,13 @@ function getScript(options) {
     url: "../php/getscript.php",
     data: { script: options },
     cache: false,
+    beforeSend: function() {
+      //show the loader
+      $('.loading').show().html(loader).fadeIn();
+    },
     success: function (data) {
       $('#scriptDiv').html(data);
+      $('.loading').fadeOut();
     },
     error: function(err) {
       console.log(err);
