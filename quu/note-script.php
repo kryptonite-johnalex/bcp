@@ -59,7 +59,7 @@ $result2 = $conn->query($script);
       </ul>
     </div>
   </div>
-
+<form action="quu/php/mailer.php" method="POST">
   <div class="w3-container" id="options" style="margin-top:50px">
   <h2>Details</h2>
 
@@ -69,7 +69,7 @@ $result2 = $conn->query($script);
           <button type="button" onclick="window.history.back()" class="w3-button w3-block w3-padding-16 w3-red w3-margin-bottom">Back</button>
         </div>
         <div class="w3-col s2 w3-center w3-padding">
-          <button type="button" onclick="" class="w3-button w3-block w3-padding-16 w3-red w3-margin-bottom">Continue</button>
+          <button type="submit" class="w3-button w3-block w3-padding-16 w3-red w3-margin-bottom">Continue</button>
         </div>
         <div class="w3-col s4 w3-center w3-padding">
           <button type="button" onclick="window.location.href = '/quu/complaints.php'" class="w3-button w3-block w3-padding-16 w3-red w3-margin-bottom">Complaints</button>
@@ -81,7 +81,7 @@ $result2 = $conn->query($script);
           <button type="button" onclick="window.location.href = '/quu/escalation.php'" class="w3-button w3-block w3-padding-16 w3-red w3-margin-bottom">Escalation</button>
         </div>
       </div>
-      <div class="w3-row">
+      <div class="w3-row optionsButtons">
         <div class="w3-col s4 w3-center w3-padding">
           <button type="button" onclick="getScript(1)" class="w3-button w3-block w3-padding-16 w3-red w3-margin-bottom">Burst Main</button>
         </div>
@@ -93,7 +93,7 @@ $result2 = $conn->query($script);
         </div>
       </div>
 
-      <div class="w3-row">
+      <div class="w3-row optionsButtons">
         <div class="w3-col s6 w3-center w3-padding">
           <button type="button" onclick="getScript(4)" class="w3-button w3-block w3-padding-16 w3-red w3-margin-bottom">Leak: Footpath, Grass, Road</button>
         </div>
@@ -102,7 +102,7 @@ $result2 = $conn->query($script);
         </div>
       </div>
 
-      <div class="w3-row">
+      <div class="w3-row optionsButtons">
         <div class="w3-col s6 w3-center w3-padding">
           <button type="button" onclick="getScript(6)" class="w3-button w3-block w3-padding-16 w3-red w3-margin-bottom">Faulty Stopcock</button>
         </div>
@@ -112,27 +112,10 @@ $result2 = $conn->query($script);
       </div>
     </div>
   </div>
-  <div class="w3-container w3-border w3-padding w3-light-gra w3-card-4" id="scriptDiv" style="margin-top:75px">
-    <p>
-      <input class="w3-check" type="checkbox">
-      <label>Where is the water coming from?</label></p>
-    <p>
-      <input class="w3-check" type="checkbox">
-      <label>What street location is the water loss at?</label></p>
-    <p>
-      <input class="w3-check" type="checkbox">
-      <label>How would you describe the flow of water - is it faster than a garden hose on full?</label></p>
-    <p>
-      <input class="w3-check" type="checkbox">
-      <label>Is the water bubbling up or gushing up into the air?</label></p>
-    <p>
-      <input class="w3-check" type="checkbox">
-      <label>Has the grass, concrete or road surface broken?</label></p>
-    <p>
-      <input class="w3-check" type="checkbox">
-      <label>Is there a safety hazard - affecting traffic or pedestrians?</label></p>
+  <div class="w3-container w3-border w3-padding w3-light-gra w3-card-4" id="scriptDiv" style="margin-top:20px">
+    <h4>Please options from above list.</h4>
   </div>
-
+</form>
 <!-- End page content -->
 </div>
 
@@ -157,7 +140,15 @@ function getScript(options) {
     }
   });
 }
-
+$(document).ready(function(){
+  // Add smooth scrolling to all links
+  $(".optionsButtons > div > button").on('click', function(event) {
+    console.log('Test');
+          $('html,body').animate({
+        scrollTop: $("#scriptDiv").offset().top},
+        'slow');
+  });
+});
 </script>
 </body>
 </html>
