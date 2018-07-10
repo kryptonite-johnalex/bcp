@@ -40,7 +40,7 @@
   </div>
 
   <div class="w3-container" id="options" style="margin-top:75px">
-    <button type="button" onclick="" class="w3-button w3-block w3-padding-24 w3-red w3-margin-bottom">No Water, Sudden Drop in Pressure, Burst Main, Dirty Water</button>
+    <button type="button" onclick="window.location.href = '/quu/note-script.php'" class="w3-button w3-block w3-padding-24 w3-red w3-margin-bottom">No Water, Sudden Drop in Pressure, Burst Main, Dirty Water</button>
     <button type="button" onclick="window.location.href = '/quu/escalation.php'" class="w3-button w3-block w3-padding-24 w3-orange w3-margin-bottom">All Other A1 and A2 Jobs That Needs to be Logged</button>
     <div class="w3-row">
       <div class="w3-half">

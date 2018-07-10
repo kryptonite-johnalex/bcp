@@ -44,12 +44,16 @@ $result = $conn->query($sql);
     <hr style="width:50px;border:5px solid red" class="w3-round">
   </div>
 
-  <div class="w3-container" id="options" style="margin-top:75px">
-  <h2>Emails</h2>
+  <div class="w3-container" id="report" style="margin-top:75px">
+  <h2>Details</h2>
+
+  <div class="w3-container w3-border w3-margin-bottom w3-padding" style="display: none;">
+
+  </div>
 
   <table class="w3-table-all w3-hoverable">
     <thead>
-      <tr class="w3-red w3-hoverable">
+      <tr class="w3-red">
         <th>No.</th>
         <th>Full Name</th>
         <th>Contact Number</th>
