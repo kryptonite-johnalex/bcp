@@ -30,8 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Set the recipient email address.
     // FIXME: Update this to your desired email address.
-    $recipient = "johnalexladra@gmail.com";
-    //$recipient = "johnalexladra@gmail.com,marveelou@gmail.com,quu@contact121.com.au,blendedtl@contact121.com.au,overnight@contact121.com.au";
+    //$recipient = "johnalexladra@gmail.com";
+    $recipient = "johnalexladra@gmail.com,marveelou@gmail.com,quu@contact121.com.au,blendedtl@contact121.com.au,overnight@contact121.com.au";
 
     // Set the email subject.
     $subject = "A1 ALERT";
