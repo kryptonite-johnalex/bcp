@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Defining variables
         $name = 'TEST';
         $email = 'ladrajohnalex@gmail.com';
-        $time_stamp = date("H:i:s"); // this will be change to the time when the call took
+        $time_stamp = date("h:i:s"); // this will be change to the time when the call took
 
         $firstname = $_POST['firstname'];
         $surname = $_POST['surname'];
@@ -58,21 +58,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $agent_id = '1234';
 
         // Build the email content.
-        $email_content = "<strong style='text-decoration: underline'>THIS EMAIL HAS NOT BEEN SENT TO QUU AND WILL NEED TO BE FORWARDED.</strong><br>";
+        $email_content = "<strong style='text-decoration: underline'>THIS EMAIL HAS NOT BEEN SENT TO QUU AND WILL NEED TO BE FORWARDED.</strong><br><br><br>";
         $email_content .= "<strong>Customer Name :</strong> $firstname $surname<br><br>";
         $email_content .= "<strong>Customer Contact Number :</strong> $contact<br><br>";
-        $email_content .= "<strong>Property Address :</strong> $number $street, $suburb, $postal<br><br>";
+        $email_content .= "<strong>Property Address :</strong>$postal $number $street, $suburb<br><br>";
         $email_content .= "<strong>Customer Account Number :</strong> $account_num<br><br>";
         $email_content .= "<strong>Ellipse Job Number :</strong> $job_num<br><br>";
         $email_content .= "<strong>Details of Complaints :</strong> <br>$details<br><br>";
         $email_content .= "<strong>Actions Taken :</strong> <br>$act_taken<br><br>";
         $email_content .= "<strong>What the customer would like to be actioned by QUU :</strong> <br>$cust_req<br><br><br><br><br>";
-        $email_content .= "<strong>This was raised by $name at <br>$time_stamp<br><br>";
+        $email_content .= "<strong>This was raised by $name at $time_stamp<br><br>";
     }
 
     // Build the email headers.
     $email_headers = "From: $name <$email>";
-    $email_headers = "MIME-Version: 1.0" . "\n";
+    $email_headers .= "MIME-Version: 1.0" . "\n";
     $email_headers .= "Content-type:text/html;charset=UTF-8" . "\n";
 
     // Send the email.

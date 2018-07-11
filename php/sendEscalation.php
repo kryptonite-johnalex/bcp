@@ -37,12 +37,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $subject = "A1 ALERT";
 
     // Filtering form type
-    if($type = 'escalation') {
+    //($type == 'escalation') {
 
         // Defining variables
         $name = 'Katina Firth'; // this will be change to the agent who took the call
         $email = 'ladrajohnalex@gmail.com';
-        $time_stamp = date("H:i:s"); // this will be change to the time when the call took
+        $time_stamp = date("h:i:s"); // this will be change to the time when the call took
 
         $incident_num = $_POST['incident_num'];
         $wrap_code = $_POST['wrap_code'];
@@ -52,17 +52,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $created_at = date("Y-m-d H:i:s");
 
         // Build the email content.
-        $email_content = "A new A1 order has been raised: <br><br>";
+        $email_content = "A new A1 order has been raised:<br><br><br>";
         // $email_content .= "QUU Incident Number: $incident_num<br>";
         // $email_content .= "QUU Wrap Code: $wrap_code<br>";
         $email_content .= "Street and Suburb: $street<br>";
-        $email_content .= "Reasons: $reason<br><br>";
-        $email_content .= "This was raised by $name at <br>$time_stamp<br><br>";
-    }
+        $email_content .= "Reasons: $reason<br><br><br>";
+        $email_content .= "Street and Suburb: $street<br>";
+        $email_content .= "Reasons: $reason<br><br><br>";
+        $email_content .= "This was raised by $name at $time_stamp<br><br>";
+    //}
 
     // Build the email headers.
     $email_headers = "From: $name <$email>";
-    $email_headers = "MIME-Version: 1.0" . "\n";
+    $email_headers .= "MIME-Version: 1.0" . "\n";
     $email_headers .= "Content-type:text/html;charset=UTF-8" . "\n";
 
     // Send the email.
