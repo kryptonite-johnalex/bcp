@@ -142,7 +142,7 @@ var loader = '<i class="fa fa-spinner w3-spin loader" style="font-size:64px"></i
 function getScript(options) {
   $.ajax({
     type: "GET",
-    url: "../php/getscript.php",
+    url: "../php/getScript.php",
     data: { script: options },
     cache: false,
     beforeSend: function() {

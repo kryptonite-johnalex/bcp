@@ -38,7 +38,7 @@
   <div class="w3-container" id="escalation" style="margin-top:75px">
     <p>Enter the details of this calls into the QUU Citrix. Copy and paster the Incident Number and KIT wrap code into the relevant boxes
     at the end of the call.</p>
-    <form action="php/mailer.php" method="POST">
+    <form action="../php/sendEscalation.php" method="POST">
       <input class="w3-hide" type="text" name="form_type" value="escalation">
       <div class="w3-section">
         <label>QUU Incident Number</label>
