@@ -13,7 +13,7 @@ include_once('db_connect.php');
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get the form fields and remove whitespace.
     // $name = strip_tags(trim($_POST["name"]));
-    //         $name = str_replace(array("\r","\n"),array(" "," "),$name);
+    //         $name = str_replace(array("\r","<br>"),array(" "," "),$name);
     // $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
     // $message = trim($_POST["message"]);
 
@@ -52,12 +52,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $created_at = date("Y-m-d H:i:s");
 
         // Build the email content.
-        $email_content = "A new A1 order has been raised: \n\n";
-        $email_content .= "QUU Incident Number: $incident_num\n";
-        $email_content .= "QUU Wrap Code: $wrap_code\n";
-        $email_content .= "Street and Suburb: $street\n\n";
-        $email_content .= "Reasons:\n$reason\n\n";
-        $email_content .= "This was raised by $name at \n$time_stamp\n\n";
+        $email_content = "A new A1 order has been raised: <br><br>";
+        // $email_content .= "QUU Incident Number: $incident_num<br>";
+        // $email_content .= "QUU Wrap Code: $wrap_code<br>";
+        $email_content .= "Street and Suburb: $street<br>";
+        $email_content .= "Reasons: $reason<br><br>";
+        $email_content .= "This was raised by $name at <br>$time_stamp<br><br>";
     }
 
     // Build the email headers.
