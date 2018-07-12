@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Set the recipient email address.
     // FIXME: Update this to your desired email address.
     //$recipient = "johnalexladra@gmail.com,marveelou@gmail.com";
-    $recipient = "johnalexladra@gmail.com,marveelou@gmail.com,quu@contact121.com.au,blendedtl@contact121.com.au,overnight@contact121.com.au";
+    $recipient = "marveelou@gmail.com,quu@contact121.com.au,blendedtl@contact121.com.au,overnight@contact121.com.au";
 
     // Set the email subject.
     $subject = "URGENT - Refer UNRESOLVED Complaint";
@@ -39,8 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($type == 'complaints' || $type == 'senior') {
 
         // Defining variables
-        $name = 'TEST';
-        $email = 'ladrajohnalex@gmail.com';
+        $name = 'Service';
+        $email = 'service@contact121.com.au';
         $time_stamp = date("h:i:s"); // this will be change to the time when the call took
 
         $firstname = $_POST['firstname'];
