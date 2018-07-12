@@ -28,7 +28,7 @@
   <!-- Header -->
   <div class="w3-container" style="margin-top:80px" id="top">
     <h1 class="w3-jumbo"><b>Queensland Urban Utilities</b></h1>
-    <h1 class="w3-xxxlarge w3-text-red"><b>Initial Screen</b></h1>
+    <h1 class="w3-xxxlarge w3-text-red"><b></b></h1>
     <hr style="width:50px;border:5px solid red" class="w3-round">
     <p>Thank you for calling Queensland Urban Utilities, my name is , how may I help you?</p>
     <p>Reminder - Refer to UKS On All Calls!</p>
