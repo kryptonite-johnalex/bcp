@@ -6,9 +6,17 @@ error_reporting(E_ALL);
 
 require_once('../php/db_connect.php');
 
-$sql = "SELECT * FROM quu_complaints";
+$sql = "SELECT * FROM quu_complaints WHERE type='complaints'";
 
-$result = $conn->query($sql);
+$complaints = $conn->query($sql);
+
+$sql = "SELECT * FROM quu_escalation";
+
+$escalation = $conn->query($sql);
+
+$sql = "SELECT * FROM quu_complaints WHERE type='senior'";
+
+$senior = $conn->query($sql);
 
 ?>
 <!DOCTYPE html>
@@ -51,7 +59,7 @@ $result = $conn->query($sql);
         class="w3-button w3-display-topright">&times;</span>
         <h2>Modal Header</h2>
       </header>
-      <div class="w3-container">
+      <div class="data w3-container">
         <p>Some text..</p>
         <p>Some text..</p>
       </div>
@@ -61,19 +69,18 @@ $result = $conn->query($sql);
     </div>
   </div>
 
-  <div class="w3-container" id="report" style="margin-top:75px;margin-bottom: 15%">
-  <h2>Details</h2>
+  <div id="report" style="margin-top:75px;margin-bottom: 15%">
 
   <div class="w3-container">
     <div class="w3-row">
       <a href="javascript:void(0)" onclick="openCity(event, 'Complaints');">
-        <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding w3-border-red w3-gray">Complaints</div>
+        <div class="w3-third tablink w3-bottombar w3-hover-red w3-padding w3-border-black w3-red">Complaints</div>
       </a>
       <a href="javascript:void(0)" onclick="openCity(event, 'Senior');">
-        <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Senior</div>
+        <div class="w3-third tablink w3-bottombar w3-hover-red w3-padding">Senior</div>
       </a>
       <a href="javascript:void(0)" onclick="openCity(event, 'Escalation');">
-        <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Escalation</div>
+        <div class="w3-third tablink w3-bottombar w3-hover-red w3-padding">Escalation</div>
       </a>
     </div>
 
@@ -82,6 +89,7 @@ $result = $conn->query($sql);
         <thead>
           <tr class="w3-red">
             <th>No.</th>
+            <th>Account Number</th>
             <th>Full Name</th>
             <th>Contact Number</th>
             <th>Full Address</th>
@@ -91,22 +99,27 @@ $result = $conn->query($sql);
           </tr>
         </thead>
         <?php
-        if ($result->num_rows > 0) {
+        if ($complaints->num_rows > 0) {
             // output data of each row
-            while($row = $result->fetch_assoc()) {
+            while($row = $complaints->fetch_assoc()) {
         ?>
         <tr>
           <td class="id"><?php echo $row['id']; ?></td>
+          <td class="account"><?php echo $row['acct_number']; ?></td>
           <td class="fullname"><?php echo $row['first_name'] . " " . $row['sur_name']; ?></td>
           <td class="contact"><?php echo $row['contact_number']; ?></td>
           <td class="address"><?php echo $row['addr_number'] . " " . $row['addr_street'] . ", " . $row['addr_suburb']; ?></td>
           <td class="postal"><?php echo $row['postal_code']; ?></td>
           <td class="time"><?php echo $row['created_at']; ?></td>
-          <td class="status"><?php echo ($row['sent_status']) ? 'Sent' : 'Failed'; ?></td>        </tr>
+          <td class="status"><?php echo ($row['sent_status']) ? 'Sent' : 'Failed'; ?></td>
+          <!-- hide -->
+          <td class="job" style="display: none"><?php echo $row['job_number']; ?></td>
+          <td class="details" style="display: none"><?php echo $row['compl_details']; ?></td>
+          <td class="action" style="display: none"><?php echo $row['act_taken']; ?></td>
+          <td class="request" style="display: none"><?php echo $row['cust_request']; ?></td>
+        </tr>
         <?php
             }
-          } else {
-              echo "<h2>0 results</h2>";
           }
         ?>
       </table>
@@ -126,9 +139,9 @@ $result = $conn->query($sql);
           </tr>
         </thead>
         <?php
-        if ($result->num_rows > 0) {
+        if ($senior->num_rows > 0) {
             // output data of each row
-            while($row = $result->fetch_assoc()) {
+            while($row = $senior->fetch_assoc()) {
         ?>
         <tr>
           <td class="id"><?php echo $row['id']; ?></td>
@@ -138,11 +151,14 @@ $result = $conn->query($sql);
           <td class="postal"><?php echo $row['postal_code']; ?></td>
           <td class="time"><?php echo $row['created_at']; ?></td>
           <td class="status"><?php echo ($row['sent_status']) ? 'Yes' : 'No'; ?></td>
+          <!-- hide -->
+          <td class="job w3-hide"><?php echo $row['job_number']; ?></td>
+          <td class="details w3-hide"><?php echo $row['compl_details']; ?></td>
+          <td class="action w3-hide"><?php echo $row['act_taken']; ?></td>
+          <td class="request w3-hide"><?php echo $row['cust_request']; ?></td>
         </tr>
         <?php
             }
-          } else {
-              echo "<h2>0 results</h2>";
           }
         ?>
       </table>
@@ -153,32 +169,28 @@ $result = $conn->query($sql);
         <thead>
           <tr class="w3-red">
             <th>No.</th>
-            <th>Full Name</th>
-            <th>Contact Number</th>
-            <th>Full Address</th>
-            <th>Postal Code</th>
+            <th>Agent Name</th>
+            <th>Address</th>
+            <th>Reason</th>
             <th>Submitted at</th>
             <th>Status</th>
           </tr>
         </thead>
         <?php
-        if ($result->num_rows > 0) {
+        if ($escalation->num_rows > 0) {
             // output data of each row
-            while($row = $result->fetch_assoc()) {
+            while($row = $escalation->fetch_assoc()) {
         ?>
         <tr>
           <td class="id"><?php echo $row['id']; ?></td>
-          <td class="fullname"><?php echo $row['first_name'] . " " . $row['sur_name']; ?></td>
-          <td class="contact"><?php echo $row['contact_number']; ?></td>
-          <td class="address"><?php echo $row['addr_number'] . " " . $row['addr_street'] . ", " . $row['addr_suburb']; ?></td>
-          <td class="postal"><?php echo $row['postal_code']; ?></td>
+          <td class="fullname"><?php echo $row['agent_name']; ?></td>
+          <td class="address"><?php echo $row['addr_street']; ?></td>
+          <td class="reason"><?php echo $row['reason']; ?></td>
           <td class="time"><?php echo $row['created_at']; ?></td>
           <td class="status"><?php echo ($row['sent_status']) ? 'Sent' : 'Sent Failed'; ?></td>
         </tr>
         <?php
             }
-          } else {
-              echo "<h2>0 results</h2>";
           }
         ?>
       </table>
@@ -198,16 +210,29 @@ $result = $conn->query($sql);
 <script type="text/javascript">
 
 $(document).ready(function() {
-  $("tr").click(function() {
+
+  // $( "tr > th" ).each(function( index ) {
+  //   console.log( index + ": " + $( this ).text() );
+  // });
+
+
+  $("tr:not(.w3-red)").click(function() {
+
+    var data = '<div class="w3-row w3-margin">';
+    $(this).find('td').each(function( index ) {
+      data += '<div class="w3-col s2 w3-large"><strong>' + this.className + ': </strong></div> <div class="w3-col s10 w3-large">' + $( this ).text() + '</div>';
+    });
+
     var id = $(this).find('td.id').text();
-    var fullname = $(this).find('td.fullname').text();
-    var contact = $(this).find('td.contact').text();
-    var address = $(this).find('td.address').text();
-    var postal = $(this).find('td.postal').text();
+    var account = $(this).find('td.account').text();
     var time = $(this).find('td.time').text();
     var status = $(this).find('td.status').text();
-    $('#id01').show().find('header > h2').text(fullname)
+    $('#id01').show().find('header > h2').text("Account: " + account);
     $('#id01').find('footer > p').text("Status: " + status + "  Timestamp: " + time);
+    $('#id01 > div > .data').html(data);
+
+
+
   });
 });
 
