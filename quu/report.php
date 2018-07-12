@@ -44,47 +44,147 @@ $result = $conn->query($sql);
     <hr style="width:50px;border:5px solid red" class="w3-round">
   </div>
 
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content w3-animate-zoom w3-card-4">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('id01').style.display='none'" 
+        class="w3-button w3-display-topright">&times;</span>
+        <h2>Modal Header</h2>
+      </header>
+      <div class="w3-container">
+        <p>Some text..</p>
+        <p>Some text..</p>
+      </div>
+      <footer class="w3-container w3-teal">
+        <p>Modal Footer</p>
+      </footer>
+    </div>
+  </div>
+
   <div class="w3-container" id="report" style="margin-top:75px;margin-bottom: 15%">
   <h2>Details</h2>
 
-  <div class="w3-container w3-border w3-margin-bottom w3-padding" style="display: none;">
+  <div class="w3-container">
+    <div class="w3-row">
+      <a href="javascript:void(0)" onclick="openCity(event, 'Complaints');">
+        <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding w3-border-red w3-gray">Complaints</div>
+      </a>
+      <a href="javascript:void(0)" onclick="openCity(event, 'Senior');">
+        <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Senior</div>
+      </a>
+      <a href="javascript:void(0)" onclick="openCity(event, 'Escalation');">
+        <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Escalation</div>
+      </a>
+    </div>
 
+    <div id="Complaints" class="tabs" style="">
+      <table class="w3-table-all w3-hoverable">
+        <thead>
+          <tr class="w3-red">
+            <th>No.</th>
+            <th>Full Name</th>
+            <th>Contact Number</th>
+            <th>Full Address</th>
+            <th>Postal Code</th>
+            <th>Submitted at</th>
+            <th>Sent Status</th>
+          </tr>
+        </thead>
+        <?php
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+        ?>
+        <tr>
+          <td class="id"><?php echo $row['id']; ?></td>
+          <td class="fullname"><?php echo $row['first_name'] . " " . $row['sur_name']; ?></td>
+          <td class="contact"><?php echo $row['contact_number']; ?></td>
+          <td class="address"><?php echo $row['addr_number'] . " " . $row['addr_street'] . ", " . $row['addr_suburb']; ?></td>
+          <td class="postal"><?php echo $row['postal_code']; ?></td>
+          <td class="time"><?php echo $row['created_at']; ?></td>
+          <td class="status"><?php echo ($row['sent_status']) ? 'Sent' : 'Failed'; ?></td>        </tr>
+        <?php
+            }
+          } else {
+              echo "<h2>0 results</h2>";
+          }
+        ?>
+      </table>
+    </div>
+
+    <div id="Senior" class="tabs" style="display:none">
+      <table class="w3-table-all w3-hoverable">
+        <thead>
+          <tr class="w3-red">
+            <th>No.</th>
+            <th>Full Name</th>
+            <th>Contact Number</th>
+            <th>Full Address</th>
+            <th>Postal Code</th>
+            <th>Submitted at</th>
+            <th>Sent Status</th>
+          </tr>
+        </thead>
+        <?php
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+        ?>
+        <tr>
+          <td class="id"><?php echo $row['id']; ?></td>
+          <td class="fullname"><?php echo $row['first_name'] . " " . $row['sur_name']; ?></td>
+          <td class="contact"><?php echo $row['contact_number']; ?></td>
+          <td class="address"><?php echo $row['addr_number'] . " " . $row['addr_street'] . ", " . $row['addr_suburb']; ?></td>
+          <td class="postal"><?php echo $row['postal_code']; ?></td>
+          <td class="time"><?php echo $row['created_at']; ?></td>
+          <td class="status"><?php echo ($row['sent_status']) ? 'Yes' : 'No'; ?></td>
+        </tr>
+        <?php
+            }
+          } else {
+              echo "<h2>0 results</h2>";
+          }
+        ?>
+      </table>
+    </div>
+
+    <div id="Escalation" class="tabs" style="display:none">
+      <table class="w3-table-all w3-hoverable">
+        <thead>
+          <tr class="w3-red">
+            <th>No.</th>
+            <th>Full Name</th>
+            <th>Contact Number</th>
+            <th>Full Address</th>
+            <th>Postal Code</th>
+            <th>Submitted at</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <?php
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+        ?>
+        <tr>
+          <td class="id"><?php echo $row['id']; ?></td>
+          <td class="fullname"><?php echo $row['first_name'] . " " . $row['sur_name']; ?></td>
+          <td class="contact"><?php echo $row['contact_number']; ?></td>
+          <td class="address"><?php echo $row['addr_number'] . " " . $row['addr_street'] . ", " . $row['addr_suburb']; ?></td>
+          <td class="postal"><?php echo $row['postal_code']; ?></td>
+          <td class="time"><?php echo $row['created_at']; ?></td>
+          <td class="status"><?php echo ($row['sent_status']) ? 'Sent' : 'Sent Failed'; ?></td>
+        </tr>
+        <?php
+            }
+          } else {
+              echo "<h2>0 results</h2>";
+          }
+        ?>
+      </table>
+    </div>
   </div>
 
-  <table class="w3-table-all w3-hoverable">
-    <thead>
-      <tr class="w3-red">
-        <th>No.</th>
-        <th>Full Name</th>
-        <th>Contact Number</th>
-        <th>Full Address</th>
-        <th>Postal Code</th>
-        <th>Submitted at</th>
-        <th>Sent Status</th>
-      </tr>
-    </thead>
-<?php
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-?>
-    <tr>
-      <td><?php echo $row['id']; ?></td>
-      <td><?php echo $row['first_name'] . " " . $row['sur_name']; ?></td>
-      <td><?php echo $row['contact_number']; ?></td>
-      <td><?php echo $row['addr_number'] . " " . $row['addr_street'] . ", " . $row['addr_suburb']; ?></td>
-      <td><?php echo $row['postal_code']; ?></td>
-      <td><?php echo $row['created_at']; ?></td>
-      <td><?php echo ($row['sent_status']) ? 'Yes' : 'No'; ?></td>
-    </tr>
-<?php
-    }
-  } else {
-      echo "<h2>0 results</h2>";
-  }
-  $conn->close();
-?>
-  </table>
   </div>
 
 
@@ -99,9 +199,15 @@ if ($result->num_rows > 0) {
 
 $(document).ready(function() {
   $("tr").click(function() {
-    var MyRows = $(this).find('td:first-child').text();
-
-    console.log(MyRows);
+    var id = $(this).find('td.id').text();
+    var fullname = $(this).find('td.fullname').text();
+    var contact = $(this).find('td.contact').text();
+    var address = $(this).find('td.address').text();
+    var postal = $(this).find('td.postal').text();
+    var time = $(this).find('td.time').text();
+    var status = $(this).find('td.status').text();
+    $('#id01').show().find('header > h2').text(fullname)
+    $('#id01').find('footer > p').text("Status: " + status + "  Timestamp: " + time);
   });
 });
 

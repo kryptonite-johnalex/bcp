@@ -31,4 +31,19 @@ function myAccFunc() {
         x.previousElementSibling.className.replace(" w3-green", "");
     }
 }
+
+// using native js for eff.
+function openCity(evt, tabName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("tabs");
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+     tablinks[i].className = tablinks[i].className.replace(" w3-border-red w3-gray", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.firstElementChild.className += " w3-border-red w3-gray";
+}
 </script>
