@@ -30,8 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Set the recipient email address.
     // FIXME: Update this to your desired email address.
-    $recipient = "johnalexladra@gmail.com";
-    //$recipient = "johnalexladra@gmail.com,marveelou@gmail.com,quu@contact121.com.au,blendedtl@contact121.com.au,overnight@contact121.com.au";
+    //$recipient = "johnalexladra@gmail.com";
+    $recipient = "marveelou@gmail.com,quu@contact121.com.au,blendedtl@contact121.com.au,overnight@contact121.com.au";
 
     // Set the email subject.
     $subject = "A1 ALERT";
@@ -40,8 +40,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //($type == 'escalation') {
 
         // Defining variables
-        $name = 'Katina Firth'; // this will be change to the agent who took the call
-        $email = 'ladrajohnalex@gmail.com';
+        $name = 'Service'; // this will be change to the agent who took the call
+        $email = 'service@contact121.com.au';
         $time_stamp = date("h:i:s"); // this will be change to the time when the call took
 
         $incident_num = $_POST['incident_num'];

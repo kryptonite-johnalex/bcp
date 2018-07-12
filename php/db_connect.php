@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "v3ntur3s";
 $dbname = "quu";
 
 // Create connection
