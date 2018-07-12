@@ -32,14 +32,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     echo $email_content;
 
-    $recipient = "johnalexladra@gmail.com,marveelou@gmail.com,quu@contact121.com.au,blendedtl@contact121.com.au,overnight@contact121.com.au";
+    $recipient = "marveelou@gmail.com,quu@contact121.com.au,blendedtl@contact121.com.au,overnight@contact121.com.au";
 
     // Set the email subject.
     $subject = "Note Script";
 
     // Defining variables
-    $name = 'TEST';
-    $email = 'ladrajohnalex@gmail.com';
+    $name = 'Service';
+    $email = 'service@contact121.com.au';
 
     // Build the email content.
     // $email_content .= "QUU Incident Number: $incident_num\n";
