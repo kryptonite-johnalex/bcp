@@ -62,10 +62,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email_content .= "This was raised by $name at $time_stamp<br><br>";
     //}
 
-    // Build the email headers.
-    $email_headers = "From: $name <$email>";
-    $email_headers = "MIME-Version: 1.0" . "\n";
-    $email_headers .= "Content-type:text/html;charset=UTF-8" . "\n";
+
+     // Build the email headers.
+        $email_headers = "MIME-Version: 1.0" . "\n";
+        $email_headers .= "Content-type:text/html;charset=UTF-8" . "\n";
+        $email_headers .= "From: $name <$email>";
 
     // Send the email.
     if (mail($recipient, $subject, $email_content, $email_headers)) {
