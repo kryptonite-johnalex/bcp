@@ -24,21 +24,28 @@
 
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
+<?php
+echo "<br>";
+echo "<br>";
+echo "Agent Name  : ". $_GET["fullname"];
+echo "<br>";
+echo "Phone Number : ". $_GET["phone_number"];
+?>
 
   <!-- Header -->
-  <div class="w3-container" style="margin-top:80px" id="top">
-    <h1 class="w3-jumbo"><b>Queensland Urban Utilities</b></h1>
-    <h1 class="w3-xxxlarge w3-text-red"><b></b></h1>
-    <hr style="width:50px;border:5px solid red" class="w3-round">
-    <p>Thank you for calling Queensland Urban Utilities, my name is , how may I help you?</p>
-    <p>Reminder - Refer to UKS On All Calls!</p>
-    <p>If you are on hold to seniors for over one minute, hang up and use the email button to send an email instead.</p>
-    <p>If caller is unknown or does not wish to be identified, requestor details should be anon.
-    <p>Orders - BW Status - Remember that you need to check both of the boxes that appear when you set a BW for it to write to the system properly.</p>
-    <p>Validating Addresses - DO NOT create or ignore when checking addresses. Refer advice on handout.</p>
-    <p>Seniors Line - Always have the name and telephone number of the person you are transferring.</p>
-    <p>Requestor Tab - Remember to Always Save at this screen. Refer advice on handout.</p>
-  </div>
+    <div class="w3-container" style="margin-top:80px" id="top">
+      <h1 class="w3-jumbo"><b>Queensland Urban Utilities</b></h1>
+      <h1 class="w3-xxxlarge w3-text-red"><b></b></h1>
+      <hr style="width:50px;border: 5px solid red" class="w3-round">
+      <p>Thank you for calling Queensland Urban Utilities, my name is , how may I help you?</p>
+      <p>Reminder - Refer to UKS On All Calls!</p>
+      <p>If you are on hold to seniors for over one minute, hang up and use the email button to send an email instead.</p>
+      <p>If caller is unknown or does not wish to be identified, requestor details should be anon.
+      <p>Orders - BW Status - Remember that you need to check both of the boxes that appear when you set a BW for it to write to the system properly.</p>
+      <p>Validating Addresses - DO NOT create or ignore when checking addresses. Refer advice on handout.</p>
+      <p>Seniors Line - Always have the name and telephone number of the person you are transferring.</p>
+      <p>Requestor Tab - Remember to Always Save at this screen. Refer advice on handout.</p>
+    </div>
 
   <div class="w3-container" id="options" style="margin-top:75px">
     <button type="button" onclick="window.location.href = '/quu/note-script.php'" class="w3-button w3-block w3-padding-24 w3-red w3-margin-bottom">No Water, Sudden Drop in Pressure, Burst Main, Dirty Water</button>
