@@ -5,6 +5,7 @@
 include_once('db_connect.php');
 
 $script_list = $_POST['script_list'];
+$sent_status = 0;
 
 // Only process POST reqeusts.
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -26,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
 
-        $conn->close();
+        // $conn->close();
     }
 
 
@@ -40,6 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Defining variables
     $name = 'Service';
     $email = 'service@contact121.com.au';
+    $created_at = date("Y-m-d H:i:s");
 
     // Build the email content.
     // $email_content .= "QUU Incident Number: $incident_num\n";
@@ -59,11 +61,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Set a 200 (okay) response code.
         http_response_code(200);
         echo "Thank You! Your message has been sent.";
+        $sent_status = 1;
     } else {
         // Set a 500 (internal server error) response code.
         http_response_code(500);
         echo "Oops! Something went wrong and we couldn't send your message.";
+        $sent_status = 0;
     }
+
+    // Data Insert
+
+    $a = key($script_list);
+    $b = implode(', ', array_values($value));
+
+    $sql = "INSERT INTO quu_record_script (`script`, `script_list`, `created_at`, `sent_status`) VALUES ('$a', '$b', '$created_at', '$sent_status')";
+
+    if ($conn->query($sql) === TRUE) {
+        //echo "New record created successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    $conn->close();
 
 } else {
     // Not a POST request, set a 403 (forbidden) response code.

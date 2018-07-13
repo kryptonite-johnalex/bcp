@@ -18,6 +18,10 @@ $sql = "SELECT * FROM quu_complaints WHERE type='senior'";
 
 $senior = $conn->query($sql);
 
+$sql = "SELECT * FROM quu_record_script";
+
+$script = $conn->query($sql);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -74,13 +78,16 @@ $senior = $conn->query($sql);
   <div class="w3-container">
     <div class="w3-row">
       <a href="javascript:void(0)" onclick="openCity(event, 'Complaints');">
-        <div class="w3-third tablink w3-bottombar w3-hover-red w3-padding w3-border-black w3-red">Complaints</div>
+        <div class="w3-quarter tablink w3-bottombar w3-hover-red w3-padding w3-border-black w3-red">Complaints</div>
       </a>
       <a href="javascript:void(0)" onclick="openCity(event, 'Senior');">
-        <div class="w3-third tablink w3-bottombar w3-hover-red w3-padding">Senior</div>
+        <div class="w3-quarter tablink w3-bottombar w3-hover-red w3-padding">Senior</div>
       </a>
       <a href="javascript:void(0)" onclick="openCity(event, 'Escalation');">
-        <div class="w3-third tablink w3-bottombar w3-hover-red w3-padding">Escalation</div>
+        <div class="w3-quarter tablink w3-bottombar w3-hover-red w3-padding">Escalation</div>
+      </a>
+      <a href="javascript:void(0)" onclick="openCity(event, 'Script');">
+        <div class="w3-quarter tablink w3-bottombar w3-hover-red w3-padding">Script</div>
       </a>
     </div>
 
@@ -100,6 +107,7 @@ $senior = $conn->query($sql);
         </thead>
         <?php
         if ($complaints->num_rows > 0) {
+            $count=0;
             // output data of each row
             while($row = $complaints->fetch_assoc()) {
         ?>
@@ -119,10 +127,14 @@ $senior = $conn->query($sql);
           <td class="request" style="display: none"><?php echo $row['cust_request']; ?></td>
         </tr>
         <?php
+              if($row['sent_status'] == 1) $count++;
             }
           }
         ?>
       </table>
+      <tfoot>
+        <p>Total Count: <?php echo $complaints->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo $count; ?></span></p>
+      </tfoot>
     </div>
 
     <div id="Senior" class="tabs" style="display:none">
@@ -140,8 +152,10 @@ $senior = $conn->query($sql);
         </thead>
         <?php
         if ($senior->num_rows > 0) {
+            $count=0;
             // output data of each row
             while($row = $senior->fetch_assoc()) {
+
         ?>
         <tr>
           <td class="id"><?php echo $row['id']; ?></td>
@@ -158,10 +172,14 @@ $senior = $conn->query($sql);
           <td class="request w3-hide"><?php echo $row['cust_request']; ?></td>
         </tr>
         <?php
+              if($row['sent_status'] == 1) $count++;
             }
           }
         ?>
       </table>
+      <tfoot>
+        <p>Total Count: <?php echo $senior->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo $count; ?></span></p>
+      </tfoot>
     </div>
 
     <div id="Escalation" class="tabs" style="display:none">
@@ -178,6 +196,7 @@ $senior = $conn->query($sql);
         </thead>
         <?php
         if ($escalation->num_rows > 0) {
+            $count=0;
             // output data of each row
             while($row = $escalation->fetch_assoc()) {
         ?>
@@ -190,10 +209,64 @@ $senior = $conn->query($sql);
           <td class="status"><?php echo ($row['sent_status']) ? 'Sent' : 'Sent Failed'; ?></td>
         </tr>
         <?php
+             if($row['sent_status'] == 1) $count++;
             }
           }
         ?>
       </table>
+      <tfoot>
+        <p>Total Count: <?php echo $escalation->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo $count . " / " . $escalation->num_rows; ?></span></p>
+      </tfoot>
+    </div>
+
+    <div id="Script" class="tabs" style="display:none">
+      <table class="w3-table-all w3-hoverable">
+        <thead>
+          <tr class="w3-red">
+            <th>No.</th>
+            <th>Script</th>
+            <th>List</th>
+            <th>Submitted at</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <?php
+        if ($script->num_rows > 0) {
+            $count=0;
+            // output data of each row
+            while($row = $script->fetch_assoc()) {
+
+              // $list = explode(',',$row['script_list']);
+              // $sql = "SELECT * FROM quu_script_list WHERE category_id = '" . $row['script'] . "' AND category_num IN (" . implode(',',$list) . ")";
+
+              $sql = "SELECT * FROM quu_script_list WHERE category_id = '" . $row['script'] . "' AND category_num IN (" . $row['script_list'] . ")";
+
+              $test = $conn->query($sql);
+
+        ?>
+        <tr>
+          <td class="id"><?php echo $row['id']; ?></td>
+          <td class="script"><?php echo $row['script']; ?></td>
+          <td class="list"><?php echo $row['script_list']; ?></td>
+          <td class="details" style="display: none">
+            <ul>
+            <?php while($in_row = $test->fetch_assoc()) { ?>
+              <li><?php echo $in_row['category_list']; ?></li>
+            <?php } ?>
+            </ul>
+          </td>
+          <td class="time"><?php echo $row['created_at']; ?></td>
+          <td class="status"><?php echo ($row['sent_status']) ? 'Sent' : 'Sent Failed'; ?></td>
+        </tr>
+        <?php
+             if($row['sent_status'] == 1) $count++;
+            }
+          }
+        ?>
+      </table>
+      <tfoot>
+        <p>Total Count: <?php echo $script->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo $count . " / " . $script->num_rows; ?></span></p>
+      </tfoot>
     </div>
   </div>
 
@@ -220,7 +293,7 @@ $(document).ready(function() {
 
     var data = '<div class="w3-row w3-margin">';
     $(this).find('td').each(function( index ) {
-      data += '<div class="w3-col s2 w3-large"><strong>' + this.className + ': </strong></div> <div class="w3-col s10 w3-large">' + $( this ).text() + '</div>';
+      data += '<div class="w3-col s2 w3-large"><strong>' + this.className + ': </strong></div> <div class="w3-col s10 w3-large">' + $( this ).html() + '</div>';
     });
 
     var id = $(this).find('td.id').text();
