@@ -1,6 +1,8 @@
 <?php
-    // My modifications to mailer script
-    // Added input sanitizing to prevent injection
+session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 include_once('db_connect.php');
 
@@ -30,7 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // $conn->close();
     }
 
-
     echo $email_content;
 
     $recipient = "marveelou@gmail.com,quu@contact121.com.au,blendedtl@contact121.com.au,overnight@contact121.com.au";
@@ -42,6 +43,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = 'Service';
     $email = 'service@contact121.com.au';
     $created_at = date("Y-m-d H:i:s");
+
+    $agent = $_SESSION['agent'];
+    $phone = $_SESSION['phone'];
 
     // Build the email content.
     // $email_content .= "QUU Incident Number: $incident_num\n";
@@ -74,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $a = key($script_list);
     $b = implode(', ', array_values($value));
 
-    $sql = "INSERT INTO quu_record_script (`script`, `script_list`, `created_at`, `sent_status`) VALUES ('$a', '$b', '$created_at', '$sent_status')";
+    $sql = "INSERT INTO quu_record_script (`agent_name`, `phone`, `script`, `script_list`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$a', '$b', '$created_at', '$sent_status')";
 
     if ($conn->query($sql) === TRUE) {
         //echo "New record created successfully";

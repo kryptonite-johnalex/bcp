@@ -1,3 +1,11 @@
+<?php
+  session_start();
+
+  // Set session variables
+  $_SESSION["agent"] = $_GET['fullname'];
+  $_SESSION["phone"] = $_GET['phone'];
+
+?>
 <!DOCTYPE html>
 <html>
 <title>Initial Screen</title>
@@ -17,21 +25,13 @@
 <?php include_once('../partials/sidebar.php'); ?>
 
 <!-- Top menu on small screens -->
-<?php include_once('../partials/header.php'); ?>
+<?php require('../partials/header.php'); ?>
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
-<?php
-echo "<br>";
-echo "<br>";
-echo "Agent Name  : ". $_GET["fullname"];
-echo "<br>";
-echo "Phone Number : ". $_GET["phone_number"];
-?>
-
   <!-- Header -->
     <div class="w3-container" style="margin-top:80px" id="top">
       <h1 class="w3-jumbo"><b>Queensland Urban Utilities</b></h1>

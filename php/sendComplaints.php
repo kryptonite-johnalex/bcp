@@ -1,4 +1,5 @@
 <?php
+session_start();
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -43,6 +44,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = 'service@contact121.com.au';
         $time_stamp = date("h:i:s"); // this will be change to the time when the call took
 
+        $agent = $_SESSION['agent'];
+        $phone = $_SESSION['phone'];
+
         $firstname = $_POST['firstname'];
         $surname = $_POST['surname'];
         $contact = $_POST['contact'];
@@ -71,7 +75,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email_content .= "<strong>This was raised by $name at $time_stamp<br><br>";
     }
 
-
     // Build the email headers.
         $email_headers = "MIME-Version: 1.0" . "\n";
         $email_headers .= "Content-type:text/html;charset=UTF-8" . "\n";
@@ -92,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Data Insert
 
-    $sql = "INSERT INTO quu_complaints (`first_name`, `sur_name`, `contact_number`, `addr_number`, `addr_street`, `addr_suburb`, `postal_code`, `acct_number`, `job_number`, `compl_details`, `act_taken`, `cust_request`, `created_at`, `type`, `sent_status`) VALUES ('$firstname', '$surname', '$contact', '$number', '$street', '$suburb', '$postal', '$account_num', '$job_num', '$details', '$act_taken', '$cust_req', '$created_at', '$type', '$sent_status')";
+    $sql = "INSERT INTO quu_complaints (`agent_name`, `phone`, `first_name`, `sur_name`, `contact_number`, `addr_number`, `addr_street`, `addr_suburb`, `postal_code`, `acct_number`, `job_number`, `compl_details`, `act_taken`, `cust_request`, `created_at`, `type`, `sent_status`) VALUES ('$agent', '$phone', $firstname', '$surname', '$contact', '$number', '$street', '$suburb', '$postal', '$account_num', '$job_num', '$details', '$act_taken', '$cust_req', '$created_at', '$type', '$sent_status')";
 
     if ($conn->query($sql) === TRUE) {
         //echo "New record created successfully";

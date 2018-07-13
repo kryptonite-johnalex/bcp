@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -44,6 +44,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = 'service@contact121.com.au';
         $time_stamp = date("h:i:s"); // this will be change to the time when the call took
 
+        $agent = $_SESSION['agent'];
+        $phone = $_SESSION['phone'];
+
         $incident_num = $_POST['incident_num'];
         $wrap_code = $_POST['wrap_code'];
         $street = $_POST['street'];
@@ -61,7 +64,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email_content .= "Reasons: $reason<br><br><br>";
         $email_content .= "This was raised by $name at $time_stamp<br><br>";
     //}
-
 
      // Build the email headers.
         $email_headers = "MIME-Version: 1.0" . "\n";
@@ -83,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Data Insert
 
-    $sql = "INSERT INTO quu_escalation (`agent_name`, `addr_street`, `addr_suburb`, `reason`, `created_at`, `sent_status`) VALUES ('$name', '$street', '$street', '$reason', '$created_at', '$sent_status')";
+    $sql = "INSERT INTO quu_escalation (`agent_name`, `phone`, `addr_street`, `addr_suburb`, `reason`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$street', '$street', '$reason', '$created_at', '$sent_status')";
 
     if ($conn->query($sql) === TRUE) {
         //echo "New record created successfully";
