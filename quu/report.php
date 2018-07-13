@@ -144,6 +144,7 @@ $script = $conn->query($sql);
         <thead>
           <tr class="w3-red">
             <th>No.</th>
+            <th>Account Number</th>
             <th>Full Name</th>
             <th>Contact Number</th>
             <th>Full Address</th>
@@ -161,6 +162,7 @@ $script = $conn->query($sql);
         ?>
         <tr>
           <td class="id"><?php echo $row['id']; ?></td>
+          <td class="account"><?php echo $row['acct_number']; ?></td>
           <td class="fullname"><?php echo $row['first_name'] . " " . $row['sur_name']; ?></td>
           <td class="contact"><?php echo $row['contact_number']; ?></td>
           <td class="address"><?php echo $row['addr_number'] . " " . $row['addr_street'] . ", " . $row['addr_suburb']; ?></td>
@@ -190,6 +192,7 @@ $script = $conn->query($sql);
           <tr class="w3-red">
             <th>No.</th>
             <th>Agent Name</th>
+            <th>Phone</th>
             <th>Address</th>
             <th>Reason</th>
             <th>Submitted at</th>
@@ -204,7 +207,8 @@ $script = $conn->query($sql);
         ?>
         <tr>
           <td class="id"><?php echo $row['id']; ?></td>
-          <td class="fullname"><?php echo $row['agent_name']; ?></td>
+          <td class="agent"><?php echo $row['agent_name']; ?></td>
+          <td class="phone"><?php echo $row['phone']; ?></td>
           <td class="address"><?php echo $row['addr_street']; ?></td>
           <td class="reason"><?php echo $row['reason']; ?></td>
           <td class="time"><?php echo $row['created_at']; ?></td>
@@ -226,6 +230,8 @@ $script = $conn->query($sql);
         <thead>
           <tr class="w3-red">
             <th>No.</th>
+            <th>Agent</th>
+            <th>Phone</th>
             <th>Script</th>
             <th>List</th>
             <th>Submitted at</th>
@@ -248,6 +254,8 @@ $script = $conn->query($sql);
         ?>
         <tr>
           <td class="id"><?php echo $row['id']; ?></td>
+          <td class="agent"><?php echo $row['agent_name']; ?></td>
+          <td class="phone"><?php echo $row['phone']; ?></td>
           <td class="script"><?php echo $row['script']; ?></td>
           <td class="list"><?php echo $row['script_list']; ?></td>
           <td class="details" style="display: none">
