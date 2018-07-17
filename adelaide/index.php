@@ -1,11 +1,9 @@
 <?php
-session_start();
+  session_start();
 
-if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
   // Set session variables
   $_SESSION["agent"] = $_GET['fullname'];
   $_SESSION["phone"] = $_GET['phone'];
-}
 
 ?>
 <!DOCTYPE html>
@@ -39,7 +37,7 @@ if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
       <h1 class="w3-jumbo"><b>Queensland Urban Utilities</b></h1>
       <h1 class="w3-xxxlarge w3-text-red"><b></b></h1>
       <hr style="width:50px;border: 5px solid red" class="w3-round">
-      <p>Thank you for calling Queensland Urban Utilities, my name is <?php echo (isset($_SESSION["agent"])) ?: '[Agent Name]'; ?>, how may I help you?</p>
+      <p>Thank you for calling Queensland Urban Utilities, my name is , how may I help you?</p>
       <p>Reminder - Refer to UKS On All Calls!</p>
       <p>If you are on hold to seniors for over one minute, hang up and use the email button to send an email instead.</p>
       <p>If caller is unknown or does not wish to be identified, requestor details should be anon.
