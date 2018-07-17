@@ -5,12 +5,19 @@
   </div>
   <div class="w3-bar-block">
     <!-- <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">QUU</a>  -->
-    <button class="w3-bar-item w3-button w3-hover-white" onclick="myAccFunc()">
+    <button class="w3-bar-item w3-button w3-hover-white" onclick="myAccFunc('demoAcc1')">
     QUU <i class="fa fa-caret-down w3-right"></i>
     </button>
-    <div id="demoAcc" class="w3-hide w3-white w3-card">
+    <div id="demoAcc1" class="w3-hide w3-white w3-card">
       <a href="/quu" class="w3-bar-item w3-button">Initial</a>
       <a href="/quu/report.php" class="w3-bar-item w3-button">Reports</a>
+    </div>
+    <button class="w3-bar-item w3-button w3-hover-white" onclick="myAccFunc('demoAcc2')">
+    ADELAIDE LOTTERY  <i class="fa fa-caret-down w3-right"></i>
+    </button>
+    <div id="demoAcc2" class="w3-hide w3-white w3-card">
+      <a href="/adelaide" class="w3-bar-item w3-button">Initial</a>
+      <a href="/adelaide/report.php" class="w3-bar-item w3-button">Reports</a>
     </div>
     <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Coming Soon...</a> 
     <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Coming Soon...</a> 
