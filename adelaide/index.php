@@ -5,6 +5,10 @@ if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
   // Set session variables
   $_SESSION["agent"] = $_GET['fullname'];
   $_SESSION["phone"] = $_GET['phone'];
+} else {
+  // FOR TESTING ONLY REMOVE AFTER
+  $_SESSION["agent"] = 'Test Agent';
+  $_SESSION["phone"] = '2004563466';
 }
 
 ?>
@@ -42,7 +46,7 @@ if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
       <img src="../assets/images/HRHLLogo.jpg" alt="car" style="width: 100%;">
     </div>
     <div class="w3-quarter">
-      <button type="button" onclick="window.location.href = '/adelaide/'" class="w3-button w3-block w3-card w3-padding-32 w3-gray">Testing - Ignore</button>
+      <button type="button" onclick="window.location.href = '/adelaide/'" class="w3-button w3-block w3-card w3-padding-32 w3-light-gray">Testing - Ignore</button>
     </div>
   </div>
   <!-- Header -->
