@@ -59,18 +59,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $created_at = date("Y-m-d H:i:s");
 
         // Build the email content.
-        $email_content = "<strong style='color: blue;'>Caller Details</strong><br><br><br>";
+        $email_content = "<strong style='color: blue;'>Caller Details</strong><br><br>";
         // $email_content .= "QUU Incident Number: $incident_num<br>";
         // $email_content .= "QUU Wrap Code: $wrap_code<br>";
         $email_content .= "Name: $first_name $last_name <br><br>";
         $email_content .= "Contact No: $contact <br><br>";
 
         $email_content .= "Daytime: (need further adjustments) <br>";
-        $email_content .= "Evening: (need further adjustments) <br>";
+        $email_content .= "Evening: (need further adjustments) <br><br>";
 
-        $email_content .= "Email: $email <br>";
-        $email_content .= "Preferred Contact Method: $contact_method<br><br><br>";
-        $email_content = "<strong style='color: blue;'>Additional Details</strong><br><br><br>";
+        $email_content .= "Email: $email <br><br>";
+        $email_content .= "Preferred Contact Method: $contact_method<br><br>";
+        $email_content .= "<strong style='color: blue;'>Additional Details</strong><br><br>";
         $email_content .= "$additional_info";
     //}
 
