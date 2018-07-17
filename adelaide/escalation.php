@@ -55,7 +55,7 @@
       <div class="w3-row">
         <div class="w3-half w3-padding">
           <label>Phone: </label>
-          <input class="w3-input w3-border" type="phone" name="phone" required="" placeholder="">
+          <input class="w3-input w3-border" type="contact" name="phone" required="" placeholder="">
         </div>
       </div>
       <div class="w3-row">
@@ -66,20 +66,21 @@
       </div>
       <div class="w3-section w3-row w3-padding">
         <label>Preferred Contact Method: </label>
-        <select class="w3-select w3-border" name="contactmethod" style="padding: 7px !important;">
+        <select class="w3-select w3-border" name="contactmethod" style="padding: 7px !important;" required="">
           <option value="" disabled selected>Choose your option</option>
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-          <option value="3">Option 3</option>
+          <option value="1">Email</option>
+          <option value="2">Phone</option>
+          <option value="3">Other</option>
         </select>
       </div>
       <div class="w3-section w3-row w3-padding">
         <label>Frequent Query: </label>
-        <select class="w3-select w3-border" name="frequentquery" style="padding: 7px !important;">
+        <select class="w3-select w3-border" name="frequentquery" style="padding: 7px !important;" required="">
           <option value="" disabled selected>Choose your option</option>
           <option value="1">Brochure Request</option>
           <option value="2">Ticket Follow Up</option>
           <option value="3">Change of Address</option>
+          <option value="3">Other</option>
         </select>
       </div>
       <div class="w3-section w3-padding">
