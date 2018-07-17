@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>Escalation Screen</title>
+<title>Adelaide - Escalation Screen</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <?php include_once('../assets/style.html'); ?>
@@ -23,9 +23,10 @@
 
   <!-- Header -->
   <div class="w3-container" style="margin-top:80px" id="top">
-    <h1 class="w3-jumbo"><b>Queensland Urban Utilities</b></h1>
+
+<!--     <h1 class="w3-jumbo"><b>Queensland Urban Utilities</b></h1>
     <h1 class="w3-xxxlarge w3-text-red"><b>Escalation Screen</b></h1>
-    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <hr style="width:50px;border:5px solid red" class="w3-round"> -->
   </div>
 
   <div id="form-messages" class="w3-panel w3-hide w3-display-container">
@@ -35,40 +36,82 @@
     <p>Green often indicates something successful or positive.</p>
   </div>
 
-  <div class="w3-container" id="escalation" style="margin-top:75px">
-    <p>Enter the details of this calls into the QUU Citrix. Copy and paster the Incident Number and KIT wrap code into the relevant boxes
-    at the end of the call.</p>
-    <form action="../php/sendEscalation.php" method="POST">
+  <div class="w3-container" id="escalation">
+    <div class="w3-section w3-padding" style="margin-top: 50px !important;">
+      <p class="w3-text-blue">I don't know how to answer your query, but would be happy to take your details and pass it to a Program Coordinator who will contact you directly.</p>
+    </div>
+    <form action="../php/sendEscalationAL.php" method="POST">
       <input class="w3-hide" type="text" name="form_type" value="escalation">
-      <div class="w3-section">
-        <label>QUU Incident Number</label>
-        <input class="w3-input w3-border" type="text" name="incident_num" required="" placeholder="0000">
-      </div>
-      <p>If the call was about an already existing incident adn not reporting a new one, please enter the original incident number.</p>
-      <div class="w3-section">
-        <label>QUU Wrap Code</label>
-        <input class="w3-input w3-border" type="text" name="wrap_code" required="" placeholder="NA">
+      <div class="w3-row">
+        <div class="w3-half w3-padding">
+          <label>First Name: </label>
+          <input class="w3-input w3-border" type="text" name="firstname" required="" placeholder="">
+        </div>
+        <div class="w3-half w3-padding">
+          <label>Last Name: </label>
+          <input class="w3-input w3-border" type="text" name="lastname" required="" placeholder="">
+        </div>
       </div>
       <div class="w3-row">
+        <div class="w3-half w3-padding">
+          <label>Phone: </label>
+          <input class="w3-input w3-border" type="phone" name="phone" required="" placeholder="">
+        </div>
+      </div>
+      <div class="w3-row">
+        <div class="w3-twothird w3-padding">
+          <label>Email: </label>
+        <input class="w3-input w3-border" type="email" name="email" required="" placeholder="">
+        </div>
+      </div>
+      <div class="w3-section w3-row w3-padding">
+        <label>Preferred Contact Method: </label>
+        <select class="w3-select w3-border" name="contactmethod" style="padding: 7px !important;">
+          <option value="" disabled selected>Choose your option</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </select>
+      </div>
+      <div class="w3-section w3-row w3-padding">
+        <label>Frequent Query: </label>
+        <select class="w3-select w3-border" name="frequentquery" style="padding: 7px !important;">
+          <option value="" disabled selected>Choose your option</option>
+          <option value="1">Brochure Request</option>
+          <option value="2">Ticket Follow Up</option>
+          <option value="3">Change of Address</option>
+        </select>
+      </div>
+      <div class="w3-section w3-padding">
+        <p class="w3-text-red">If the query relates to one of the Frequently Query areas above, select it from the drop down list above. If it does not relate, or further information is required, enter it into the free text boxes below:</p>
+        <p class="w3-text-red">Capture as much information as possible, including order confirmation numbers.</p>
+      </div>
+      <div class="w3-section w3-padding">
+        <label>Additional Information</label>
+        <textarea class="w3-input w3-border" style="resize:none; height: 200px" name="additionalinfo" required=""></textarea>
+      </div>
+      <p class="w3-text-blue w3-padding">Thank you for your call again, your details will be forwarded immediately. Goodbye</p>
+      <div class="w3-row">
+        <div class="w3-half w3-padding">
+          <p class="w3-text-red">You MUST CLICK on the "Send Email" button to escalate this enquiry</p>
+          <div class="w3-twothird w3-padding-16">
+            <button type="submit" class="w3-button w3-block w3-padding-32 w3-pale-yellow w3-card">Send Email</button>
+          </div>
+          <p class="w3-text-red" style="display: inline-block;">Once email has been escalated either terminate call or click "Back" i you need to process an order.</p>
+        </div>
         <div class="w3-half">
-          <button type="button" onclick="window.location.href = '/quu/complaints.php'" class="w3-button w3-block w3-padding-32 w3-pale-green w3-margin-bottom">Complaints</button>
+          <div class="w3-row w3-padding-48">
+            <div class="w3-row w3-padding">
+              <button type="button" onclick="window.location.href = '/adelaide/'" class="w3-quarter w3-button w3-block w3-padding-16 w3-pale-red w3-card">Home</button>
+            </div>
+            <div class="w3-row w3-padding">
+              <button type="button" onclick="window.history.back()" class="w3-quarter w3-button w3-block w3-padding-16 w3-pale-blue w3-card">Back</button>
+            </div>
+          </div>
         </div>
-        <div class="w3-half" style="padding-left: 215px;">
-          <button type="button" onclick="window.history.back()" class="w3-button w3-block w3-padding-32 w3-red w3-margin-bottom">Back</button>
-        </div>
       </div>
-      <p>For each A1 (no water, water pressurem burst main etc). You must enter the area (street and suburb) and the reason why
-      you are raising the A1. Press the Email button to alert Joan.</p>
-      <div class="w3-section">
-        <label>Street and Suburb</label>
-        <input class="w3-input w3-border" type="text" name="street" required="">
-      </div>
-      <div class="w3-section">
-        <label>Reasons</label>
-        <textarea class="w3-input w3-border" style="resize:none" name="reason" required=""></textarea>
-      </div>
-      <button type="submit" class="w3-button w3-block w3-padding-32 w3-green w3-margin-bottom w3-right w3-half">Send TLs Email</button>
-    </form>  
+      <!-- <button type="submit" class="w3-button w3-block w3-padding-32 w3-green w3-margin-bottom w3-right w3-half">Send TLs Email</button> -->
+    </form>
   </div>
 
 <!-- End page content -->
