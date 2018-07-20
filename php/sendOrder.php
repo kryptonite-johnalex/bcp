@@ -47,22 +47,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $agent = $_SESSION['agent'];
         $phone = $_SESSION['phone'];
 
-        $incident_num = $_POST['incident_num'];
-        $wrap_code = $_POST['wrap_code'];
-        $street = $_POST['street'];
-        $reason = $_POST['reason'];
+        $invoice_num = $_POST['invoice_num'];
+        // $wrap_code = $_POST['wrap_code'];
+        // $street = $_POST['street'];
+        // $reason = $_POST['reason'];
 
         $created_at = date("Y-m-d H:i:s");
 
         // Build the email content.
-        $email_content = "A new A1 order has been raised:<br><br><br>";
-        // $email_content .= "QUU Incident Number: $incident_num<br>";
+        $email_content = "A new order has been raised:<br><br><br>";
+        $email_content .= "Incident Number: $invoice_num<br>";
         // $email_content .= "QUU Wrap Code: $wrap_code<br>";
-        $email_content .= "Street and Suburb: $street<br>";
-        $email_content .= "Reasons: $reason<br><br><br>";
-        $email_content .= "Street and Suburb: $street<br>";
-        $email_content .= "Reasons: $reason<br><br><br>";
-        $email_content .= "This was raised by $name at $time_stamp<br><br>";
+        // $email_content .= "Street and Suburb: $street<br>";
+        // $email_content .= "Reasons: $reason<br><br><br>";
+        // $email_content .= "Street and Suburb: $street<br>";
+        // $email_content .= "Reasons: $reason<br><br><br>";
+        // $email_content .= "This was raised by $name at $time_stamp<br><br>";
     //}
 
      // Build the email headers.
@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Data Insert
 
-    $sql = "INSERT INTO quu_escalation (`agent_name`, `phone`, `addr_street`, `addr_suburb`, `reason`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$street', '$street', '$reason', '$created_at', '$sent_status')";
+    $sql = "INSERT INTO al_order (`agent_name`, `phone`, `invoice_num`, `reason`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$invoice_num', '$created_at', '$sent_status')";
 
     if ($conn->query($sql) === TRUE) {
         //echo "New record created successfully";
