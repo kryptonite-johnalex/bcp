@@ -12,6 +12,10 @@ $sql = "SELECT * FROM al_escalation";
 
 $escalation = $conn->query($sql);
 
+$sql = "SELECT * FROM al_order";
+
+$order = $conn->query($sql);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -70,6 +74,9 @@ $escalation = $conn->query($sql);
       <a href="javascript:void(0)" onclick="openCity(event, 'Escalation');">
         <div class="w3-quarter tablink w3-bottombar w3-hover-red w3-padding w3-border-black w3-red">Escalation</div>
       </a>
+      <a href="javascript:void(0)" onclick="openCity(event, 'Order');">
+        <div class="w3-quarter tablink w3-bottombar w3-hover-red w3-padding">Order</div>
+      </a>
     </div>
 
     <div id="Escalation" class="tabs" style="">
@@ -114,6 +121,43 @@ $escalation = $conn->query($sql);
       </table>
       <tfoot>
         <p>Total Count: <?php echo $escalation->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo $count; ?></span></p>
+      </tfoot>
+    </div>
+    <div id="Order" class="tabs" style="display:none">
+      <table class="w3-table-all w3-hoverable">
+        <thead>
+          <tr class="w3-red">
+            <th>No.</th>
+            <th>Agent Name</th>
+            <th>Phone</th>
+            <th>Invoice</th>
+            <th>Submitted at</th>
+            <th>Sent Status</th>
+          </tr>
+        </thead>
+        <?php
+        if ($order->num_rows > 0) {
+            $count=0;
+            // output data of each row
+            while($row = $order->fetch_assoc()) {
+        ?>
+        <tr>
+          <td class="id"><?php echo $row['id']; ?></td>
+          <td class="account"><?php echo $row['agent_name']; ?></td>
+          <td class="phone"><?php echo $row['phone']; ?></td>
+          <td class="invoice_num"><?php echo $row['invoice_num']; ?></td>
+          <td class="time"><?php echo $row['created_at']; ?></td>
+          <td class="status"><?php echo ($row['sent_status']) ? 'Sent' : 'Failed'; ?></td>
+          <!-- hide -->
+        </tr>
+        <?php
+              if($row['sent_status'] == 1) $count++;
+            }
+          }
+        ?>
+      </table>
+      <tfoot>
+        <p>Total Count: <?php echo $order->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo $count; ?></span></p>
       </tfoot>
     </div>
 

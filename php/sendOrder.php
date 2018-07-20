@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $recipient = "marveelou@gmail.com,quu@contact121.com.au,blendedtl@contact121.com.au,overnight@contact121.com.au";
 
     // Set the email subject.
-    $subject = "A1 ALERT";
+    $subject = "Adelaide Lottery Order";
 
     // Filtering form type
     //($type == 'escalation') {
@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Data Insert
 
-    $sql = "INSERT INTO al_order (`agent_name`, `phone`, `invoice_num`, `reason`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$invoice_num', '$created_at', '$sent_status')";
+    $sql = "INSERT INTO al_order (`agent_name`, `phone`, `invoice_num`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$invoice_num', '$created_at', '$sent_status')";
 
     if ($conn->query($sql) === TRUE) {
         //echo "New record created successfully";
