@@ -55,8 +55,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $created_at = date("Y-m-d H:i:s");
 
         // Build the email content.
-        $email_content = "A new order has been raised:<br><br><br>";
-        $email_content .= "Incident Number: $invoice_num<br>";
+        // $email_content = "A new order has been raised:<br><br><br>";
+        // $email_content .= "Web Invoice Number: $invoice_num<br>";
         // $email_content .= "QUU Wrap Code: $wrap_code<br>";
         // $email_content .= "Street and Suburb: $street<br>";
         // $email_content .= "Reasons: $reason<br><br><br>";
@@ -66,22 +66,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //}
 
      // Build the email headers.
-        $email_headers = "MIME-Version: 1.0" . "\n";
-        $email_headers .= "Content-type:text/html;charset=UTF-8" . "\n";
-        $email_headers .= "From: $name <$email>";
+        // $email_headers = "MIME-Version: 1.0" . "\n";
+        // $email_headers .= "Content-type:text/html;charset=UTF-8" . "\n";
+        // $email_headers .= "From: $name <$email>";
 
     // Send the email.
-    if (mail($recipient, $subject, $email_content, $email_headers)) {
-        // Set a 200 (okay) response code.
-        http_response_code(200);
-        echo "Thank You! Your message has been sent.";
-        $sent_status = 1;
-    } else {
-        // Set a 500 (internal server error) response code.
-        http_response_code(500);
-        echo "Oops! Something went wrong and we couldn't send your message.";
-        $sent_status = 0;
-    }
+    // if (mail($recipient, $subject, $email_content, $email_headers)) {
+    //     // Set a 200 (okay) response code.
+    //     http_response_code(200);
+    //     echo "Thank You! Your message has been sent.";
+    //     $sent_status = 1;
+    // } else {
+    //     // Set a 500 (internal server error) response code.
+    //     http_response_code(500);
+    //     echo "Oops! Something went wrong and we couldn't send your message.";
+    //     $sent_status = 0;
+    // }
 
     // Data Insert
 
