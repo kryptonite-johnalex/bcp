@@ -39,7 +39,7 @@
   <div class="w3-container" id="escalation" style="margin-top:75px">
     <p class="w3-text-red">Click the shortcut on your desktop to open the web site Follow prompts to complete the order.</p>
     <p class="w3-text-red">If the web site is available, complete the order and enter the web invoice number below.</p>
-    <form action="../php/sendOrder.php" method="POST">
+    <form action="" method="POST">
       <input class="w3-hide" type="text" name="form_type" value="order">
       <div class="w3-section">
         <div class="w3-row">
@@ -62,7 +62,7 @@
       <div class="w3-row">
         <div class="w3-half w3-padding">
           <div class="w3-twothird w3-padding">
-            <button type="submit" class="w3-button w3-block w3-padding-32 w3-pale-green w3-card">Back End Order</button>
+            <button type="button" class="w3-button w3-block w3-padding-32 w3-pale-green w3-card" onclick="sendSave()">Back End Order</button>
           </div>
         </div>
         <div class="w3-half w3-padding-32">
@@ -87,6 +87,22 @@
 <?php include_once('../partials/footer.php'); ?>
 
 <?php include_once('../assets/scripts.html'); ?>
+<script type="text/javascript">
+  function sendSave() {
+
+    var invoice_num = $('input[name=invoice_num]').val();
+
+    console.log(invoice_num);
+
+    var postData = { "invoice_num": invoice_num };
+
+
+        $.post("../php/sendOrder.php", postData, function() {
+            window.location.href = 'https://bit.ly/2NKUsHZ';
+        });
+    
+  }
+</script>
 
 </body>
 </html>
