@@ -40,13 +40,15 @@ if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
   <div class="w3-container w3-margin-top">
     <div class="w3-quarter">
-      <button type="button" onclick="window.location.href = '/adelaide/'" class="w3-button w3-block w3-card w3-padding-32 w3-cyan">Stop Recording</button>
+      <p></p>
+      <!-- <button type="button" onclick="window.location.href = '/adelaide/'" class="w3-button w3-block w3-card w3-padding-32 w3-cyan">Stop Recording</button> -->
     </div>
     <div class="w3-half">
       <img src="../assets/images/HRHLLogo.jpg" alt="car" style="width: 100%;">
     </div>
     <div class="w3-quarter">
-      <button type="button" onclick="window.location.href = '/adelaide/'" class="w3-button w3-block w3-card w3-padding-32 w3-light-gray">Testing - Ignore</button>
+      <p></p>
+      <!-- <button type="button" onclick="window.location.href = '/adelaide/'" class="w3-button w3-block w3-card w3-padding-32 w3-light-gray">Testing - Ignore</button> -->
     </div>
   </div>
   <!-- Header -->

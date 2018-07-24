@@ -45,11 +45,11 @@
         <div class="w3-row">
           <div class="w3-twothird w3-mobile w3-text-purple" style="width: 60%">
             <label>Web Invoice Number : </label>
-            <input class="w3-input w3-border" type="text" name="invoice_num" required="" placeholder="0000" style="display: inline-block; width: 500px; max-width: 100%;">
+            <input class="w3-input w3-border" type="text" name="invoice_num" placeholder="0000" style="display: inline-block; width: 500px; max-width: 100%;">
           </div>
             
           <div class="w3-third w3-mobile w3-text-purple" style="width: 40%">
-            <strong>Website : </strong> https://tickets.homelottery.com.au/call-centre<br><strong>Username : </strong> callcentre<br><strong>Password : </strong> soa2018
+            <strong>Website : </strong> <a href="https://tickets.homelottery.com.au/call-centre" style="text-decoration: none;">https://tickets.homelottery.com.au/call-centre</a><br><strong>Username : </strong> callcentre<br><strong>Password : </strong> soa2018
           </div>
         </div>
       </div>
