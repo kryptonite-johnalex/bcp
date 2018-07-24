@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
+if(isset($_GET['fullname']) && isset($_GET['phone'])) {
   // Set session variables
   $_SESSION["agent"] = $_GET['fullname'];
   $_SESSION["phone"] = $_GET['phone'];
