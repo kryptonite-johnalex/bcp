@@ -40,6 +40,7 @@
     at the end of the call.</p>
     <form action="../php/sendEscalation.php" method="POST">
       <input class="w3-hide" type="text" name="form_type" value="escalation">
+      <input class="w3-hide" type="text" name="campaign" value="queensland">
       <div class="w3-section">
         <label>QUU Incident Number</label>
         <input class="w3-input w3-border" type="text" name="incident_num" required="" placeholder="0000">

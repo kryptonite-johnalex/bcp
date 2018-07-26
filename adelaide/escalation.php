@@ -40,8 +40,9 @@
     <div class="w3-section w3-padding" style="margin-top: 50px !important;">
       <p class="w3-text-blue">I don't know how to answer your query, but would be happy to take your details and pass it to a Program Coordinator who will contact you directly.</p>
     </div>
-    <form action="../php/sendEscalationAL.php" method="POST">
+    <form action="../php/sendEscalation.php" method="POST">
       <input class="w3-hide" type="text" name="form_type" value="escalation">
+      <input class="w3-hide" type="text" name="campaign" value="adelaide">
       <div class="w3-row">
         <div class="w3-half w3-padding">
           <label>First Name: </label>
@@ -98,7 +99,7 @@
           <div class="w3-twothird w3-padding-16">
             <button type="submit" class="w3-button w3-block w3-padding-32 w3-pale-yellow w3-card">Send Email</button>
           </div>
-          <p class="w3-text-red" style="display: inline-block;">Once email has been escalated either terminate call or click "Back" i you need to process an order.</p>
+          <p class="w3-text-red" style="display: inline-block;">Once email has been escalated either terminate call or click "Back" if you need to process an order.</p>
         </div>
         <div class="w3-half">
           <div class="w3-row w3-padding-48">

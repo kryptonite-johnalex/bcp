@@ -18,6 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // $message = trim($_POST["message"]);
 
     $type = strip_tags(trim($_POST["form_type"]));
+    $frequent_query = $_POST['frequentquery'];
     $sent_status = 0;
 
     // Check that data was sent to the mailer.
@@ -28,31 +29,77 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //     exit;
     // }
 
-    // Set the recipient email address.
-    // FIXME: Update this to your desired email address.
-    //$recipient = "johnalexladra@gmail.com";
-    $recipient = "marveelou@gmail.com,quu@contact121.com.au,blendedtl@contact121.com.au,overnight@contact121.com.au";
+    // Filtering campaignes
+    switch ($campaign) {
+        case 'queensland':
+            // Set the recipient email address.
+            $recipient = "marveelou@gmail.com,quu@contact121.com.au,blendedtl@contact121.com.au,overnight@contact121.com.au";
+            // Set the email subject.
+            $subject = "A1 ALERT";
+            break;
+        
+        case 'adelaide':
+            // Set the recipient email address.
+            $recipient = "marveelou@gmail.com,info@homelottery.com.au;blendedtl@contact121.com.au;emily.bill@contact121.com.au";
+            // Set the email subject.
+            $subject = "HRF Escalation Email - " . $frequent_query;
+            // Set the table name.
+            $table = "al_escalation";
+            break;
 
-    // Set the email subject.
-    $subject = "A1 ALERT";
+        case 'melbourne':
+            // Set the recipient email address.
+            $recipient = "marveelou@gmail.com,info@rmhhomelottery.com.au;blendedtl@contact121.com.au;emily.bill@contact121.com.au";
+            // Set the email subject.
+            $subject = "RMH Escalation Email - " . $frequent_query;
+            // Set the table name.
+            $table = "ml_escalation";
+            break;
+
+        default:
+            # code...
+            break;
+    }
+
+    // Define variables
+    $name = 'Service';
+    $email = 'service@contact121.com.au';
+    $time_stamp = date("h:i:s"); // This is a call time stamp.
+
+    $agent = $_SESSION['agent'];
+    $phone = $_SESSION['phone'];
 
     // Filtering form type
-    //($type == 'escalation') {
+    if($type == 'escalation' && $campaign != 'queensland') {
 
-        // Defining variables
-        $name = 'Service'; // this will be change to the agent who took the call
-        $email = 'service@contact121.com.au';
-        $time_stamp = date("h:i:s"); // this will be change to the time when the call took
+        $first_name = $_POST['firstname'];
+        $last_name = $_POST['lastname'];
+        $contact = $_POST['contact'];
+        $email = $_POST['email'];
 
-        $agent = $_SESSION['agent'];
-        $phone = $_SESSION['phone'];
+        $contact_method = $_POST['contactmethod'];
+        $additional_info = $_POST['additionalinfo'];
+
+        // Build the email content.
+        $email_content = "<strong style='color: blue;'>Caller Details</strong><br><br>";
+        // $email_content .= "QUU Incident Number: $incident_num<br>";
+        // $email_content .= "QUU Wrap Code: $wrap_code<br>";
+        $email_content .= "Name: $first_name $last_name <br><br>";
+        $email_content .= "Contact No: $contact <br><br>";
+
+        $email_content .= "Daytime: (need further adjustments) <br>";
+        $email_content .= "Evening: (need further adjustments) <br><br>";
+
+        $email_content .= "Email: $email <br><br>";
+        $email_content .= "Preferred Contact Method: $contact_method<br><br>";
+        $email_content .= "<strong style='color: blue;'>Additional Details</strong><br><br>";
+        $email_content .= "$additional_info";
+    } else {
 
         $incident_num = $_POST['incident_num'];
         $wrap_code = $_POST['wrap_code'];
         $street = $_POST['street'];
         $reason = $_POST['reason'];
-
-        $created_at = date("Y-m-d H:i:s");
 
         // Build the email content.
         $email_content = "A new A1 order has been raised:<br><br><br>";
@@ -63,12 +110,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email_content .= "Street and Suburb: $street<br>";
         $email_content .= "Reasons: $reason<br><br><br>";
         $email_content .= "This was raised by $name at $time_stamp<br><br>";
-    //}
+    }
 
-     // Build the email headers.
-        $email_headers = "MIME-Version: 1.0" . "\n";
-        $email_headers .= "Content-type:text/html;charset=UTF-8" . "\n";
-        $email_headers .= "From: $name <$email>";
+    // Timestamp when the process is created.
+    $created_at = date("Y-m-d H:i:s");
+
+    // Build the email headers.
+    $email_headers = "MIME-Version: 1.0" . "\n";
+    $email_headers .= "Content-type:text/html;charset=UTF-8" . "\n";
+    $email_headers .= "From: $name <$email>";
+    $email_headers .= 'Cc: johnalexladra@gmail.com';
+    $email_headers .= 'Bcc: johnalexladra@gmail.com';
 
     // Send the email.
     if (mail($recipient, $subject, $email_content, $email_headers)) {
@@ -84,8 +136,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Data Insert
-
-    $sql = "INSERT INTO quu_escalation (`agent_name`, `phone`, `addr_street`, `addr_suburb`, `reason`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$street', '$street', '$reason', '$created_at', '$sent_status')";
+    if($type == 'escalation' && $campaign != 'queensland') {
+        $sql = "INSERT INTO " . $table . " (`agent_name`, `phone`, `first_name`, `last_name`, `contact`, `email`, `contact_method`, `frequent_query`, `additional_info`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$first_name', '$last_name', '$contact', '$email', '$contact_method', '$frequent_query', '$additional_info', '$created_at', '$sent_status')";
+    else {
+        $sql = "INSERT INTO quu_escalation (`agent_name`, `phone`, `addr_street`, `addr_suburb`, `reason`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$street', '$street', '$reason', '$created_at', '$sent_status')";
+    }
 
     if ($conn->query($sql) === TRUE) {
         //echo "New record created successfully";
