@@ -22,8 +22,8 @@ if(isset($_GET['fullname']) && isset($_GET['phone'])) {
 <style>
   body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
   body {font-size:16px;}
-  .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
-  .w3-half img:hover{opacity:1}
+  .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:1;cursor:pointer}
+  .w3-half img:hover{opacity:0.8}
 </style>
 <body>
 
@@ -37,14 +37,14 @@ if(isset($_GET['fullname']) && isset($_GET['phone'])) {
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
 <!-- !PAGE CONTENT! -->
-<div class="w3-main" style="margin-left:340px;margin-right:40px">
+<div class="w3-main" style="margin:40px 40px 0 340px">
   <div class="w3-container w3-margin-top">
     <div class="w3-quarter">
       <p></p>
       <!-- <button type="button" onclick="window.location.href = '/adelaide/'" class="w3-button w3-block w3-card w3-padding-32 w3-cyan">Stop Recording</button> -->
     </div>
     <div class="w3-half">
-      <img src="../assets/images/HRHLLogo.jpg" alt="car" style="width: 100%;">
+      <img src="../assets/images/HRHLLogo.jpg" alt="logo" style="width: 100%;">
     </div>
     <div class="w3-quarter">
       <p></p>
@@ -56,7 +56,7 @@ if(isset($_GET['fullname']) && isset($_GET['phone'])) {
       
       <h1 class="w3-jumbo w3-text-pink w3-center"><b>THIS IS ADELAIDE</b></h1>
       <h1 class="w3-xxxlarge w3-text-red"><b></b></h1>
-      <p>Thank you for calling The Hospital Home Lottery, <?php echo (isset($_SESSION["agent"])) ?: '[Agent Name]'; ?> speaking. Would you like to order a ticket?</p>
+      <p class="w3-text-blue">Thank you for calling The Hospital Home Lottery, <?php echo (isset($_SESSION["agent"])) ?: '[Agent Name]'; ?> speaking. Would you like to order a ticket?</p>
     </div>
 
   <div class="w3-container" id="options" style="margin-top:20px">
