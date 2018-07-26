@@ -41,6 +41,7 @@
     <p class="w3-text-red">If the web site is available, complete the order and enter the web invoice number below.</p>
     <form action="" method="POST">
       <input class="w3-hide" type="text" name="form_type" value="order">
+      <input class="w3-hide" type="text" name="campaign" value="adelaide">
       <div class="w3-section">
         <div class="w3-row">
           <div class="w3-twothird w3-mobile w3-text-purple" style="width: 60%">
@@ -91,10 +92,11 @@
   function sendSave() {
 
     var invoice_num = $('input[name=invoice_num]').val();
+    var campaign = $('input[name=campaign]').val();
 
     console.log(invoice_num);
 
-    var postData = { "invoice_num": invoice_num };
+    var postData = { "invoice_num": invoice_num, "campaign": campaign };
 
 
         $.post("../php/sendOrder.php", postData, function() {

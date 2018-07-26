@@ -18,6 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // $message = trim($_POST["message"]);
 
     $type = strip_tags(trim($_POST["form_type"]));
+    $campaign = strip_tags(trim($_POST["campaign"]));
     $sent_status = 0;
 
     // Check that data was sent to the mailer.
@@ -28,31 +29,56 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //     exit;
     // }
 
-    // Set the recipient email address.
-    // FIXME: Update this to your desired email address.
-    //$recipient = "johnalexladra@gmail.com";
-    $recipient = "marveelou@gmail.com,quu@contact121.com.au,blendedtl@contact121.com.au,overnight@contact121.com.au";
+    /////////////////////////////////////////////////////// 
+    ////  FIXME: Update this to your desired email address.
+    ////  $recipient = "johnalexladra@gmail.com";
+    ///////////////////////////////////////////////////////
 
-    // Set the email subject.
-    $subject = "Adelaide Lottery Order";
+    switch ($campaign) {
+        case 'quu':
+            # code...
+            break;
+        
+        case 'adelaide':
+            // Set the recipient email address.
+            $recipient = "marveelou@gmail.com,quu@contact121.com.au,blendedtl@contact121.com.au,overnight@contact121.com.au";
+            // Set the email subject.
+            $subject = "Adelaide Lottery Order";
+            // Set the table name.
+            $table = "al_order";
+            break;
+
+        case 'melbourne':
+            // Set the recipient email address.
+            $recipient = "marveelou@gmail.com,info@rmhhomelottery.com.au;blendedtl@contact121.com.au;emily.bill@contact121.com.au";
+            // Set the email subject.
+            $subject = "Melbourne Lottery Order";
+            // Set the table name.
+            $table = "ml_order";
+            break;
+
+        default:
+            # code...
+            break;
+    }
 
     // Filtering form type
     //($type == 'escalation') {
 
-        // Defining variables
-        $name = 'Service'; // this will be change to the agent who took the call
-        $email = 'service@contact121.com.au';
-        $time_stamp = date("h:i:s"); // this will be change to the time when the call took
+    // Defining variables
+    $name = 'Service'; // this will be change to the agent who took the call
+    $email = 'service@contact121.com.au';
+    $time_stamp = date("h:i:s"); // this will be change to the time when the call took
 
-        $agent = $_SESSION['agent'];
-        $phone = $_SESSION['phone'];
+    $agent = $_SESSION['agent'];
+    $phone = $_SESSION['phone'];
 
-        $invoice_num = $_POST['invoice_num'];
-        // $wrap_code = $_POST['wrap_code'];
-        // $street = $_POST['street'];
-        // $reason = $_POST['reason'];
+    $invoice_num = $_POST['invoice_num'];
+    // $wrap_code = $_POST['wrap_code'];
+    // $street = $_POST['street'];
+    // $reason = $_POST['reason'];
 
-        $created_at = date("Y-m-d H:i:s");
+    $created_at = date("Y-m-d H:i:s");
 
         // Build the email content.
         // $email_content = "A new order has been raised:<br><br><br>";
@@ -65,10 +91,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // $email_content .= "This was raised by $name at $time_stamp<br><br>";
     //}
 
-     // Build the email headers.
-        // $email_headers = "MIME-Version: 1.0" . "\n";
-        // $email_headers .= "Content-type:text/html;charset=UTF-8" . "\n";
-        // $email_headers .= "From: $name <$email>";
+    // Build the email headers.
+    // $email_headers = "MIME-Version: 1.0" . "\n";
+    // $email_headers .= "Content-type:text/html;charset=UTF-8" . "\n";
+    // $email_headers .= "From: $name <$email>";
 
     // Send the email.
     // if (mail($recipient, $subject, $email_content, $email_headers)) {
@@ -85,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Data Insert
 
-    $sql = "INSERT INTO al_order (`agent_name`, `phone`, `invoice_num`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$invoice_num', '$created_at', '$sent_status')";
+    $sql = "INSERT INTO " . $table . " (`agent_name`, `phone`, `invoice_num`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$invoice_num', '$created_at', '$sent_status')";
 
     if ($conn->query($sql) === TRUE) {
         //echo "New record created successfully";
