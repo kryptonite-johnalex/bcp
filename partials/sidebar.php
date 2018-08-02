@@ -9,22 +9,29 @@
     QUU <i class="fa fa-caret-down w3-right"></i>
     </button>
     <div id="list1" class="w3-hide w3-white w3-card">
-      <a href="/quu" class="w3-bar-item w3-button">Initial</a>
-      <a href="/quu/report.php" class="w3-bar-item w3-button">Reports</a>
+      <a href="/_quu" class="w3-bar-item w3-button">Initial</a>
+      <a href="/_quu/report.php" class="w3-bar-item w3-button">Reports</a>
     </div>
     <button class="w3-bar-item w3-button w3-hover-white" onclick="myAccFunc('list2')">
     ADELAIDE LOTTERY  <i class="fa fa-caret-down w3-right"></i>
     </button>
     <div id="list2" class="w3-hide w3-white w3-card">
-      <a href="/adelaide" class="w3-bar-item w3-button">Initial</a>
-      <a href="/adelaide/report.php" class="w3-bar-item w3-button">Reports</a>
+      <a href="/_adelaide" class="w3-bar-item w3-button">Initial</a>
+      <a href="/_adelaide/report.php" class="w3-bar-item w3-button">Reports</a>
     </div>
     <button class="w3-bar-item w3-button w3-hover-white" onclick="myAccFunc('list3')">
     MELBOURNE LOTTERY  <i class="fa fa-caret-down w3-right"></i>
     </button>
     <div id="list3" class="w3-hide w3-white w3-card">
-      <a href="/melbourne" class="w3-bar-item w3-button">Initial</a>
-      <a href="/melbourne/report.php" class="w3-bar-item w3-button">Reports</a>
+      <a href="/_melbourne" class="w3-bar-item w3-button">Initial</a>
+      <a href="/_melbourne/report.php" class="w3-bar-item w3-button">Reports</a>
+    </div>
+    <button class="w3-bar-item w3-button w3-hover-white" onclick="myAccFunc('list4')">
+    DCSI  <i class="fa fa-caret-down w3-right"></i>
+    </button>
+    <div id="list4" class="w3-hide w3-white w3-card">
+      <a href="/_dcsi" class="w3-bar-item w3-button">Initial</a>
+      <a href="/_dcsi/report.php" class="w3-bar-item w3-button">Reports</a>
     </div>
     <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Coming Soon...</a> 
     <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Coming Soon...</a> 
