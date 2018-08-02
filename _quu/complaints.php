@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>Senior Email Screen</title>
+<title>Complaints Screen</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <?php include_once('../assets/style.html'); ?>
@@ -24,7 +24,7 @@
   <!-- Header -->
   <div class="w3-container" style="margin-top:80px" id="top">
     <h1 class="w3-jumbo"><b>Queensland Urban Utilities</b></h1>
-    <h1 class="w3-xxxlarge w3-text-red"><b>Senior Email Screen</b></h1>
+    <h1 class="w3-xxxlarge w3-text-red"><b>Complaints Screen</b></h1>
     <hr style="width:50px;border:5px solid red" class="w3-round">
   </div>
 
@@ -35,9 +35,9 @@
     <p>Green often indicates something successful or positive.</p>
   </div>
 
-  <div class="w3-container" id="senior" style="margin-top:75px">
+  <div class="w3-container" id="complaints" style="margin-top:75px">
     <form action="../php/sendComplaints.php" method="POST">
-      <input class="w3-hide" type="text" name="form_type" value="senior">
+      <input class="w3-hide" type="text" name="form_type" value="complaints">
       <div class="w3-row-padding w3-margin-bottom">
         <div class="w3-third">
           <label>First Name</label>
@@ -96,7 +96,7 @@
           </div>
         </div>
         <div class="w3-container w3-cell w3-cell-middle">
-          <button type="button" onclick="window.location.href = '/quu/escalation.php'" class="w3-button w3-block w3-padding-32 w3-orange w3-margin-bottom">To Log Call Screen</button>
+          <button type="button" onclick="window.location.href = '/_quu/escalation.php'" class="w3-button w3-block w3-padding-32 w3-orange w3-margin-bottom">To Log Call Screen</button>
           <button type="button" onclick="window.history.back()" class="w3-button w3-block w3-padding-32 w3-red w3-margin-bottom">Back</button>
         </div>
       </div>

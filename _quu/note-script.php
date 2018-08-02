@@ -83,13 +83,13 @@ $result2 = $conn->query($script);
           <button type="submit" class="w3-button w3-block w3-padding-16 w3-yellow w3-margin-bottom w3-card">Continue</button>
         </div>
         <div class="w3-col s4 w3-center w3-padding">
-          <button type="button" onclick="window.location.href = '/quu/complaints.php'" class="w3-button w3-block w3-padding-16 w3-green w3-margin-bottom w3-card">Complaints</button>
+          <button type="button" onclick="window.location.href = '/_quu/complaints.php'" class="w3-button w3-block w3-padding-16 w3-green w3-margin-bottom w3-card">Complaints</button>
         </div>
         <div class="w3-col s2 w3-center w3-padding">
           <button type="button" onclick="" class="w3-button w3-block w3-padding-16 w3-light-gray w3-margin-bottom w3-card">Wrap</button>
         </div>
         <div class="w3-col s2 w3-center w3-padding">
-          <button type="button" onclick="window.location.href = '/quu/escalation.php'" class="w3-button w3-block w3-padding-16 w3-red w3-margin-bottom w3-card">Escalation</button>
+          <button type="button" onclick="window.location.href = '/_quu/escalation.php'" class="w3-button w3-block w3-padding-16 w3-red w3-margin-bottom w3-card">Escalation</button>
         </div>
       </div>
       <div class="w3-row optionsButtons">

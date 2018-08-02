@@ -104,7 +104,7 @@
         <div class="w3-half">
           <div class="w3-row w3-padding-48">
             <div class="w3-row w3-padding">
-              <button type="button" onclick="window.location.href = '/melbourne/'" class="w3-quarter w3-button w3-block w3-padding-16 w3-pale-red w3-card">Home</button>
+              <button type="button" onclick="window.location.href = '/_melbourne/'" class="w3-quarter w3-button w3-block w3-padding-16 w3-pale-red w3-card">Home</button>
             </div>
             <div class="w3-row w3-padding">
               <button type="button" onclick="window.history.back()" class="w3-quarter w3-button w3-block w3-padding-16 w3-light-blue w3-card">Back</button>

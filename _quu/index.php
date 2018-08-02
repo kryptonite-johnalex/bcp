@@ -50,15 +50,15 @@ if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
     </div>
 
   <div class="w3-container" id="options" style="margin-top:75px">
-    <button type="button" onclick="window.location.href = '/quu/note-script.php'" class="w3-button w3-block w3-padding-24 w3-red w3-margin-bottom">No Water, Sudden Drop in Pressure, Burst Main, Dirty Water</button>
-    <button type="button" onclick="window.location.href = '/quu/escalation.php'" class="w3-button w3-block w3-padding-24 w3-orange w3-margin-bottom">All Other A1 and A2 Jobs That Needs to be Logged</button>
+    <button type="button" onclick="window.location.href = '/_quu/note-script.php'" class="w3-button w3-block w3-padding-24 w3-red w3-margin-bottom">No Water, Sudden Drop in Pressure, Burst Main, Dirty Water</button>
+    <button type="button" onclick="window.location.href = '/_quu/escalation.php'" class="w3-button w3-block w3-padding-24 w3-orange w3-margin-bottom">All Other A1 and A2 Jobs That Needs to be Logged</button>
     <div class="w3-row">
       <div class="w3-half">
-        <button type="button" onclick="window.location.href = '/quu/escalation.php'" class="w3-button w3-block w3-padding-32 w3-yellow w3-margin-bottom">All Other Calls</button>
+        <button type="button" onclick="window.location.href = '/_quu/escalation.php'" class="w3-button w3-block w3-padding-32 w3-yellow w3-margin-bottom">All Other Calls</button>
       </div>
       <div class="w3-rest w3-quarter"><p></p></div>
       <div class="w3-quarter">
-        <button type="button" onclick="window.location.href = '/quu/senior.php'" class="w3-button w3-block w3-padding-32 w3-green w3-margin-bottom">Send Senior Email</button>
+        <button type="button" onclick="window.location.href = '/_quu/senior.php'" class="w3-button w3-block w3-padding-32 w3-green w3-margin-bottom">Send Senior Email</button>
       </div>
     </div>
   </div>

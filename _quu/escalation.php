@@ -52,7 +52,7 @@
       </div>
       <div class="w3-row">
         <div class="w3-half">
-          <button type="button" onclick="window.location.href = '/quu/complaints.php'" class="w3-button w3-block w3-padding-32 w3-pale-green w3-margin-bottom">Complaints</button>
+          <button type="button" onclick="window.location.href = '/_quu/complaints.php'" class="w3-button w3-block w3-padding-32 w3-pale-green w3-margin-bottom">Complaints</button>
         </div>
         <div class="w3-half" style="padding-left: 215px;">
           <button type="button" onclick="window.history.back()" class="w3-button w3-block w3-padding-32 w3-red w3-margin-bottom">Back</button>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>Adelaide - FAQ Screen</title>
+<title>Melbourne - FAQ Screen</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <?php include_once('../assets/style.html'); ?>
@@ -40,18 +40,18 @@
     <div class="w3-section" style="margin-top: 50px !important;">
       <p class="w3-text-red">Refer to UKS to answer callers question.</p>
       <p class="w3-text-red">If you are unable to answer the callers question, click on the Escalation button below.</p>
-      <p class="w3-text-blue w3-padding">Thank you for calling the Hospital Research Foundation Lottery today, if you have any further queries please do not hesitate to call us again. Goodbye.</p>
+      <p class="w3-text-blue w3-padding" style="margin-top: 3%;">Thank you for calling the Hospital Research Foundation Lottery today, if you have any further <br>queries please do not hesitate to call us again. Goodbye.</p>
     </div>
     <div class="w3-row" style="margin-top:25%">
       <div class="w3-half w3-padding">
         <div class="w3-twothird w3-padding-16">
-          <button type="button" onclick="window.location.href = '/adelaide/escalation.php'" class="w3-button w3-block w3-padding-32 w3-pale-yellow w3-card">Escalation</button>
+          <button type="button" onclick="window.location.href = '/_melbourne/escalation.php'" class="w3-button w3-block w3-padding-32 w3-pale-yellow w3-card">Escalation</button>
         </div>
       </div>
       <div class="w3-half">
         <div class="w3-row">
           <div class="w3-row w3-padding">
-            <button type="button" onclick="window.location.href = '/adelaide/'" class="w3-quarter w3-button w3-block w3-padding-16 w3-pale-red w3-card">Home</button>
+            <button type="button" onclick="window.location.href = '/_melbourne/'" class="w3-quarter w3-button w3-block w3-padding-16 w3-pale-red w3-card">Home</button>
           </div>
           <div class="w3-row w3-padding">
             <button type="button" onclick="window.history.back()" class="w3-quarter w3-button w3-block w3-padding-16 w3-pale-blue w3-card">Back</button>

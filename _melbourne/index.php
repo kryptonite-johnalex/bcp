@@ -41,14 +41,14 @@ if(isset($_GET['fullname']) && isset($_GET['phone'])) {
   <div class="w3-container w3-margin-top">
     <div class="w3-quarter">
       <p></p>
-      <!-- <button type="button" onclick="window.location.href = '/melbourne/'" class="w3-button w3-block w3-card w3-padding-32 w3-cyan">Stop Recording</button> -->
+      <!-- <button type="button" onclick="window.location.href = '/_melbourne/'" class="w3-button w3-block w3-card w3-padding-32 w3-cyan">Stop Recording</button> -->
     </div>
     <div class="w3-half">
       <img src="../assets/images/logo.png" alt="logo" style="width: auto;min-height: 330px;margin: 29px auto 50px;">
     </div>
     <div class="w3-quarter">
       <p></p>
-      <!-- <button type="button" onclick="window.location.href = '/melbourne/'" class="w3-button w3-block w3-card w3-padding-32 w3-light-gray">Testing - Ignore</button> -->
+      <!-- <button type="button" onclick="window.location.href = '/_melbourne/'" class="w3-button w3-block w3-card w3-padding-32 w3-light-gray">Testing - Ignore</button> -->
     </div>
   </div>
   <!-- Header -->
@@ -62,14 +62,14 @@ if(isset($_GET['fullname']) && isset($_GET['phone'])) {
   <div class="w3-container" id="options" style="margin-top:20px">
     <div class="w3-row">
       <div class="w3-col-12 w3-padding w3-center">
-        <button type="button" onclick="window.location.href = '/melbourne/order.php'" class="w3-button w3-padding-32 w3-light-green w3-margin-bottom w3-card" style="width: 40%;"><h2 style="margin: 13px 40px;">Order Ticket</h2></button>
+        <button type="button" onclick="window.location.href = '/_melbourne/order.php'" class="w3-button w3-padding-32 w3-light-green w3-margin-bottom w3-card" style="width: 40%;"><h2 style="margin: 13px 40px;">Order Ticket</h2></button>
       </div>
       <div class="w3-row w3-padding">
         <div class="w3-half w3-padding">
-          <button type="button" onclick="window.location.href = '/melbourne/faq.php'" class="w3-button w3-padding-32 w3-block w3-pale-red w3-margin-bottom w3-card" style="width: 80%;margin:0 auto;"><h2 style="margin: 13px 0;">FAQ</h2></button>
+          <button type="button" onclick="window.location.href = '/_melbourne/faq.php'" class="w3-button w3-padding-32 w3-block w3-pale-red w3-margin-bottom w3-card" style="width: 80%;margin:0 auto;"><h2 style="margin: 13px 0;">FAQ</h2></button>
         </div>
         <div class="w3-half w3-padding">
-          <button type="button" onclick="window.location.href = '/melbourne/escalation.php'" class="w3-button w3-padding-32 w3-block w3-yellow w3-margin-bottom w3-card" style="width: 80%;margin:0 auto;"><h2 style="margin: 13px 0;">Escalation</h2></button>
+          <button type="button" onclick="window.location.href = '/_melbourne/escalation.php'" class="w3-button w3-padding-32 w3-block w3-yellow w3-margin-bottom w3-card" style="width: 80%;margin:0 auto;"><h2 style="margin: 13px 0;">Escalation</h2></button>
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>Melbourne - Order Screen</title>
+<title>Adelaide - Order Screen</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <?php include_once('../assets/style.html'); ?>
@@ -41,7 +41,7 @@
     <p class="w3-text-red">If the web site is available, complete the order and enter the web invoice number below.</p>
     <form action="" method="POST">
       <input class="w3-hide" type="text" name="form_type" value="order">
-      <input class="w3-hide" type="text" name="campaign" value="melbourne">
+      <input class="w3-hide" type="text" name="campaign" value="adelaide">
       <div class="w3-section">
         <div class="w3-row">
           <div class="w3-twothird w3-mobile w3-text-purple" style="width: 60%">
@@ -50,35 +50,29 @@
           </div>
             
           <div class="w3-third w3-mobile w3-text-purple" style="width: 40%">
-            <strong>Username : </strong> callcentre<br><strong>Password : </strong> Melbourne0718
+            <strong>Website : </strong> <a href="https://tickets.homelottery.com.au/call-centre" style="text-decoration: none;">https://tickets.homelottery.com.au/call-centre</a><br><strong>Username : </strong> callcentre<br><strong>Password : </strong> soa2018
           </div>
         </div>
       </div>
-      <div class="w3-section">
-        <div class="w3-row w3-text-purple" style="margin-top: 5%;">
-          <strong>Website to order tickets is </strong> <a href="https://tickets.rmhhomelottery.com.au/call-centre" style="text-decoration: none;">https://tickets.rmhhomelottery.com.au/call-centre</a><br>
-        </div>
-        
-      </div>
       
       <div class="w3-section" style="margin-top:15% !important">
-        <p class="w3-text-blue">Thank you for supporting The Royal Melbourne Hospital and good luck! <br>Goodbye.</p>
-        <p class="w3-text-green">If the website is unavailable, AND YOU HAVE BEEN TOLD TO BE A TEAM LEADER click the Back End <br>Order.button to continue with the order</p>
-        <p class="w3-text-green">Only process back end orders if there are issues with the website, do not use for cards that have been <br>declined.</p>
+        <p class="w3-text-blue">Thank you for supporting The Hospital Research Foundation and good luck! Goodbye.</p>
+        <p class="w3-text-green">If the website is unavailable, click the Back End Order.button to continue with the order.</p>
+        <p class="w3-text-green">Only process back end orders if there are issues with the website, do not use for cards that have been declined.</p>
       </div>
       <div class="w3-row">
         <div class="w3-half w3-padding">
           <div class="w3-twothird w3-padding">
-            <button type="button" class="w3-button w3-block w3-padding-32 w3-orange w3-card" onclick="sendSave()">Back End Order</button>
+            <button type="button" class="w3-button w3-block w3-padding-32 w3-pale-green w3-card" onclick="sendSave()">Back End Order</button>
           </div>
         </div>
         <div class="w3-half w3-padding-32">
           <div class="w3-row">
             <div class="w3-quarter w3-padding">
-              <button type="button" onclick="window.location.href = '/melbourne/'" class="w3-button w3-block w3-padding-16 w3-pale-red w3-card">Home</button>
+              <button type="button" onclick="window.location.href = '/_adelaide/'" class="w3-button w3-block w3-padding-16 w3-pale-red w3-card">Home</button>
             </div>
             <div class="w3-quarter w3-padding">
-              <button type="button" onclick="window.history.back()" class="w3-button w3-block w3-padding-16 w3-light-blue w3-card">Back</button>
+              <button type="button" onclick="window.history.back()" class="w3-button w3-block w3-padding-16 w3-pale-blue w3-card">Back</button>
             </div>
           </div>
         </div>
@@ -95,7 +89,6 @@
 
 <?php include_once('../assets/scripts.html'); ?>
 <script type="text/javascript">
-  console.log($('input[name=campaign]').val());
   function sendSave() {
 
     var invoice_num = $('input[name=invoice_num]').val();
@@ -107,7 +100,7 @@
 
 
         $.post("../php/sendOrder.php", postData, function() {
-            window.location.href = 'https://bit.ly/2Nn2ZQ0';
+            window.location.href = 'https://bit.ly/2NKUsHZ';
         });
     
   }

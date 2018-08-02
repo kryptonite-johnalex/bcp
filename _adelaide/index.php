@@ -41,14 +41,14 @@ if(isset($_GET['fullname']) && isset($_GET['phone'])) {
   <div class="w3-container w3-margin-top">
     <div class="w3-quarter">
       <p></p>
-      <!-- <button type="button" onclick="window.location.href = '/adelaide/'" class="w3-button w3-block w3-card w3-padding-32 w3-cyan">Stop Recording</button> -->
+      <!-- <button type="button" onclick="window.location.href = '/_adelaide/'" class="w3-button w3-block w3-card w3-padding-32 w3-cyan">Stop Recording</button> -->
     </div>
     <div class="w3-half">
       <img src="../assets/images/HRHLLogo.jpg" alt="logo" style="width: 100%;">
     </div>
     <div class="w3-quarter">
       <p></p>
-      <!-- <button type="button" onclick="window.location.href = '/adelaide/'" class="w3-button w3-block w3-card w3-padding-32 w3-light-gray">Testing - Ignore</button> -->
+      <!-- <button type="button" onclick="window.location.href = '/_adelaide/'" class="w3-button w3-block w3-card w3-padding-32 w3-light-gray">Testing - Ignore</button> -->
     </div>
   </div>
   <!-- Header -->
@@ -62,12 +62,12 @@ if(isset($_GET['fullname']) && isset($_GET['phone'])) {
   <div class="w3-container" id="options" style="margin-top:20px">
     <div class="row">
       <div class="w3-half w3-padding">
-        <button type="button" onclick="window.location.href = '/adelaide/order.php'" class="w3-button w3-block w3-padding-32 w3-light-green w3-margin-bottom w3-card"><h2 style="margin: 13px 0;">Order Ticket</h2></button>
-        <button type="button" onclick="window.location.href = '/adelaide/faq.php'" class="w3-button w3-block w3-padding-32 w3-pale-red w3-margin-bottom w3-card"><h2 style="margin: 13px 0;">FAQ</h2></button>
+        <button type="button" onclick="window.location.href = '/_adelaide/order.php'" class="w3-button w3-block w3-padding-32 w3-light-green w3-margin-bottom w3-card"><h2 style="margin: 13px 0;">Order Ticket</h2></button>
+        <button type="button" onclick="window.location.href = '/_adelaide/faq.php'" class="w3-button w3-block w3-padding-32 w3-pale-red w3-margin-bottom w3-card"><h2 style="margin: 13px 0;">FAQ</h2></button>
       </div>
       <div class="w3-half w3-padding">
-        <button type="button" onclick="window.location.href = '/adelaide/'" class="w3-btn w3-block w3-padding-32 w3-aqua w3-margin-bottom" disabled style="opacity: 1;"><strong>Log-in Details for Order Page</strong><br> Username: callcentre<br>Password: soa2018</button>
-        <button type="button" onclick="window.location.href = '/adelaide/escalation.php'" class="w3-button w3-block w3-padding-32 w3-yellow w3-margin-bottom w3-card"><h2 style="margin: 13px 0;">Escalation</h2></button>
+        <button type="button" onclick="window.location.href = '/_adelaide/'" class="w3-btn w3-block w3-padding-32 w3-aqua w3-margin-bottom" disabled style="opacity: 1;"><strong>Log-in Details for Order Page</strong><br> Username: callcentre<br>Password: soa2018</button>
+        <button type="button" onclick="window.location.href = '/_adelaide/escalation.php'" class="w3-button w3-block w3-padding-32 w3-yellow w3-margin-bottom w3-card"><h2 style="margin: 13px 0;">Escalation</h2></button>
       </div>
     </div>
   </div>
