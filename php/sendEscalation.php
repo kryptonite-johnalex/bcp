@@ -17,8 +17,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
     // $message = trim($_POST["message"]);
 
-    $type = strip_tags(trim($_POST["form_type"]));
-    $frequent_query = $_POST['frequentquery'];
+    $type = isset($_POST['form_type']) ? strip_tags(trim($_POST["form_type"])) : "";
+    // Adelaine & Melbourne
+    $frequent_query = isset($_POST['frequentquery']) ? $_POST['frequentquery'] : "";
+    // DCSI
+    $escalation_type = isset($_POST['escalation_type']) ? $_POST['escalation_type'] : "";
+    $campaign = isset($_POST['campaign']) ? $_POST['campaign'] : "";
     $sent_status = 0;
 
     // Check that data was sent to the mailer.
@@ -55,6 +59,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Set the table name.
             $table = "ml_escalation";
             break;
+        case 'dcsi':
+            switch ($escalation_type) {
+                case 'tl':
+                    // Set the recipient email address.
+                    // $recipient = "tl.dcsi@contact121.com.au";
+                    $recipient = "johnalexladra@gmail.com";
+                    // Set the email subject.
+                    $subject = "DCSI Escalation Message";
+                    break;
+                case 'am':
+                    // Set the recipient email address.
+                    // $recipient = "admin.dcsi@contact121.com.au";
+                    $recipient = "johnalexladra@gmail.com";
+                    // Set the email subject.
+                    $subject = "DCSI Appliance Management Escalation Message";
+                    break;
+                case 'ccb':
+                    // Set the recipient email address.
+                    // $recipient = "training@contact121.com.au";
+                    $recipient = "johnalexladra@gmail.com";
+                    // Set the email subject.
+                    $subject = "DCSI Multiple Reminder/CCB Warranty Message";
+                    break;
+                default:
+                    # code...
+                    break;
+            }
+            break;
 
         default:
             # code...
@@ -70,8 +102,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $phone = $_SESSION['phone'];
 
     // Filtering form type
-    if($type == 'escalation' && $campaign != 'queensland') {
+    if($type == 'escalation' && $campaign == 'queensland') {
+        $incident_num = $_POST['incident_num'];
+        $wrap_code = $_POST['wrap_code'];
+        $street = $_POST['street'];
+        $reason = $_POST['reason'];
 
+        // Build the email content.
+        $email_content = "A new A1 order has been raised:<br><br><br>";
+
+        $email_content .= "Street and Suburb: $street<br>";
+        $email_content .= "Reasons: $reason<br><br><br>";
+        $email_content .= "Street and Suburb: $street<br>";
+        $email_content .= "Reasons: $reason<br><br><br>";
+        $email_content .= "This was raised by $name at $time_stamp<br><br>";
+    } elseif ($type == 'escalation' && ($campaign == 'adelaide' || $campaign == 'melbourne')) {
         $first_name = $_POST['firstname'];
         $last_name = $_POST['lastname'];
         $contact = $_POST['contact'];
@@ -82,8 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Build the email content.
         $email_content = "<strong style='color: blue;'>Caller Details</strong><br><br>";
-        // $email_content .= "QUU Incident Number: $incident_num<br>";
-        // $email_content .= "QUU Wrap Code: $wrap_code<br>";
+
         $email_content .= "Name: $first_name $last_name <br><br>";
         $email_content .= "Contact No: $contact <br><br>";
 
@@ -94,22 +138,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email_content .= "Preferred Contact Method: $contact_method<br><br>";
         $email_content .= "<strong style='color: blue;'>Additional Details</strong><br><br>";
         $email_content .= "$additional_info";
-    } else {
+    } elseif ($type == 'escalation' && $campaign == 'dcsi') {
+        //$name = $_POST[''];
 
-        $incident_num = $_POST['incident_num'];
-        $wrap_code = $_POST['wrap_code'];
-        $street = $_POST['street'];
-        $reason = $_POST['reason'];
+        $message = $_POST['message'][0] . "<br>" . $_POST['message'][1];
 
         // Build the email content.
-        $email_content = "A new A1 order has been raised:<br><br><br>";
-        // $email_content .= "QUU Incident Number: $incident_num<br>";
-        // $email_content .= "QUU Wrap Code: $wrap_code<br>";
-        $email_content .= "Street and Suburb: $street<br>";
-        $email_content .= "Reasons: $reason<br><br><br>";
-        $email_content .= "Street and Suburb: $street<br>";
-        $email_content .= "Reasons: $reason<br><br><br>";
-        $email_content .= "This was raised by $name at $time_stamp<br><br>";
+        $email_content = "Message From: $agent<br>";
+        $email_content .= "Date: <br>";
+        $email_content .= "Time: <br>";
+        $email_content .= "Station: <br><br>";
+
+        echo $message;
+        die();
+
+        switch ($escalation_type) {
+            case 'tl':
+                $email_content .= "Message: $message<br>";
+                $email_content .= "Prop No: " . " Order No: <br>";
+                $email_content .= "Lorem Ipsum. Dolor";
+                break;
+            case 'am':
+                $email_content .= "Name: <br>";
+                $email_content .= "Phone: <br>";
+                $email_content .= "Property: <br>";
+                $email_content .= "Address: <br>";
+
+                $email_content .= "Message: <br>";
+                break;
+            case 'ccb':
+                # code...
+                break;
+            
+            default:
+                # code...
+                break;
+        }
+
+    } else {
+        echo "<h1>Error! Please contact Development Engineer ASAP.</h1>";
     }
 
     // Timestamp when the process is created.
@@ -136,14 +203,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Data Insert
-    if($type == 'escalation' && $campaign != 'queensland') {
-        $sql = "INSERT INTO " . $table . " (`agent_name`, `phone`, `first_name`, `last_name`, `contact`, `email`, `contact_method`, `frequent_query`, `additional_info`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$first_name', '$last_name', '$contact', '$email', '$contact_method', '$frequent_query', '$additional_info', '$created_at', '$sent_status')";
-    else {
+    if($type == 'escalation' && $campaign == 'queensland') {
         $sql = "INSERT INTO quu_escalation (`agent_name`, `phone`, `addr_street`, `addr_suburb`, `reason`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$street', '$street', '$reason', '$created_at', '$sent_status')";
+    } elseif ($type == 'escalation' && ($campaign == 'adelaide' || $campaign == 'melbourne')) {
+        $sql = "INSERT INTO " . $table . " (`agent_name`, `phone`, `first_name`, `last_name`, `contact`, `email`, `contact_method`, `frequent_query`, `additional_info`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$first_name', '$last_name', '$contact', '$email', '$contact_method', '$frequent_query', '$additional_info', '$created_at', '$sent_status')";
+    } elseif ($type == 'escalation' && $campaign == 'dcsi') {
+        $sql = "INSERT INTO dcsi_escalation (`agent_name`, `phone`, `escalation_type`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$escalation_type', '$last_name', '$contact', '$email', '$contact_method', '$frequent_query', '$additional_info', '$created_at', '$sent_status')";
+    } else {
+        echo "<h1>Database Error! Please contact Development Engineer ASAP.</h1>";
     }
 
     if ($conn->query($sql) === TRUE) {
-        //echo "New record created successfully";
+        // echo "New record created successfully";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

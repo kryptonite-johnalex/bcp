@@ -42,37 +42,39 @@ if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
 
     <div class="w3-container" id="senior" style="margin-top:75px">
       <p class="w3-text-red">Please complete the below fields to generate an email to notify DCSI of contractor non-attendance. Please also leave a CCB Reminder on the relevant order saying "multiple CCB email sent".</p>
-      <form action="../php/#.php" method="POST">
-        <input class="w3-hide" type="text" name="form_type" value="senior">
+      <form action="../php/sendEscalation.php" method="POST">
+        <input class="w3-hide" type="hidden" name="form_type" value="escalation">
+        <input class="w3-hide" type="hidden" name="campaign" value="dcsi">
+        <input class="w3-hide" type="hidden" name="escalation_type" value="ccb">
         <div class="w3-row-padding w3-margin-bottom">
           <div class="w3-section">
             <div class="w3-col" style="width:200px"><label class="w3-text-purple">Property Number:</label></div>
-            <div class="w3-rest">
-              <input class="w3-input w3-border" type="text" name="contact" required="" placeholder="" style="width: 50%; display: inline-block;">
-            </div>
-          </div>
-          <div class="w3-section">
-            <div class="w3-col" style="width:200px"><label class="w3-text-purple">Address:</label></div>
-            <div class="w3-rest">
-              <input class="w3-input w3-border" type="text" name="phone" required="" placeholder="" style="width: 100%; display: inline-block;">
-            </div>
-          </div>
-          <div class="w3-section">
-            <div class="w3-col" style="width:200px"><label class="w3-text-purple">Order Number:</label></div>
             <div class="w3-rest">
               <input class="w3-input w3-border" type="text" name="property_num" required="" placeholder="" style="width: 50%; display: inline-block;">
             </div>
           </div>
           <div class="w3-section">
+            <div class="w3-col" style="width:200px"><label class="w3-text-purple">Address:</label></div>
+            <div class="w3-rest">
+              <input class="w3-input w3-border" type="text" name="address" required="" placeholder="" style="width: 100%; display: inline-block;">
+            </div>
+          </div>
+          <div class="w3-section">
+            <div class="w3-col" style="width:200px"><label class="w3-text-purple">Order Number:</label></div>
+            <div class="w3-rest">
+              <input class="w3-input w3-border" type="text" name="order_num" required="" placeholder="" style="width: 50%; display: inline-block;">
+            </div>
+          </div>
+          <div class="w3-section">
             <div class="w3-col" style="width:200px"><label class="w3-text-purple">Contractor Code:</label></div>
             <div class="w3-rest">
-              <input class="w3-input w3-border" type="text" name="address" required="" placeholder="" style="width: 50%; display: inline-block;">
+              <input class="w3-input w3-border" type="text" name="contract_code" required="" placeholder="" style="width: 50%; display: inline-block;">
             </div>
           </div>
         </div>
         <div class="w3-row">
           <div class="w3-container w3-center">
-            <button type="button" onclick="window.location.href = '/quu/note-script.php'" class="w3-button w3-padding-24 w3-margin-bottom w3-card">Send Email And Go Back To Original Screen</button>
+            <button type="submit" class="w3-button w3-padding-24 w3-margin-bottom w3-card">Send Email And Go Back To Original Screen</button>
           </div>
         </div>
       </form>
@@ -83,7 +85,7 @@ if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
         <div class="w3-container w3-half">
         </div>
         <div class="w3-container w3-half">
-          <button type="button" onclick="window.history.back()" class="w3-button w3-right w3-padding-large w3-light-gray w3-margin-bottom w3-card">Back (No Email)</button>
+          <button type="button" onclick="window.location.href = '/_dcsi/index.php'" class="w3-button w3-right w3-padding-large w3-margin-bottom w3-card">Back (No Email)</button>
         </div>
       </div>
     </div>

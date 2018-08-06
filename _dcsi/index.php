@@ -41,13 +41,13 @@ if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
     <hr style="width:50px;border: 5px solid red" class="w3-round">
     <div class="w3-row">
       <div class="w3-container w3-third">
-        <button type="button" onclick="window.location.href = '/quu/note-script.php'" class="w3-button w3-block w3-padding-24 w3-light-gray w3-margin-bottom w3-text-red w3-card">Send Email To TL</button>
+        <button type="button" onclick="window.location.href = '/_dcsi/escalation-tl.php'" class="w3-button w3-block w3-padding-24 w3-light-gray w3-margin-bottom w3-text-red w3-card">Send Email To TL</button>
       </div>
       <div class="w3-container w3-third">
-        <button type="button" onclick="window.location.href = '/quu/note-script.php'" class="w3-button w3-block w3-padding-24 w3-light-gray w3-margin-bottom w3-text-red w3-card">Send Email To Appliance Mgmt</button>
+        <button type="button" onclick="window.location.href = '/_dcsi/escalation-am.php'" class="w3-button w3-block w3-padding-24 w3-light-gray w3-margin-bottom w3-text-red w3-card">Send Email To Appliance Mgmt</button>
       </div>
       <div class="w3-container w3-third">
-        <button type="button" onclick="window.location.href = '/quu/note-script.php'" class="w3-button w3-block w3-padding-24 w3-light-gray w3-margin-bottom w3-text-red w3-card">Multiple Reminder/Warranty CCBs</button>
+        <button type="button" onclick="window.location.href = '/_dcsi/escalation-ccb.php'" class="w3-button w3-block w3-padding-24 w3-light-gray w3-margin-bottom w3-text-red w3-card">Multiple Reminder/Warranty CCBs</button>
       </div>
     </div>
     <div class="w3-container">
@@ -60,12 +60,12 @@ if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
         <select class="w3-select w3-border" name="option">
         </select>
         <p></p>
-        <button type="button" onclick="window.location.href = '/_dcsi/call-log.php'" class="w3-button w3-block w3-padding-24 w3-light-gray w3-margin-bottom w3-text-green">Continue</button>
+        <button type="button" onclick="window.location.href = '/_dcsi/call-log.php'" class="w3-button w3-block w3-padding-24 w3-light-gray w3-margin-bottom w3-text-green w3-card">Continue</button>
         <p class="w3-text-red">If call relates to Fire, Injury or Property Damage you must refer to the Insurance information</p>
       </div>
       <div class="w3-container w3-third">
-        <button type="button" onclick="window.location.href = '/quu/note-script.php'" class="w3-button w3-block w3-padding-24 w3-light-gray w3-margin-bottom w3-text-red w3-card">Location Codes</button>
-        <button type="button" onclick="window.location.href = '/quu/note-script.php'" class="w3-button w3-block w3-padding-24 w3-light-gray w3-margin-bottom w3-card">Insurance Info</button>
+        <button type="button" onclick="window.location.href = '#'" class="w3-button w3-block w3-padding-24 w3-light-gray w3-margin-bottom w3-text-red w3-card">Location Codes</button>
+        <button type="button" onclick="window.location.href = '#'" class="w3-button w3-block w3-padding-24 w3-light-gray w3-margin-bottom w3-card">Insurance Info</button>
       </div>
       <div class="w3-container w3-third">
       </div>
@@ -76,47 +76,46 @@ if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
     <p class="w3-center">The 'Dial Now' buttons below are to be used during business hours only</p>
     <div class="w3-row">
       <div class="w3-container w3-third">
-        <button type="button" onclick="window.location.href = '/quu/note-script.php'" class="w3-button w3-block w3-padding-24 w3-red w3-margin-bottom">Doherty’s – 1300 135 701</button>
+        <button type="button" onclick="window.location.href = 'tel:1300135701'" class="w3-button w3-block w3-padding-24 w3-light-gray w3-margin-bottom w3-card">Doherty’s – 1300 135 701</button>
       </div>
       <div class="w3-container w3-third">
-        <button type="button" onclick="window.location.href = '/quu/note-script.php'" class="w3-button w3-block w3-padding-24 w3-red w3-margin-bottom">PFM – 1300 784 462</button>
+        <button type="button" onclick="window.location.href = 'tel:1300784462'" class="w3-button w3-block w3-padding-24 w3-light-gray w3-margin-bottom w3-card">PFM – 1300 784 462</button>
       </div>
       <div class="w3-container w3-third">
-        <button type="button" onclick="window.location.href = '/quu/note-script.php'" class="w3-button w3-block w3-padding-24 w3-red w3-margin-bottom">TMD – 8623 0400</button>
-      </div>
-    </div>
-    <div class="w3-row">
-      <div class="w3-container w3-third">
-        <button type="button" onclick="window.location.href = '/quu/note-script.php'" class="w3-button w3-block w3-padding-24 w3-red w3-margin-bottom">Bettios – 0448 352 476</button>
-      </div>
-      <div class="w3-container w3-third">
-        <button type="button" onclick="window.location.href = '/quu/note-script.php'" class="w3-btn w3-block w3-padding-24 w3-cyan w3-margin-bottom w3-hover-cyan" disabled> </button>
-      </div>
-      <div class="w3-container w3-third">
-        <button type="button" onclick="window.location.href = '/quu/note-script.php'" class="w3-button w3-block w3-padding-24 w3-red w3-margin-bottom">TMD – 0448 349 329</button>
+        <button type="button" onclick="window.location.href = 'tel:86230400'" class="w3-button w3-block w3-padding-24 w3-light-gray w3-margin-bottom w3-card">TMD – 8623 0400</button>
       </div>
     </div>
     <div class="w3-row">
       <div class="w3-container w3-third">
-        <button type="button" onclick="window.location.href = '/quu/note-script.php'" class="w3-button w3-block w3-padding-24 w3-red w3-margin-bottom">RTC - 8686 1000</button>
+        <button type="button" onclick="window.location.href = 'tel:0448352476'" class="w3-button w3-block w3-padding-24 w3-light-gray w3-margin-bottom w3-card">Bettios – 0448 352 476</button>
       </div>
       <div class="w3-container w3-third">
-        <button type="button" onclick="window.location.href = '/quu/note-script.php'" class="w3-btn w3-block w3-padding-24 w3-cyan w3-margin-bottom w3-hover-cyan" disabled> </button>
+        <button type="button" onclick="window.location.href = '#'" class="w3-btn w3-block w3-padding-24 w3-cyan w3-margin-bottom w3-hover-cyan " disabled> </button>
       </div>
       <div class="w3-container w3-third">
-        <button type="button" onclick="window.location.href = '/quu/note-script.php'" class="w3-btn w3-block w3-padding-24 w3-cyan w3-margin-bottom w3-hover-cyan" disabled> </button>
+        <button type="button" onclick="window.location.href = 'tel:0448349329'" class="w3-button w3-block w3-padding-24 w3-light-gray w3-margin-bottom w3-card">TMD – 0448 349 329</button>
       </div>
     </div>
     <div class="w3-row">
       <div class="w3-container w3-third">
-        <button type="button" onclick="window.location.href = '/quu/note-script.php'" class="w3-btn w3-block w3-padding-24 w3-cyan w3-margin-bottom w3-hover-cyan" disabled> </button>
+        <button type="button" onclick="window.location.href = 'tel:86861000'" class="w3-button w3-block w3-padding-24 w3-light-gray w3-margin-bottom w3-card">RTC - 8686 1000</button>
       </div>
       <div class="w3-container w3-third">
-        <button type="button" onclick="window.location.href = '/quu/note-script.php'" class="w3-button w3-block w3-padding-24 w3-red w3-margin-bottom">PFM South – 8168 6019</button>
+        <button type="button" onclick="window.location.href = '#'" class="w3-btn w3-block w3-padding-24 w3-cyan w3-margin-bottom w3-hover-cyan" disabled> </button>
       </div>
       <div class="w3-container w3-third">
-        <button type="button" onclick="window.location.href = '/quu/note-script.php'" class="w3-button w3-block w3-padding-24 w3-red w3-margin-bottom">PDM East – 8168 6020
-</button>
+        <button type="button" onclick="window.location.href = '#'" class="w3-btn w3-block w3-padding-24 w3-cyan w3-margin-bottom w3-hover-cyan" disabled> </button>
+      </div>
+    </div>
+    <div class="w3-row">
+      <div class="w3-container w3-third">
+        <button type="button" onclick="window.location.href = '#'" class="w3-btn w3-block w3-padding-24 w3-cyan w3-margin-bottom w3-hover-cyan" disabled> </button>
+      </div>
+      <div class="w3-container w3-third">
+        <button type="button" onclick="window.location.href = 'tel:81686019'" class="w3-button w3-block w3-padding-24 w3-light-gray w3-margin-bottom w3-card">PFM South – 8168 6019</button>
+      </div>
+      <div class="w3-container w3-third">
+        <button type="button" onclick="window.location.href = 'tel:81686020'" class="w3-button w3-block w3-padding-24 w3-light-gray w3-margin-bottom w3-card">PDM East – 8168 6020</button>
       </div>
     </div>
   </div>
