@@ -141,37 +141,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif ($type == 'escalation' && $campaign == 'dcsi') {
         //$name = $_POST[''];
 
-        $message = $_POST['message'][0] . "<br>" . $_POST['message'][1];
+        $property_num = isset($_POST['property_num']) ? $_POST['property_num'] : "";
+        $order_num = isset($_POST['order_num']) ? $_POST['order_num'] : "";
+        $contract_code = isset($_POST['contract_code']) ? $_POST['contract_code'] : "";
+        $contact_name = isset($_POST['contact_name']) ? $_POST['contact_name'] : "";
+        $contact_phone = isset($_POST['contact_phone']) ? $_POST['contact_phone'] : "";
+        $contact_addr = isset($_POST['contact_addr']) ? $_POST['contact_addr'] : "";
+        $message = isset($_POST['message']) ? $_POST['message'][0] . "<br>" . $_POST['message'][1] : "";
+        $date = date("Y-m-d");
+
+        $agent_id = isset($_POST['agent_id']) ? $_POST['agent_id'] : "A000";
+        $agent_station = isset($_POST['agent_station']) ? $_POST['agent_station'] : "00";
 
         // Build the email content.
-        $email_content = "Message From: $agent<br>";
-        $email_content .= "Date: <br>";
-        $email_content .= "Time: <br>";
-        $email_content .= "Station: <br><br>";
-
-        echo $message;
-        die();
+        $email_content = "Message From: $agent_id : $agent<br>";
+        $email_content .= "Date: $date<br>";
+        $email_content .= "Time: $time_stamp<br>";
+        $email_content .= "Station: $agent_station<br><br>";
 
         switch ($escalation_type) {
             case 'tl':
                 $email_content .= "Message: $message<br>";
-                $email_content .= "Prop No: " . " Order No: <br>";
-                $email_content .= "Lorem Ipsum. Dolor";
+                // $email_content .= "Prop No: $property_num" . " Order No: $order_num<br>";
+                // $email_content .= "Lorem Ipsum. Dolor";
                 break;
             case 'am':
-                $email_content .= "Name: <br>";
-                $email_content .= "Phone: <br>";
-                $email_content .= "Property: <br>";
-                $email_content .= "Address: <br>";
+                $email_content .= "Name: $contact_name<br>";
+                $email_content .= "Phone: $contact_phone<br>";
+                $email_content .= "Property: $property_num<br>";
+                $email_content .= "Address: $contact_addr<br><br>";
 
-                $email_content .= "Message: <br>";
+                $email_content .= "Message: $message<br>";
                 break;
             case 'ccb':
-                # code...
+                $email_content . = "NO EMAIL TEMPLATE PROVIDED AT THIS TIME! "
                 break;
             
             default:
-                # code...
+                $email_content .= "<h1>Error! Please contact Development Engineer ASAP!.</h1>";
                 break;
         }
 
@@ -207,8 +214,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO quu_escalation (`agent_name`, `phone`, `addr_street`, `addr_suburb`, `reason`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$street', '$street', '$reason', '$created_at', '$sent_status')";
     } elseif ($type == 'escalation' && ($campaign == 'adelaide' || $campaign == 'melbourne')) {
         $sql = "INSERT INTO " . $table . " (`agent_name`, `phone`, `first_name`, `last_name`, `contact`, `email`, `contact_method`, `frequent_query`, `additional_info`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$first_name', '$last_name', '$contact', '$email', '$contact_method', '$frequent_query', '$additional_info', '$created_at', '$sent_status')";
-    } elseif ($type == 'escalation' && $campaign == 'dcsi') {
-        $sql = "INSERT INTO dcsi_escalation (`agent_name`, `phone`, `escalation_type`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$escalation_type', '$last_name', '$contact', '$email', '$contact_method', '$frequent_query', '$additional_info', '$created_at', '$sent_status')";
+    } elseif ($type == 'escalation' && $campaign == 'dcsi' && !empty($escalation_type)) {
+        $sql = "INSERT INTO dcsi_escalation (`agent_name`, `phone`, `escalation_type`, `property_num`, `order_num`, `contract_code`, `contact_name`, `contact_phone`, `contact_addr`, `message`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$escalation_type', '$property_num', '$order_num', '$contract_code', '$contact_name', '$contact_phone', '$contact_addr', '$message', '$created_at', '$sent_status')";
     } else {
         echo "<h1>Database Error! Please contact Development Engineer ASAP.</h1>";
     }
