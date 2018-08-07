@@ -52,7 +52,7 @@ if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
 
     <div class="w3-container" id="" style="margin-top:75px">
       <p class="w3-text-red">Enter contact name, phone number and message to send Appliance Management</p>
-      <form action="../php/sendEscalation.php" method="POST">
+      <form class="dcsiForm" action="../php/sendEscalation.php" method="POST">
         <input class="w3-hide" type="hidden" name="form_type" value="escalation">
         <input class="w3-hide" type="hidden" name="campaign" value="dcsi">
         <input class="w3-hide" type="hidden" name="escalation_type" value="am">
@@ -60,13 +60,13 @@ if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
           <div class="w3-section">
             <div class="w3-col" style="width:200px"><label class="w3-text-purple">Contact Name:</label></div>
             <div class="w3-rest">
-              <input class="w3-input w3-border" type="text" name="name" required="" placeholder="" style="width: 50%; display: inline-block;">
+              <input class="w3-input w3-border" type="text" name="contact_name" required="" placeholder="" style="width: 50%; display: inline-block;">
             </div>
           </div>
           <div class="w3-section">
             <div class="w3-col" style="width:200px"><label class="w3-text-purple">Phone Number:</label></div>
             <div class="w3-rest">
-              <input class="w3-input w3-border" type="text" name="phone" required="" placeholder="" style="width: 50%; display: inline-block;">
+              <input class="w3-input w3-border" type="text" name="contact_phone" required="" placeholder="" style="width: 50%; display: inline-block;">
             </div>
           </div>
           <div class="w3-section">
@@ -78,14 +78,14 @@ if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
           <div class="w3-section">
             <div class="w3-col" style="width:200px"><label class="w3-text-purple">Address:</label></div>
             <div class="w3-rest">
-              <input class="w3-input w3-border" type="text" name="address" required="" placeholder="" style="width: 50%; display: inline-block;">
+              <input class="w3-input w3-border" type="text" name="contact_address" required="" placeholder="" style="width: 50%; display: inline-block;">
             </div>
           </div>
 
           <div class="w3-section" style="margin-top: 280px !important;">
             <label class="w3-text-purple">Note (max 200 characters per line):</label>
-            <input class="w3-input w3-border w3-margin-bottom" type="text" name="note[]"  placeholder="">
-            <input class="w3-input w3-border w3-margin-bottom" type="text" name="note[]"  placeholder="">
+            <input class="w3-input w3-border w3-margin-bottom" type="text" name="message[]"  placeholder="">
+            <input class="w3-input w3-border w3-margin-bottom" type="text" name="message[]"  placeholder="">
           </div>
         </div>
         <div class="w3-row">

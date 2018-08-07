@@ -49,7 +49,7 @@ if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
 
     <div class="w3-container" id="senior" style="margin-top:75px">
       <p class="w3-text-red">Enter message to send to Team Leader below; (400 Chars over 2 lines Max)</p>
-      <form action="../php/sendEscalation.php" method="POST">
+      <form class="dcsiForm" action="../php/sendEscalation.php" method="POST">
         <input class="w3-hide" type="hidden" name="form_type" value="escalation">
         <input class="w3-hide" type="hidden" name="campaign" value="dcsi">
         <input class="w3-hide" type="hidden" name="escalation_type" value="tl">

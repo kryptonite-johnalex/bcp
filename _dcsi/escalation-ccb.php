@@ -40,9 +40,16 @@ if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
     <h1 class="w3-xxxlarge w3-text-red"><b></b></h1>
     <hr style="width:50px;border: 5px solid red" class="w3-round">
 
+    <div id="form-messages" class="w3-panel w3-hide w3-display-container">
+      <span onclick="$(this).parent().fadeOut()"
+      class="w3-button w3-large w3-display-topright">&times;</span>
+      <h3>Success!</h3>
+      <p>Green often indicates something successful or positive.</p>
+    </div>
+
     <div class="w3-container" id="senior" style="margin-top:75px">
       <p class="w3-text-red">Please complete the below fields to generate an email to notify DCSI of contractor non-attendance. Please also leave a CCB Reminder on the relevant order saying "multiple CCB email sent".</p>
-      <form action="../php/sendEscalation.php" method="POST">
+      <form class="dcsiForm" action="../php/sendEscalation.php" method="POST">
         <input class="w3-hide" type="hidden" name="form_type" value="escalation">
         <input class="w3-hide" type="hidden" name="campaign" value="dcsi">
         <input class="w3-hide" type="hidden" name="escalation_type" value="ccb">
@@ -56,7 +63,7 @@ if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
           <div class="w3-section">
             <div class="w3-col" style="width:200px"><label class="w3-text-purple">Address:</label></div>
             <div class="w3-rest">
-              <input class="w3-input w3-border" type="text" name="address" required="" placeholder="" style="width: 100%; display: inline-block;">
+              <input class="w3-input w3-border" type="text" name="contact_address" required="" placeholder="" style="width: 100%; display: inline-block;">
             </div>
           </div>
           <div class="w3-section">

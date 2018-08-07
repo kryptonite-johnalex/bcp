@@ -51,7 +51,7 @@ if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
       </div>
     </div>
     <div class="w3-container">
-      <textarea class="w3-input w3-border" name="reason" required=""></textarea>
+      <textarea class="w3-input w3-border" name="details" required=""></textarea>
     </div>
     <p>Welcome to Housing SA Maintenance. My name is <?php echo (isset($_SESSION["agent"])) ?: '[Agent Name]'; ?>. May I have you address please? </p>
     <p class="w3-text-blue">Please may I take your name and telephone number?</p>
@@ -60,7 +60,7 @@ if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
         <select class="w3-select w3-border" name="option">
         </select>
         <p></p>
-        <button type="button" onclick="window.location.href = '/_dcsi/call-log.php'" class="w3-button w3-block w3-padding-24 w3-light-gray w3-margin-bottom w3-text-green w3-card">Continue</button>
+        <button type="button" onclick="window.location.href = '/_dcsi/call-log.php?details='+ document.getElementsByTagName('textarea')[0].value" class="w3-button w3-block w3-padding-24 w3-light-gray w3-margin-bottom w3-text-green w3-card">Continue</button>
         <p class="w3-text-red">If call relates to Fire, Injury or Property Damage you must refer to the Insurance information</p>
       </div>
       <div class="w3-container w3-third">
