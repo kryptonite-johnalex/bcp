@@ -46,4 +46,9 @@ function openCity(evt, tabName) {
   document.getElementById(tabName).style.display = "block";
   evt.currentTarget.firstElementChild.className += " w3-border-black w3-red";
 }
+
+function enableChintaro() {
+  var isChecked = document.getElementById("chintaro").checked;
+  document.getElementById("chintaroList").disabled = !isChecked;
+}
 </script>

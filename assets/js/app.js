@@ -44,6 +44,14 @@ $(function() {
             //hide the loader
             $('.loading').fadeOut();
             $("html, body").animate({ scrollTop: 0 }, "slow");
+
+            // Custom Process for DCSI Campaign
+            if($(form).hasClass('dcsiForm')) {
+                setTimeout(function() { 
+                    alert("Success! You will be redirect to Initial Page");   
+                    window.location.replace("/_dcsi/index.php");
+                }, 1000);
+            }
         })
         .fail(function(data) {
             // Make sure that the formMessages div has the 'error' class.
