@@ -154,7 +154,7 @@ $log = $conn->query($sql);
           <td class="status"><?php echo ($row['sent_status']) ? 'Sent' : 'Failed'; ?></td>
           <!-- hide -->
           <td class="chintaro_option" style="display: none;"><?php echo !empty($row['chintaro_option']) ? $row['chintaro_option'] : "N/A"; ?></td>
-          <td class="reminded" style="display: none;"><?php echo (lcfirst($row['reminder']) == 'y') ? 'Yes' : 'No'; ?></td>
+          <td class="ccb_reminded" style="display: none;"><?php echo (lcfirst($row['reminder']) == 'y') ? 'Yes' : 'No'; ?></td>
         </tr>
         <?php
               if($row['sent_status'] == 1) $count++;

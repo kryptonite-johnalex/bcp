@@ -58,14 +58,17 @@ if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
     <div class="w3-row">
       <div class="w3-container w3-third">
         <select class="w3-select w3-border" name="option">
+          <option selected=""></option>
+          <option>Other</option>
+          <option>After-Hours/Downtime</option>
         </select>
         <p></p>
         <button type="button" onclick="window.location.href = '/_dcsi/call-log.php?details='+ document.getElementsByTagName('textarea')[0].value" class="w3-button w3-block w3-padding-24 w3-light-gray w3-margin-bottom w3-text-green w3-card">Continue</button>
         <p class="w3-text-red">If call relates to Fire, Injury or Property Damage you must refer to the Insurance information</p>
       </div>
       <div class="w3-container w3-third">
-        <button type="button" onclick="window.location.href = '#'" class="w3-button w3-block w3-padding-24 w3-light-gray w3-margin-bottom w3-text-red w3-card">Location Codes</button>
-        <button type="button" onclick="window.location.href = '#'" class="w3-button w3-block w3-padding-24 w3-light-gray w3-margin-bottom w3-card">Insurance Info</button>
+        <button type="button" onclick="window.location.href = '/_dcsi/location-codes.php?page=1'" class="w3-button w3-block w3-padding-24 w3-light-gray w3-margin-bottom w3-text-red w3-card">Location Codes</button>
+        <button type="button" onclick="window.location.href = '/_dcsi/Insurance-info.php'" class="w3-button w3-block w3-padding-24 w3-light-gray w3-margin-bottom w3-card">Insurance Info</button>
       </div>
       <div class="w3-container w3-third">
       </div>
