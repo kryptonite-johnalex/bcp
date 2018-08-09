@@ -94,20 +94,19 @@ if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
         </div>
       </div>
 
-
-  <div class="w3-container" id="options" style="margin-top:75px">
-    <div class="w3-row">
-      <div class="w3-container w3-half">
-        <p class="w3-text-purple w3-show-inline-block">Did you send a CCB reminder on this call (Y/N)</p>&nbsp;
-        <input class="w3-input w3-border" type="text" name="reminder" placeholder="" maxlength="1" value="" style="width: 50px; display: inline-block;">
+      <div class="w3-container" id="options" style="margin-top:75px">
+        <div class="w3-row">
+          <div class="w3-container w3-half">
+            <p class="w3-text-purple w3-show-inline-block">Did you send a CCB reminder on this call (Y/N)</p>&nbsp;
+            <input class="w3-input w3-border" type="text" name="reminder" placeholder="" maxlength="1" value="" style="width: 50px; display: inline-block;">
+          </div>
+          <div class="w3-container w3-half">
+            <button type="button" onclick="window.location.href = '/_dcsi/index.php'" class="w3-button w3-right w3-padding-large w3-light-gray w3-margin-bottom w3-card">Back</button>
+          </div>
+        </div>
       </div>
-      <div class="w3-container w3-half">
-        <button type="button" onclick="window.location.href = '/_dcsi/index.php'" class="w3-button w3-right w3-padding-large w3-light-gray w3-margin-bottom w3-card">Back</button>
-      </div>
-    </div>
-  </div>
 
-</form>
+    </form>
 </div>
 
 
