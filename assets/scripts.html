@@ -47,8 +47,38 @@ function openCity(evt, tabName) {
   evt.currentTarget.firstElementChild.className += " w3-border-black w3-red";
 }
 
+// DCSI
 function enableChintaro() {
   var isChecked = document.getElementById("chintaro").checked;
   document.getElementById("chintaroList").disabled = !isChecked;
+}
+
+// RISKMAN
+function disabilityService(param) {
+  var box = document.getElementById(param);
+  option = box.options[box.selectedIndex].value;
+
+  if(param == 'disableService') {
+    if(option == 'yes') {
+      $('#optionYesdiv').show().find('select').prop('disabled', false);;
+      $('#optionNodiv').hide().find('select').prop('disabled', true);
+    } else {
+      $('#optionYesdiv').hide().find('select').prop('disabled', true);
+      $('#optionNodiv').show().find('select').prop('disabled', false);
+    }
+  } else if (param == "optionYes") {
+    if(option == 'yes') {
+      $("#optionMsg p").text("Complete");
+    } else if(option == 'no') {
+      $("#optionMsg p").text("Please ask the caller to notify their Supervisor or Line Manager immediately and then to phone the incident in later.");
+    } else {
+      $("#optionMsg p").text("");
+    }
+  } else if (param == "optionNo") {
+
+  } else {
+    $("#optionMsg p").text("");
+  }
+
 }
 </script>
