@@ -59,6 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Set the table name.
             $table = "ml_escalation";
             break;
+
         case 'dcsi':
             switch ($escalation_type) {
                 case 'tl':
@@ -165,6 +166,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // $email_content .= "Prop No: $property_num" . " Order No: $order_num<br>";
                 // $email_content .= "Lorem Ipsum. Dolor";
                 break;
+
             case 'am':
                 $email_content .= "Name: $contact_name<br>";
                 $email_content .= "Phone: $contact_phone<br>";
@@ -173,15 +175,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 $email_content .= "Message: $message<br>";
                 break;
+
             case 'ccb':
-                $email_content . = "NO EMAIL TEMPLATE PROVIDED AT THIS TIME! "
+                $email_content .= "NO EMAIL TEMPLATE PROVIDED AT THIS TIME!";
                 break;
-            
+
             default:
                 $email_content .= "<h1>Error! Please contact Development Engineer ASAP!.</h1>";
                 break;
-        }
 
+        }
     } else {
         echo "<h1>Error! Please contact Development Engineer ASAP.</h1>";
     }
