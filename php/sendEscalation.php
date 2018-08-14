@@ -215,8 +215,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Data Insert
     if($type == 'escalation' && $campaign == 'queensland') {
         $sql = "INSERT INTO quu_escalation (`agent_name`, `phone`, `addr_street`, `addr_suburb`, `reason`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$street', '$street', '$reason', '$created_at', '$sent_status')";
-    } elseif ($type == 'escalation' && ($campaign == 'adelaide' || $campaign == 'melbourne')) {
-        $sql = "INSERT INTO " . $table . " (`agent_name`, `phone`, `first_name`, `last_name`, `contact`, `email`, `contact_method`, `frequent_query`, `additional_info`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$first_name', '$last_name', '$contact', '$email', '$contact_method', '$frequent_query', '$additional_info', '$created_at', '$sent_status')";
+    } elseif ($type == 'escalation' && $campaign == 'adelaide') {
+        $sql = "INSERT INTO al_escalation (`agent_name`, `phone`, `first_name`, `last_name`, `contact`, `email`, `contact_method`, `frequent_query`, `additional_info`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$first_name', '$last_name', '$contact', '$email', '$contact_method', '$frequent_query', '$additional_info', '$created_at', '$sent_status')";
+    } elseif ($type == 'escalation' && $campaign == 'melbourne') {
+        $sql = "INSERT INTO  ml_escalation (`agent_name`, `phone`, `first_name`, `last_name`, `contact`, `email`, `contact_method`, `frequent_query`, `additional_info`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$first_name', '$last_name', '$contact', '$email', '$contact_method', '$frequent_query', '$additional_info', '$created_at', '$sent_status')";
     } elseif ($type == 'escalation' && $campaign == 'dcsi' && !empty($escalation_type)) {
         $sql = "INSERT INTO dcsi_escalation (`agent_name`, `phone`, `escalation_type`, `property_num`, `order_num`, `contract_code`, `contact_name`, `contact_phone`, `contact_addr`, `message`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$escalation_type', '$property_num', '$order_num', '$contract_code', '$contact_name', '$contact_phone', '$contact_addr', '$message', '$created_at', '$sent_status')";
     } else {
