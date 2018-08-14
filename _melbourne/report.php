@@ -8,11 +8,11 @@ error_reporting(E_ALL);
 
 require_once('../php/db_connect.php');
 
-$sql = "SELECT * FROM al_escalation";
+$sql = "SELECT * FROM ml_escalation";
 
 $escalation = $conn->query($sql);
 
-$sql = "SELECT * FROM al_order";
+$sql = "SELECT * FROM ml_order";
 
 $order = $conn->query($sql);
 
