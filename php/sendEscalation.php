@@ -64,22 +64,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             switch ($escalation_type) {
                 case 'tl':
                     // Set the recipient email address.
-                    // $recipient = "tl.dcsi@contact121.com.au";
-                    $recipient = "johnalexladra@gmail.com";
+                    $recipient = "tl.dcsi@contact121.com.au";
+                    // $recipient = "johnalexladra@gmail.com";
                     // Set the email subject.
                     $subject = "DCSI Escalation Message";
                     break;
                 case 'am':
                     // Set the recipient email address.
-                    // $recipient = "admin.dcsi@contact121.com.au";
-                    $recipient = "johnalexladra@gmail.com";
+                    $recipient = "admin.dcsi@contact121.com.au";
+                    // $recipient = "johnalexladra@gmail.com";
                     // Set the email subject.
                     $subject = "DCSI Appliance Management Escalation Message";
                     break;
                 case 'ccb':
                     // Set the recipient email address.
-                    // $recipient = "training@contact121.com.au";
-                    $recipient = "johnalexladra@gmail.com";
+                    $recipient = "training@contact121.com.au";
+                    // $recipient = "johnalexladra@gmail.com";
                     // Set the email subject.
                     $subject = "DCSI Multiple Reminder/CCB Warranty Message";
                     break;
@@ -196,8 +196,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email_headers = "MIME-Version: 1.0" . "\n";
     $email_headers .= "Content-type:text/html;charset=UTF-8" . "\n";
     $email_headers .= "From: $name <$email>";
-    $email_headers .= 'Cc: johnalexladra@gmail.com';
-    $email_headers .= 'Bcc: johnalexladra@gmail.com';
+    // $email_headers .= 'Cc: johnalexladra@gmail.com';
+    // $email_headers .= 'Bcc: johnalexladra@gmail.com';
 
     // Send the email.
     if (mail($recipient, $subject, $email_content, $email_headers)) {
