@@ -40,7 +40,13 @@
       <a href="/_riskman" class="w3-bar-item w3-button">Initial</a>
       <a href="/_riskman/report.php" class="w3-bar-item w3-button">Reports</a>
     </div>
-    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Coming Soon...</a> 
+    <button class="w3-bar-item w3-button w3-hover-white" onclick="myAccFunc('list6')">
+    TOYOTA FLEET  <i class="fa fa-caret-down w3-right"></i>
+    </button>
+    <div id="list6" class="w3-hide w3-white w3-card">
+      <a href="/_toyota" class="w3-bar-item w3-button">Initial</a>
+      <a href="/_toyota/report.php" class="w3-bar-item w3-button">Reports</a>
+    </div>
     <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Coming Soon...</a> 
     <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About</a> 
     <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
