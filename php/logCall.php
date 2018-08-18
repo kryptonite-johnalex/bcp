@@ -52,6 +52,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 		$sql = "INSERT INTO riskman_log (`agent_name`, `phone`, `disability_service`, `supervisor_notified`, `working_today`, `caller_type`, `incident_report`, `report_num`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$disability_service', '$supervisor_notified', '$working_today', '$caller_type', '$incident_report', '$report_num', '$created_at', '$sent_status')";
 
+	} elseif ($type == 'log' && $campaign == 'toyota'){
+
+		$name = isset($_POST['name']) ? $_POST['name'] : "";
+		$company = isset($_POST['company']) ? $_POST['company'] : "";
+		$dealer_code = isset($_POST['dealer_code']) ? $_POST['dealer_code'] : "";
+		$sap_id = isset($_POST['sap_id']) ? $_POST['sap_id'] : "";
+
+		$call_source = isset($_POST['call_source']) ? $_POST['call_source'] : "";
+		$call_type = isset($_POST['call_type']) ? $_POST['call_type'] : "";
+		$call_resolution = isset($_POST['call_resolution']) ? $_POST['call_resolution'] : "";
+		$note = $_POST['note'][0] . "<br>" . $_POST['note'][1] . "<br>" . $_POST['note'][2] . "<br>" . $_POST['note'][3];
+
+		// Timestamp when the process is created.
+		$created_at = date("Y-m-d H:i:s");
+
+		$sql = "INSERT INTO toyota_log (`agent_name`, `phone`, `name`, `company`, `dealer_code`, `sap_id`, `call_source`, `call_type`, `call_resolution`,  `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$name', '$company', '$dealer_code', '$sap_id', '$call_source', '$call_type', '$call_resolution', '$created_at', '$sent_status')";
+
 	} else {
 		echo "<h1>Error! Please contact Development Engineer ASAP</h1>";
 	}
