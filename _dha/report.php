@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 
 require_once('../php/db_connect.php');
 
-$sql = "SELECT * FROM toyota_log";
+$sql = "SELECT * FROM dha_log";
 
 $log = $conn->query($sql);
 
@@ -79,10 +79,10 @@ $log = $conn->query($sql);
             <th>No.</th>
             <th>Agent Name</th>
             <th>Phone</th>
+            <th>Job Type</th>
             <th>Full Name</th>
-            <th>Company</th>
-            <th>Dealer Code</th>
-            <th>SAP ID</th>
+            <th>Contact Number</th>
+            <th>Call Relation</th>
             <th>Submitted at</th>
             <th>Sent Status</th>
           </tr>
@@ -97,16 +97,16 @@ $log = $conn->query($sql);
           <td class="id"><?php echo $row['id']; ?></td>
           <td class="agent_name"><?php echo $row['agent_name']; ?></td>
           <td class="phone"><?php echo $row['phone']; ?></td>
+          <td class="job_type"><?php echo $row['job_type']; ?></td>
           <td class="name"><?php echo $row['name']; ?></td>
-          <td class="company"><?php echo $row['company']; ?></td>
-          <td class="dealer_code"><?php echo $row['dealer_code']; ?></td>
-          <td class="sap_id"><?php echo $row['sap_id']; ?></td>
+          <td class="contact_number"><?php echo $row['contact_number']; ?></td>
+          
+          <td class="call_relation"><?php echo $row['call_relation']; ?></td>
           <td class="time"><?php echo $row['created_at']; ?></td>
           <td class="status"><?php echo ($row['sent_status']) ? 'Sent' : 'Failed'; ?></td>
           <!-- hide -->
-          <td class="Work for Disability Service?" style="display: none;"><?php echo $row['disability_service']; ?></td>
-          <td class="Supervisor Notified" style="display: none;"><?php echo $row['supervisor_notified']; ?></td>
-          <td class="Working Today?" style="display: none;"><?php echo $row['working_today']; ?></td>
+          <td class="Full Address" style="display: none;"><?php echo $row['address'] . " " . $row['suburb'] . " " . $row['state'] . " " . $row['postal_code']; ?></td>
+          <td class="Details" style="display: none;"><?php echo $row['details']; ?></td>
         </tr>
         <?php
               if($row['sent_status'] == 1) $count++;
