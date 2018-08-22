@@ -47,6 +47,20 @@
       <a href="/_toyota" class="w3-bar-item w3-button">Initial</a>
       <a href="/_toyota/report.php" class="w3-bar-item w3-button">Reports</a>
     </div>
+    <button class="w3-bar-item w3-button w3-hover-white" onclick="myAccFunc('list7')">
+    DHA  <i class="fa fa-caret-down w3-right"></i>
+    </button>
+    <div id="list7" class="w3-hide w3-white w3-card">
+      <a href="/_dha" class="w3-bar-item w3-button">Initial</a>
+      <a href="/_dha/report.php" class="w3-bar-item w3-button">Reports</a>
+    </div>
+    <button class="w3-bar-item w3-button w3-hover-white" onclick="myAccFunc('list8')">
+    JLR  <i class="fa fa-caret-down w3-right"></i>
+    </button>
+    <div id="list8" class="w3-hide w3-white w3-card">
+      <a href="/_jlr" class="w3-bar-item w3-button">Initial</a>
+      <a href="/_jlr/report.php" class="w3-bar-item w3-button">Reports</a>
+    </div>
     <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Coming Soon...</a> 
     <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About</a> 
     <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
