@@ -31,6 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 		$sql = "INSERT INTO dcsi_log (`agent_name`, `phone`, `details`, `property_num`, `chintaro`, `chintaro_option`, `reminder`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$details', '$property_num', '$chintaro', '$chintaro_option', '$reminder', '$created_at', '$sent_status')";
 
+		echo "Data successfully saved";
+
 	} elseif ($type == 'log' && $campaign == 'riskman'){
 
 		$disability_service = $_POST['option'];
@@ -52,6 +54,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 		$sql = "INSERT INTO riskman_log (`agent_name`, `phone`, `disability_service`, `supervisor_notified`, `working_today`, `caller_type`, `incident_report`, `report_num`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$disability_service', '$supervisor_notified', '$working_today', '$caller_type', '$incident_report', '$report_num', '$created_at', '$sent_status')";
 
+		echo "Data successfully saved";
+
 	} elseif ($type == 'log' && $campaign == 'toyota'){
 
 		$name = isset($_POST['name']) ? $_POST['name'] : "";
@@ -68,6 +72,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$created_at = date("Y-m-d H:i:s");
 
 		$sql = "INSERT INTO toyota_log (`agent_name`, `phone`, `name`, `company`, `dealer_code`, `sap_id`, `call_source`, `call_type`, `call_resolution`,  `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$name', '$company', '$dealer_code', '$sap_id', '$call_source', '$call_type', '$call_resolution', '$created_at', '$sent_status')";
+
+		echo "Data successfully saved";
+
+	} elseif ($type == 'log' && $campaign == 'dha'){
+
+		$job_type = isset($_POST['job_type']) ? $_POST['job_type'] : "";
+
+		$name = isset($_POST['name']) ? $_POST['name'] : "";
+		$contact_number = isset($_POST['contact_number']) ? $_POST['contact_number'] : "";
+		$address = isset($_POST['address']) ? $_POST['address'] : "";
+		$suburb = isset($_POST['suburb']) ? $_POST['suburb'] : "";
+		$state = isset($_POST['state']) ? $_POST['state'] : "";
+		$postal_code = isset($_POST['postal_code']) ? $_POST['postal_code'] : "";
+		$details = isset($_POST['details']) ? $_POST['details'] : "";
+
+		$call_relation = isset($_POST['call_relation']) ? $_POST['call_relation'] : "";
+
+		// Timestamp when the process is created.
+		$created_at = date("Y-m-d H:i:s");
+
+		$sql = "INSERT INTO dha_log (`agent_name`, `phone`, `job_type`, `name`, `contact_number`, `address`, `suburb`, `state`, `postal_code`, `details`, `call_relation`,  `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$job_type', '$name', '$contact_number', '$address', '$suburb', '$state', '$postal_code', '$details', '$call_relation', '$created_at', '$sent_status')";
+
+		echo "Data successfully saved";
 
 	} else {
 		echo "<h1>Error! Please contact Development Engineer ASAP</h1>";
