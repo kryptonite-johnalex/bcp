@@ -96,6 +96,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 		echo "Data successfully saved";
 
+	} elseif ($type == 'log' && $campaign == 'jlr'){
+
+		$job_type = isset($_POST['job_type']) ? $_POST['job_type'] : "";
+
+		$reason = isset($_POST['reason']) ? $_POST['reason'] : "";
+		$vehicle_registration = isset($_POST['vehicle_registration']) ? $_POST['vehicle_registration'] : "";
+
+		$call_relation = isset($_POST['call_relation']) ? $_POST['call_relation'] : "";
+
+		// Timestamp when the process is created.
+		$created_at = date("Y-m-d H:i:s");
+
+		$sql = "INSERT INTO jlr_log (`agent_name`, `phone`, `job_type`, `vehicle_registration`, `reason`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$job_type', '$vehicle_registration', '$reason', '$created_at', '$sent_status')";
+
+		header('Location: ../_jlr/confirmation.php');
+
+		echo "Data successfully saved";
+
 	} else {
 		echo "<h1>Error! Please contact Development Engineer ASAP</h1>";
 	}
