@@ -104,9 +104,9 @@ $log = $conn->query($sql);
           <td class="time"><?php echo $row['created_at']; ?></td>
           <td class="status"><?php echo ($row['sent_status']) ? 'Sent' : 'Failed'; ?></td>
           <!-- hide -->
-          <td class="Work for Disability Service?" style="display: none;"><?php echo $row['disability_service']; ?></td>
-          <td class="Supervisor Notified" style="display: none;"><?php echo $row['supervisor_notified']; ?></td>
-          <td class="Working Today?" style="display: none;"><?php echo $row['working_today']; ?></td>
+          <td class="call_source" style="display: none;"><?php echo $row['call_source']; ?></td>
+          <td class="call_type" style="display: none;"><?php echo $row['call_type']; ?></td>
+          <td class="call_resolution" style="display: none;"><?php echo $row['call_resolution']; ?></td>
         </tr>
         <?php
               if($row['sent_status'] == 1) $count++;

@@ -68,7 +68,7 @@ $log = $conn->query($sql);
   <div class="w3-container">
     <div class="w3-row">
       <a href="javascript:void(0)" onclick="openCity(event, 'Log');">
-        <div class="w3-quarter tablink w3-bottombar w3-hover-red w3-padding">Log</div>
+        <div class="w3-quarter tablink w3-bottombar w3-hover-red w3-padding w3-border-black w3-red">Log</div>
       </a>
     </div>
 
