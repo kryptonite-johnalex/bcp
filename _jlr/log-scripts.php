@@ -38,7 +38,7 @@ $page_js = false;
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
   <!-- Header -->
   <div class="w3-container" style="margin-top:80px" id="top">
-    <h1 class="w3-jumbo"><b>Toyota Fleet Inbound</b></h1>
+    <h1 class="w3-jumbo"><b>JLR IN CONTROL EMERGENCY BCP NOTES</b></h1>
     <h1 class="w3-xxxlarge w3-text-red"><b></b></h1>
     <hr style="width:50px;border: 5px solid red" class="w3-round">
 
@@ -53,11 +53,10 @@ $page_js = false;
       <input class="w3-hide" type="hidden" name="form_type" value="log">
       <input class="w3-hide" type="hidden" name="campaign" value="jlr">
       <input class="w3-hide" type="hidden" name="job_type" value="<?php echo $_POST['job_type'] ?>">
-      <input class="w3-hide" type="hidden" name="option" value="<?php echo $_POST['option'] ?>">
       <input class="w3-hide" type="hidden" name="reason" value="<?php echo $_POST['reason'] ?>">
       <input class="w3-hide" type="hidden" name="vehicle_registration" value="<?php echo $_POST['vehicle_registration'] ?>">
 
-      <?php if(!$_POST['option']) { ?>
+      <?php if($_POST['job_type']) { ?>
       <p class="w3-text-red">Ask the caller if they require emergency services.</p>
       <p class="w3-text-red">If they do, and there are persons injured, do not ask them to confirm their PIN.</p>
       <p class="w3-text-red">Attempt to confirm the location of the vehicle and, if possible, confirm with the caller that the details are accurate.</p>

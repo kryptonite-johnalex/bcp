@@ -53,14 +53,14 @@ $page_js = false;
       <input class="w3-hide" type="hidden" name="form_type" value="log">
       <input class="w3-hide" type="hidden" name="campaign" value="jlr">
 
+      <p class="w3-text-red">In Control <?php switch($_GET['did_extensiont']) { case '61870791713': echo "Secure"; break; case '61870791714': echo "Emergency Assistance"; break; } ?>, how can I help you?</p>
+
       <div class="w3-row">
         <div class="w3-half">
-          <button type="submit" name="action[option]" value="0" class="w3-button w3-padding-32 w3-yellow w3-margin-bottom" style="width: 70%">Accident or Emergency Services</button>
-          <input type="hidden" name="action[value]" value="Accident or Emergency Services">
+          <button type="submit" name="job_type" value="0" class="w3-button w3-padding-32 w3-yellow w3-margin-bottom" style="width: 70%">Accident or Emergency Services</button>
         </div>
         <div class="w3-half">
-          <button type="submit" name="action[option]" value="1" value="Stolen Vehicle" class="w3-button w3-padding-32 w3-orange w3-margin-bottom" style="width: 70%">Stolen Vehicle</button>
-          <input type="hidden" name="action[value]" value="Stolen Vehicle">
+          <button type="submit" name="job_type" value="1" class="w3-button w3-padding-32 w3-orange w3-margin-bottom" style="width: 70%">Stolen Vehicle</button>
         </div>
       </div>
 

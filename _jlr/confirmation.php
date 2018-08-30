@@ -38,7 +38,7 @@ $page_js = false;
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
   <!-- Header -->
   <div class="w3-container" style="margin-top:80px" id="top">
-    <h1 class="w3-jumbo"><b>Toyota Fleet Inbound</b></h1>
+    <h1 class="w3-jumbo"><b>JLR IN CONTROL EMERGENCY BCP NOTES</b></h1>
     <h1 class="w3-xxxlarge w3-text-red"><b></b></h1>
     <hr style="width:50px;border: 5px solid red" class="w3-round">
 
@@ -52,8 +52,7 @@ $page_js = false;
     <form action="log-scripts.php" method="POST" style="margin-top: 50px;">
       <input class="w3-hide" type="hidden" name="form_type" value="log">
       <input class="w3-hide" type="hidden" name="campaign" value="jlr">
-      <input class="w3-hide" type="hidden" name="job_type" value="<?php echo $_POST['action']['value'] ?>">
-      <input class="w3-hide" type="hidden" name="option" value="<?php echo $_POST['action']['option'] ?>">
+      <input class="w3-hide" type="hidden" name="job_type" value="<?php echo (!$_POST['job_type']) ? "Accident or Emergency Services" : "Stolen Vehicle" ?>">
       <input class="w3-hide" type="hidden" name="reason" value="<?php echo $_POST['reason'] ?>">
 
       <div class="w3-row">
