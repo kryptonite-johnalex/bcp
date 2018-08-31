@@ -53,7 +53,7 @@ $page_js = false;
       <input class="w3-hide" type="hidden" name="form_type" value="log">
       <input class="w3-hide" type="hidden" name="campaign" value="jlr">
 
-      <p class="w3-text-red">In Control <?php switch($_GET['did_extensiont']) { case '61870791713': echo "Secure"; break; case '61870791714': echo "Emergency Assistance"; break; } ?>, how can I help you?</p>
+      <p class="w3-text-red">In Control <?php switch($_GET['did_extension']) { case '61870791713': echo "Secure"; break; case '61870791714': echo "Emergency Assistance"; break; } ?>, how can I help you?</p>
 
       <div class="w3-row">
         <div class="w3-half">
