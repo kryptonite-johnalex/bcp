@@ -38,6 +38,7 @@
   <div class="w3-container" id="senior" style="margin-top:75px">
     <form action="../php/sendComplaints.php" method="POST">
       <input class="w3-hide" type="text" name="form_type" value="senior">
+      <input class="w3-hide" type="text" name="campaign" value="queensland">
       <div class="w3-row-padding w3-margin-bottom">
         <div class="w3-third">
           <label>First Name</label>
