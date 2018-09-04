@@ -37,14 +37,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     switch ($campaign) {
         case 'queensland':
             // Set the recipient email address.
-            $recipient = "marveelou@gmail.com,quu@contact121.com.au,blendedtl@contact121.com.au,overnight@contact121.com.au";
+            $recipient = "quu@contact121.com.au,blendedtl@contact121.com.au,overnight@contact121.com.au";
             // Set the email subject.
             $subject = "A1 ALERT";
             break;
         
         case 'adelaide':
             // Set the recipient email address.
-            $recipient = "marveelou@gmail.com,info@homelottery.com.au;blendedtl@contact121.com.au;emily.bill@contact121.com.au";
+            $recipient = "info@homelottery.com.au;blendedtl@contact121.com.au;emily.bill@contact121.com.au";
             // Set the email subject.
             $subject = "HRF Escalation Email - " . $frequent_query;
             // Set the table name.
@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         case 'melbourne':
             // Set the recipient email address.
-            $recipient = "marveelou@gmail.com,info@rmhhomelottery.com.au;blendedtl@contact121.com.au;emily.bill@contact121.com.au";
+            $recipient = "info@rmhhomelottery.com.au;blendedtl@contact121.com.au;emily.bill@contact121.com.au";
             // Set the email subject.
             $subject = "RMH Escalation Email - " . $frequent_query;
             // Set the table name.
@@ -101,6 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $agent = $_SESSION['agent'];
     $phone = $_SESSION['phone'];
+    $epoch = date("Y-m-d H:i:s", $_SESSION['epoch']);
 
     // Filtering form type
     if($type == 'escalation' && $campaign == 'queensland') {
@@ -214,7 +215,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Data Insert
     if($type == 'escalation' && $campaign == 'queensland') {
-        $sql = "INSERT INTO quu_escalation (`agent_name`, `phone`, `addr_street`, `addr_suburb`, `reason`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$street', '$street', '$reason', '$created_at', '$sent_status')";
+        $sql = "INSERT INTO quu_escalation (`agent_name`, `phone`, `addr_street`, `addr_suburb`, `reason`, `epoch`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$street', '$street', '$reason', '$epoch', '$created_at', '$sent_status')";
     } elseif ($type == 'escalation' && $campaign == 'adelaide') {
         $sql = "INSERT INTO al_escalation (`agent_name`, `phone`, `first_name`, `last_name`, `contact`, `email`, `contact_method`, `frequent_query`, `additional_info`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$first_name', '$last_name', '$contact', '$email', '$contact_method', '$frequent_query', '$additional_info', '$created_at', '$sent_status')";
     } elseif ($type == 'escalation' && $campaign == 'melbourne') {

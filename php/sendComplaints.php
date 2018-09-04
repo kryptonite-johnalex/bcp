@@ -59,6 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $details = $_POST['details'];
         $act_taken = $_POST['act_taken'];
         $cust_req = $_POST['cust_req'];
+        $epoch = date("Y-m-d H:i:s", $_SESSION['epoch']);
         $created_at = date("Y-m-d H:i:s");
         $agent_id = '1234';
 

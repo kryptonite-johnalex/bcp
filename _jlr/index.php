@@ -1,10 +1,15 @@
 <?php
 session_start();
 
-if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
+if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch']) && isset($_GET['did_extension'])) {
   // Set session variables
-  $_SESSION["agent"] = $_GET['fullname'];
-  $_SESSION["phone"] = $_GET['phone'];
+  $_SESSION["agent"] = $_GET['user'];
+  $_SESSION["phone"] = $_GET['phone_number'];
+  $_SESSION["epoch"] = $_GET['epoch'];
+} else {
+  $_SESSION["agent"] = 'N/A';
+  $_SESSION["phone"] = 'N/A';
+  $_SESSION["epoch"] = 0000000001;
 }
 
 $page_js = false;
@@ -53,7 +58,7 @@ $page_js = false;
       <input class="w3-hide" type="hidden" name="form_type" value="log">
       <input class="w3-hide" type="hidden" name="campaign" value="jlr">
 
-      <p class="w3-text-red">In Control <?php switch($_GET['did_extension']) { case '61870791713': echo "Secure"; break; case '61870791714': echo "Emergency Assistance"; break; } ?>, how can I help you?</p>
+      <p class="w3-text-red">In Control <?php switch(isset($_GET['did_extension'])) { case '61870791713': echo "Secure"; break; case '61870791714': echo "Emergency Assistance"; break; default: echo "N/A"; break; } ?>, how can I help you?</p>
 
       <div class="w3-row">
         <div class="w3-half">
@@ -95,5 +100,6 @@ $page_js = false;
 <?php include_once('../partials/footer.php'); ?>
 
 <?php include_once('../assets/scripts.html'); ?>
+
 </body>
 </html>

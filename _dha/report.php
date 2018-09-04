@@ -105,6 +105,7 @@ $log = $conn->query($sql);
           <td class="time"><?php echo $row['created_at']; ?></td>
           <td class="status"><?php echo ($row['sent_status']) ? 'Sent' : 'Failed'; ?></td>
           <!-- hide -->
+          <td class="epoch" style="display: none;"><?php echo $row['epoch']; ?></td>
           <td class="Full Address" style="display: none;"><?php echo $row['address'] . " " . $row['suburb'] . " " . $row['state'] . " " . $row['postal_code']; ?></td>
           <td class="Details" style="display: none;"><?php echo $row['details']; ?></td>
         </tr>
@@ -115,7 +116,7 @@ $log = $conn->query($sql);
         ?>
       </table>
       <tfoot>
-        <p>Total Count: <?php echo $log->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo $count; ?></span></p>
+        <p>Total Count: <?php echo $log->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo isset($count) ? $count : 0; ?></span></p>
       </tfoot>
     </div>
 

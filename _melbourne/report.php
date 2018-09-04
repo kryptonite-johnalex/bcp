@@ -109,6 +109,7 @@ $order = $conn->query($sql);
           <td class="time"><?php echo $row['created_at']; ?></td>
           <td class="status"><?php echo ($row['sent_status']) ? 'Sent' : 'Failed'; ?></td>
           <!-- hide -->
+          <td class="epoch" style="display: none;"><?php echo $row['epoch']; ?></td>
           <td class="contact_method" style="display: none"><?php echo $row['contact_method']; ?></td>
           <td class="frequent_query" style="display: none"><?php echo $row['frequent_query']; ?></td>
           <td class="additional_info" style="display: none"><?php echo $row['additional_info']; ?></td>
@@ -120,7 +121,7 @@ $order = $conn->query($sql);
         ?>
       </table>
       <tfoot>
-        <p>Total Count: <?php echo $escalation->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo $count; ?></span></p>
+        <p>Total Count: <?php echo $escalation->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo isset($count) ? $count : 0; ?></span></p>
       </tfoot>
     </div>
     <div id="Order" class="tabs" style="display:none">
@@ -149,6 +150,7 @@ $order = $conn->query($sql);
           <td class="time"><?php echo $row['created_at']; ?></td>
           <td class="status"><?php echo ($row['sent_status']) ? 'Sent' : 'Failed'; ?></td>
           <!-- hide -->
+          <td class="epoch" style="display: none;"><?php echo $row['epoch']; ?></td>
         </tr>
         <?php
               if($row['sent_status'] == 1) $count++;
@@ -157,7 +159,7 @@ $order = $conn->query($sql);
         ?>
       </table>
       <tfoot>
-        <p>Total Count: <?php echo $order->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo $count; ?></span></p>
+        <p>Total Count: <?php echo $order->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo isset($count) ? $count : 0; ?></span></p>
       </tfoot>
     </div>
 

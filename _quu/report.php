@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 
 require_once('../php/db_connect.php');
 
-$sql = "SELECT * FROM quu_complaints WHERE type='complaints'";
+$sql = "SELECT * FROM quu_complaints";
 
 $complaints = $conn->query($sql);
 
@@ -60,7 +60,7 @@ $script = $conn->query($sql);
 
   <div id="id01" class="w3-modal">
     <div class="w3-modal-content w3-animate-zoom w3-card-4">
-      <header class="w3-container w3-teal"> 
+      <header class="w3-container w3-red"> 
         <span onclick="document.getElementById('id01').style.display='none'" 
         class="w3-button w3-display-topright">&times;</span>
         <h2>Modal Header</h2>
@@ -69,7 +69,7 @@ $script = $conn->query($sql);
         <p>Some text..</p>
         <p>Some text..</p>
       </div>
-      <footer class="w3-container w3-teal">
+      <footer class="w3-container w3-red">
         <p>Modal Footer</p>
       </footer>
     </div>
@@ -123,6 +123,7 @@ $script = $conn->query($sql);
           <td class="time"><?php echo $row['created_at']; ?></td>
           <td class="status"><?php echo ($row['sent_status']) ? 'Sent' : 'Failed'; ?></td>
           <!-- hide -->
+          <td class="epoch" style="display: none;"><?php echo $row['epoch']; ?></td>
           <td class="job" style="display: none"><?php echo $row['job_number']; ?></td>
           <td class="details" style="display: none"><?php echo $row['compl_details']; ?></td>
           <td class="action" style="display: none"><?php echo $row['act_taken']; ?></td>
@@ -135,7 +136,7 @@ $script = $conn->query($sql);
         ?>
       </table>
       <tfoot>
-        <p>Total Count: <?php echo $complaints->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo $count; ?></span></p>
+        <p>Total Count: <?php echo $complaints->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo isset($count) ? $count : 0; ?></span></p>
       </tfoot>
     </div>
 
@@ -170,6 +171,7 @@ $script = $conn->query($sql);
           <td class="time"><?php echo $row['created_at']; ?></td>
           <td class="status"><?php echo ($row['sent_status']) ? 'Yes' : 'No'; ?></td>
           <!-- hide -->
+          <td class="epoch" style="display: none;"><?php echo $row['epoch']; ?></td>
           <td class="job w3-hide"><?php echo $row['job_number']; ?></td>
           <td class="details w3-hide"><?php echo $row['compl_details']; ?></td>
           <td class="action w3-hide"><?php echo $row['act_taken']; ?></td>
@@ -182,7 +184,7 @@ $script = $conn->query($sql);
         ?>
       </table>
       <tfoot>
-        <p>Total Count: <?php echo $senior->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo $count; ?></span></p>
+        <p>Total Count: <?php echo $senior->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo isset($count) ? $count : 0; ?></span></p>
       </tfoot>
     </div>
 
@@ -213,6 +215,7 @@ $script = $conn->query($sql);
           <td class="reason"><?php echo $row['reason']; ?></td>
           <td class="time"><?php echo $row['created_at']; ?></td>
           <td class="status"><?php echo ($row['sent_status']) ? 'Sent' : 'Sent Failed'; ?></td>
+          <td class="epoch" style="display: none;"><?php echo $row['epoch']; ?></td>
         </tr>
         <?php
              if($row['sent_status'] == 1) $count++;
@@ -265,6 +268,7 @@ $script = $conn->query($sql);
             <?php } ?>
             </ul>
           </td>
+          <td class="epoch" style="display: none;"><?php echo $row['epoch']; ?></td>
           <td class="time"><?php echo $row['created_at']; ?></td>
           <td class="status"><?php echo ($row['sent_status']) ? 'Sent' : 'Sent Failed'; ?></td>
         </tr>
@@ -275,7 +279,7 @@ $script = $conn->query($sql);
         ?>
       </table>
       <tfoot>
-        <p>Total Count: <?php echo $script->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo $count . " / " . $script->num_rows; ?></span></p>
+        <p>Total Count: <?php echo $script->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo isset($count) ? $count : 0 . " / " . $script->num_rows; ?></span></p>
       </tfoot>
     </div>
   </div>

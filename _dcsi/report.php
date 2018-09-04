@@ -109,6 +109,7 @@ $log = $conn->query($sql);
           <td class="time"><?php echo $row['created_at']; ?></td>
           <td class="status"><?php echo ($row['sent_status']) ? 'Sent' : 'Failed'; ?></td>
           <!-- hide -->
+          <td class="epoch" style="display: none;"><?php echo $row['epoch']; ?></td>
           <td class="contract_code" style="display: none"><?php echo !empty($row['contract_code']) ? $row['contract_code'] : "&nbsp;"; ?></td>
           <td class="contact_name" style="display: none"><?php echo !empty($row['contact_name']) ? $row['contact_name'] : "&nbsp;"; ?></td>
           <td class="contact_phone" style="display: none"><?php echo !empty($row['contact_phone']) ? $row['contact_phone'] : "&nbsp;"; ?></td>
@@ -153,6 +154,7 @@ $log = $conn->query($sql);
           <td class="time"><?php echo $row['created_at']; ?></td>
           <td class="status"><?php echo ($row['sent_status']) ? 'Sent' : 'Failed'; ?></td>
           <!-- hide -->
+          <td class="epoch" style="display: none;"><?php echo $row['epoch']; ?></td>
           <td class="chintaro_option" style="display: none;"><?php echo !empty($row['chintaro_option']) ? $row['chintaro_option'] : "N/A"; ?></td>
           <td class="ccb_reminded" style="display: none;"><?php echo (lcfirst($row['reminder']) == 'y') ? 'Yes' : 'No'; ?></td>
         </tr>
@@ -163,7 +165,7 @@ $log = $conn->query($sql);
         ?>
       </table>
       <tfoot>
-        <p>Total Count: <?php echo $log->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo $count; ?></span></p>
+        <p>Total Count: <?php echo $log->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo isset($count) ? $count : 0; ?></span></p>
       </tfoot>
     </div>
 

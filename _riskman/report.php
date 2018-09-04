@@ -102,6 +102,8 @@ $log = $conn->query($sql);
           <td class="time"><?php echo $row['created_at']; ?></td>
           <td class="status"><?php echo ($row['sent_status']) ? 'Sent' : 'Failed'; ?></td>
           <!-- hide -->
+          <td class="epoch" style="display: none;"><?php echo $row['epoch']; ?></td>
+          <td class="epoch" style="display: none;"><?php echo $row['epoch']; ?></td>
           <td class="Work for Disability Service?" style="display: none;"><?php echo $row['disability_service']; ?></td>
           <td class="Supervisor Notified" style="display: none;"><?php echo $row['supervisor_notified']; ?></td>
           <td class="Working Today?" style="display: none;"><?php echo $row['working_today']; ?></td>
@@ -113,7 +115,7 @@ $log = $conn->query($sql);
         ?>
       </table>
       <tfoot>
-        <p>Total Count: <?php echo $log->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo $count; ?></span></p>
+        <p>Total Count: <?php echo $log->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo isset($count) ? $count : 0; ?></span></p>
       </tfoot>
     </div>
 
