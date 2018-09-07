@@ -224,7 +224,7 @@ $script = $conn->query($sql);
         ?>
       </table>
       <tfoot>
-        <p>Total Count: <?php echo $escalation->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo $count . " / " . $escalation->num_rows; ?></span></p>
+        <p>Total Count: <?php echo $escalation->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo isset($count) ? $count : 0 . " / " . $escalation->num_rows; ?></span></p>
       </tfoot>
     </div>
 
