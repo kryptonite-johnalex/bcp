@@ -51,7 +51,7 @@ if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
             <div class="w3-row w3-margin-top">
               <div class="w3-col s2"><p>Call Outcome</p></div>
               <div class="w3-col s2">
-                <select id="disableService" class="w3-select w3-border" name="caller_type">
+                <select id="call_outcome" class="w3-select w3-border" name="call_outcome">
                   <option selected="" disabled="disabled"></option>
                   <option value="received">Email Received by BU</option>
                 </select>

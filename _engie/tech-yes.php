@@ -1,11 +1,7 @@
 <?php
 session_start();
 
-if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
-  // Set session variables
-  $_SESSION["agent"] = $_GET['fullname'];
-  $_SESSION["phone"] = $_GET['phone'];
-}
+$page_js = false;
 
 ?>
 <!DOCTYPE html>
@@ -35,7 +31,9 @@ if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
 
-  <form>
+  <form action="new-form.php" method="POST">
+    <input class="w3-hide" type="text" name="form_type" value="complaints">
+    <input class="w3-hide" type="text" name="campaign" value="engie">
     <div class="w3-container">
       <div style="margin-top: 150px;">
         <p class="w3-text-red">Refer to the Master AH & On-Call Roster for current AH & On-Call personnel to dispatch the job to.</p>
@@ -62,7 +60,7 @@ if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
 
     <div class="w3-row showScript" style="margin-top: 50px; display: none">
       <div class="w3-row w3-padding">
-        <button type="button" onclick="window.history.back()" class="w3-button w3-block w3-padding-32 w3-light-gray w3-margin-bottom w3-quarter w3-card">Back</button>
+        <button type="button" onclick="window.location.href='/_engie/'" class="w3-button w3-block w3-padding-32 w3-light-gray w3-margin-bottom w3-quarter w3-card">Back</button>
       </div>
     </div>
   </form>
@@ -84,6 +82,8 @@ if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
     $('#showScript').change(function(){
       if($(this).val() == 'yes') {
         $('.showScript').show();
+      } else {
+        $('.showScript').hide();
       }
     });
   });

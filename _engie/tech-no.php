@@ -61,22 +61,26 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
       <p class="w3-text-red" style="text-decoration: underline;"><b>Use the email function below to send an email notification to the applicable ENGIE BU.</b></p>
       <p class="w3-text-red">Confirm that you have completed the call logging in Pronto and paste the ENGIE BU code from Pronto into the box.</p>
 
+      <form action="../php/showData.php" method="POST">
+      <input class="w3-hide" type="text" name="form_type" value="complaints">
+      <input class="w3-hide" type="text" name="campaign" value="engie">
+      <input class="w3-hide" type="text" name="job_accept" value="<?php echo $_POST['job_accept']; ?>">
       <div class="w3-row w3-margin-top w3-third">
         <div class="w3-col s4"><p>ENGIE BU Code: </p></div>
         <div class="w3-col s6">
-          <select id="disableService" class="w3-select w3-border" name="caller_type" onchange="disabilityService('disableService')">
+          <select id="bu_code" class="w3-select w3-border" name="bu_code">
             <option selected="" disabled="disabled"></option>
-            <option value="vicservice.anz@engie.com; service@contact121.com.au">483M</option>
-            <option value="vicservice.anz@engie.com; service@contact121.com.au">483M</option>
-            <option value="servicensw.anz@engie.com; service@contact121.com.au">482M</option>
-            <option value="qldservice.anz@engie.com; service@contact121.com.au">484M</option>
-            <option value="qldservice.anz@engie.com; service@contact121.com.au">48TM</option>
-            <option value="servicesa.anz@engie.com; service@contact121.com.au">485M</option>
-            <option value="servicesa.anz@engie.com; service@contact121.com.au">48ZM</option>
-            <option value="service.wa.anz.fire@engie.com; service@contact121.com.au">486M</option>
-            <option value="servicent.anz@engie.com; service@contact121.com.au">487M</option>
-            <option value="alicespringsservice.anz@engie.com; service@contact121.com.au">489M</option>
-            <option value="nac@anz.engie.com; service@contact121.com.au">Outage</option>
+            <option value="483M|vicservice.anz@engie.com; service@contact121.com.au|387926500">483M</option>
+            <option value="483M|vicservice.anz@engie.com; service@contact121.com.au|387926500">483M</option>
+            <option value="482M|servicensw.anz@engie.com; service@contact121.com.au|297144700">482M</option>
+            <option value="484M|qldservice.anz@engie.com; service@contact121.com.au|734578500">484M</option>
+            <option value="48TM|qldservice.anz@engie.com; service@contact121.com.au|734578500">48TM</option>
+            <option value="485M|servicesa.anz@engie.com; service@contact121.com.au|883505300">485M</option>
+            <option value="48ZM|servicesa.anz@engie.com; service@contact121.com.au|881826936">48ZM</option>
+            <option value="486M|service.wa.anz.fire@engie.com; service@contact121.com.au|892096170">486M</option>
+            <option value="487M|servicent.anz@engie.com; service@contact121.com.au|889242900">487M</option>
+            <option value="489M|alicespringsservice.anz@engie.com; service@contact121.com.au|889534404">489M</option>
+            <option value="Outage|nac@anz.engie.com; service@contact121.com.au">Outage</option>
           </select>
         </div>
       </div>
@@ -85,8 +89,7 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
   <div class="w3-container w3-light-gray" id="options" style="margin-top:20px">
     <div class="w3-row">
       <div class="w3-col-12 w3-padding">
-        <form action="../php/showData.php" method="POST">
-          <input class="w3-hide" type="text" name="form_type" value="complaints">
+        
           <div class="w3-row">
 
             <div class="w3-row w3-half">
@@ -154,7 +157,7 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Tech Allocated: </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="phone" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="tech_allocation" required="" placeholder="">
               </div>
             </div>
             <div class="w3-row w3-half">

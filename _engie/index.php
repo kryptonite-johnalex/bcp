@@ -10,6 +10,7 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
   $_SESSION["agent"] = 'N/A';
   $_SESSION["phone"] = 'N/A';
   $_SESSION["epoch"] = 0000000001;
+  $_GET['did_extension'] = 61870791062;
 }
 
 // $page_js = false;
@@ -64,8 +65,10 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
 
   <!-- Header -->
     <div class="w3-container" id="top">
-      <?php if(false) { ?>
-      <p class="w3-text-pink">This is a HIGH PRIORITY Engie Job and must be treated with extreme urgency!</p>
+      <?php if(isset($_GET['did_extension']) == 61870791062) { ?>
+      <div class="w3-pink w3-padding">
+        <h3 style="text-decoration: underline;">This is a HIGH PRIORITY Engie Job and must be treated with extreme urgency!</h3>
+      </div>
       <?php } ?>
       <p class="w3-text-blue">Welcome to ENGIE Fire. My name is <?php echo $_SESSION['agent']; ?>. How can I help you?</p>
     </div>
@@ -74,26 +77,27 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
     <div class="w3-row">
       <p class="w3-text-red">Fill in the following details</p>
       <div class="w3-col-12 w3-padding">
-        <form action="../php/showData.php" method="POST">
-          <input class="w3-hide" type="text" name="form_type" value="complaints">
+        <form action="../php/test.php" method="POST">
+          <input class="w3-hide" type="text" name="form_type" value="log">
+          <input class="w3-hide" type="text" name="campaign" value="engie">
           <div class="w3-row">
 
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Caller Name: </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="name" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="caller_name" required="" placeholder="">
               </div>
             </div>
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Caller Phone: </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="phone" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="caller_phone" required="" placeholder="">
               </div>
             </div>
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Debtor Name: </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="debtor" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="debtor_name" required="" placeholder="">
               </div>
             </div>
 
@@ -103,7 +107,7 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Site Name: </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="site" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="site_name" required="" placeholder="">
               </div>
             </div>
             <div class="w3-row w3-half">
@@ -151,9 +155,10 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
           </div>
 
           <div class="w3-row w3-margin-top">
-            <div class="w3-col s2"><p>Is TECH allocation required? </p></div>
-            <div class="w3-col s4">
-              <select class="w3-select w3-border" name="tech_allocation">
+            <div class="w3-col s3"><p>Is TECH allocation required? </p></div>
+            <div class="w3-col s2">
+              <!-- <select id="tech" class="w3-select w3-border" name="tech_allocation" onchange='this.form.submit()'> -->
+              <select id="tech" class="w3-select w3-border" name="tech_allocation_required">
                 <option selected="" disabled="disabled"></option>
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
@@ -161,20 +166,9 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
             </div>
           </div>
 
-          <div class="w3-padding">
-            <button type="submit" class="w3-button w3-block w3-padding-32 w3-green w3-margin-bottom w3-half">Send Email</button>
-          </div>
         </form> 
       </div>
 
-      <!-- <div class="w3-row w3-padding">
-        <div class="w3-half w3-padding">
-          <button type="button" onclick="window.location.href = '/_melbourne/faq.php'" class="w3-button w3-padding-32 w3-block w3-pale-red w3-margin-bottom w3-card" style="width: 80%;margin:0 auto;"><h2 style="margin: 13px 0;">FAQ</h2></button>
-        </div>
-        <div class="w3-half w3-padding">
-          <button type="button" onclick="window.location.href = '/_melbourne/escalation.php'" class="w3-button w3-padding-32 w3-block w3-yellow w3-margin-bottom w3-card" style="width: 80%;margin:0 auto;"><h2 style="margin: 13px 0;">Escalation</h2></button>
-        </div>
-      </div> -->
     </div>
   </div>
 
@@ -186,6 +180,21 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
 <?php include_once('../partials/footer.php'); ?>
 
 <?php include_once('../assets/scripts.html'); ?>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#tech").on("change", function(){
+      var flag = $('form')[0].checkValidity(); 
+      if(flag) {
+        this.form.action += "?form_empty=" + false;
+      } else {
+        this.form.action += "?form_empty=" + true;
+      }
+
+      this.form.submit();
+    });
+  });
+</script>
 
 </body>
 </html>
