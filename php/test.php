@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	$sql = "INSERT INTO engie_log (`agent_name`, `phone`, `caller_name`, `caller_phone`, `debtor_name`, `site_name`, `address`, `building`, `powo`, `issue`, `urgency`, `tech_allocation_required`, `epoch`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$caller_name', '$caller_phone', '$debtor_name', '$site_name', '$address', '$building', '$powo', '$issue', '$urgency', '$tech_allocation_required', '$epoch', '$created_at', '$sent_status')";
 
-	switch ($_POST['tech_allocation']) {
+	switch ($_POST['tech_allocation_required']) {
 		case 'yes':
 
 			header('Location: ../_engie/tech-yes.php');
