@@ -32,7 +32,7 @@ $page_js = false;
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
 
   <form action="new-form.php" method="POST">
-    <input class="w3-hide" type="text" name="form_type" value="complaints">
+    <input class="w3-hide" type="text" name="form_type" value="job_confirm">
     <input class="w3-hide" type="text" name="campaign" value="engie">
     <div class="w3-container">
       <div style="margin-top: 150px;">

@@ -41,8 +41,9 @@ if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
         <p class="w3-text-red">For all Emergency, Critical or Urgent (P0-P1) calls, call the ENGIE BU to confirm that the email notification has been sent and received successfully. Use the 'Call ENGIE BU' button below</p>
         <p class="w3-text-red"><b>If the email has not been received, go back and attempt to send the email again. If the email does not go through after that, ask TL for assistance.</b></p>
         <div class="w3-row w3-margin-top">
-            <div class="w3-col s12 w3-text-blue"><p>BU Phone Number: </p></div>
-            <div class="w3-col s12 w3-text-blue"><p>BU Email Address: </p></div>
+        	<?php var_dump($_GET); ?>
+            <div class="w3-col s12 w3-text-blue"><p>BU Phone Number: <?php echo $_GET['bu_phone']; ?></p></div>
+            <div class="w3-col s12 w3-text-blue"><p>BU Email Address: <?php echo $_GET['bu_email']; ?></p></div>
             <div class="w3-col s12">
               <div class="w3-row w3-padding">
                 <button type="button" onclick="window.history.back()" class="w3-button w3-block w3-padding-32 w3-aqua w3-margin-bottom w3-quarter w3-card">Call Engie BU</button>
@@ -68,9 +69,9 @@ if(isset($_GET['fullname']) && isset($_GET['fullname'])) {
       </div>
     </div>
 
-    <div class="w3-row showScript" style="margin-top: 50px; display: none">
+    <div class="w3-row showScript" style="margin-top: 50px;">
       <div class="w3-row w3-padding">
-        <button type="button" onclick="window.history.back()" class="w3-button w3-block w3-padding-32 w3-light-gray w3-margin-bottom w3-quarter w3-card">Back</button>
+        <button type="button" onclick="window.location.href='/_engie/index.php'" class="w3-button w3-block w3-padding-32 w3-light-gray w3-margin-bottom w3-quarter w3-card w3-right">Back</button>
       </div>
     </div>
   </form>

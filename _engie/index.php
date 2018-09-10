@@ -52,7 +52,7 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
     </div>
     <div class="w3-quarter">
       <p></p>
-      <button type="button" onclick="window.location.href = '/_engie/'" class="w3-button w3-block w3-card w3-padding-32 w3-khaki">Contact Branch (BU) Directly</button>
+      <button type="button" onclick="window.location.href = '/_engie/contact_directly.php'" class="w3-button w3-block w3-card w3-padding-32 w3-khaki">Contact Branch (BU) Directly</button>
     </div>
   </div>
 

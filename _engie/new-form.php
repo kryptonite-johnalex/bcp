@@ -57,13 +57,12 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
   
   <!-- Header -->
     <div class="w3-container" id="top">
-=
-      <?php var_dump($_POST); ?>
+
       <p class="w3-text-red" style="text-decoration: underline;"><b>Use the email function below to send an email notification to the applicable ENGIE BU.</b></p>
       <p class="w3-text-red">Confirm that you have completed the call logging in Pronto and paste the ENGIE BU code from Pronto into the box.</p>
 
-      <form action="../php/showData.php" method="POST">
-      <input class="w3-hide" type="text" name="form_type" value="complaints">
+      <form action="../php/sendEmail.php" method="POST">
+      <input class="w3-hide" type="text" name="form_type" value="allocation">
       <input class="w3-hide" type="text" name="campaign" value="engie">
       <input class="w3-hide" type="text" name="job_accept" value="<?php echo $_POST['job_accept']; ?>">
       <div class="w3-row w3-margin-top w3-third">
@@ -159,7 +158,7 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Tech Allocated: </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="tech_allocation" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="tech_allocated" required="" placeholder="">
               </div>
             </div>
             <div class="w3-row w3-half">
@@ -178,11 +177,11 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
             <div class="w3-row">
               <div class="w3-col s12"><p>Issue Reported: </p></div>
               <div class="w3-col s12">
-                <input class="w3-input w3-border" type="text" name="issue[]" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="issues[]" required="" placeholder="">
                 <p></p>
-                <input class="w3-input w3-border" type="text" name="issue[]" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="issues[]" required="" placeholder="">
                 <p></p>
-                <input class="w3-input w3-border" type="text" name="issue[]" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="issues[]" required="" placeholder="">
               </div>
             </div>
           </div>
