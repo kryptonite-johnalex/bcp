@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	$agent = $_SESSION['agent'];
 	$phone = $_SESSION['phone'];
+	$fire_type = ($_SESSION['did_extension'] == "61870791062") ? "HV" : "LV";
 	$epoch = date("Y-m-d H:i:s", $_SESSION['epoch']);
 
 	$caller_name = $_POST['caller_name'];
@@ -23,10 +24,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$issue = $_POST['issue'][0] . "<br>" . $_POST['issue'][1];
 	$urgency = $_POST['urgency'];
 	$tech_allocation_required = $_POST['tech_allocation_required'];
-	$created_at = date("Y-m-d");
+	$created_at = date("Y-m-d H:i:s");
 	$sent_status = 0;
 
-	$sql = "INSERT INTO engie_log (`agent_name`, `phone`, `caller_name`, `caller_phone`, `debtor_name`, `site_name`, `address`, `building`, `powo`, `issue`, `urgency`, `tech_allocation_required`, `epoch`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$caller_name', '$caller_phone', '$debtor_name', '$site_name', '$address', '$building', '$powo', '$issue', '$urgency', '$tech_allocation_required', '$epoch', '$created_at', '$sent_status')";
+	$sql = "INSERT INTO engie_log (`agent_name`, `phone`, `fire_type`, `caller_name`, `caller_phone`, `debtor_name`, `site_name`, `address`, `building`, `powo`, `issue`, `urgency`, `tech_allocation_required`, `epoch`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$fire_type', '$caller_name', '$caller_phone', '$debtor_name', '$site_name', '$address', '$building', '$powo', '$issue', '$urgency', '$tech_allocation_required', '$epoch', '$created_at', '$sent_status')";
 
 	switch ($_POST['tech_allocation_required']) {
 		case 'yes':

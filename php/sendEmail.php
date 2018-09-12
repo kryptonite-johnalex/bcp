@@ -105,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     	echo "<h1>Error! Please contact Development Engineer ASAP.</h1>";
     }
 
-    $created_at = date("Y-m-d");
+    $created_at = date("Y-m-d H:i:s");
 
     // Build the email headers.
     $email_headers = "MIME-Version: 1.0" . "\n";
@@ -126,9 +126,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if($form_type == 'direct') {
-    	$sql = "INSERT INTO engie_direct (`agent_name`, `phone`, `bu_code`, `branch`, `branch_email`, `site_name`, `site_address`, `caller_name`, `caller_phone`, `subject`, `other`, `details`, `epoch`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$bu_code', '$branch', '$branch_email', '$site_name', '$site_address', '$caller_name', '$caller_phone', '$subject', '$other', '$details', '$epoch', '$created_at', '$sent_status')";
+    	$sql = "INSERT INTO engie_direct (`agent_name`, `phone`, `fire_type`, `bu_code`, `branch`, `branch_email`, `site_name`, `site_address`, `caller_name`, `caller_phone`, `subject`, `other`, `details`, `epoch`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$fire_type', '$bu_code', '$branch', '$branch_email', '$site_name', '$site_address', '$caller_name', '$caller_phone', '$subject', '$other', '$details', '$epoch', '$created_at', '$sent_status')";
     } else {
-		$sql = "INSERT INTO engie_allocation (`agent_name`, `phone`, `job_accept`, `bu_code`, `subcontractor_phone_email`, `pronto_num`, `work_type`, `branch`, `branch_email`, `site_name`, `site_address`, `caller_name`, `caller_phone`, `subject`, `tech_allocated`, `tech_attends`, `issues`, `notes`, `tech_allocation_required`, `call_type`, `epoch`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$job_accept', '$bu_code', '$subcontractor_phone_email', '$pronto_num', 'work_type', '$branch', '$branch_email', '$site_name', '$site_address', '$caller_name', '$caller_phone', '$subject', '$tech_allocated', '$tech_attends', '$issues', '$notes', '$tech_allocation_required', '$call_type', '$epoch', '$created_at', '$sent_status')";
+		$sql = "INSERT INTO engie_allocation (`agent_name`, `phone`, `fire_type`, `job_accept`, `bu_code`, `subcontractor_phone_email`, `pronto_num`, `work_type`, `branch`, `branch_email`, `site_name`, `site_address`, `caller_name`, `caller_phone`, `subject`, `tech_allocated`, `tech_attends`, `issues`, `notes`, `tech_allocation_required`, `call_type`, `epoch`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$fire_type', '$job_accept', '$bu_code', '$subcontractor_phone_email', '$pronto_num', 'work_type', '$branch', '$branch_email', '$site_name', '$site_address', '$caller_name', '$caller_phone', '$subject', '$tech_allocated', '$tech_attends', '$issues', '$notes', '$tech_allocation_required', '$call_type', '$epoch', '$created_at', '$sent_status')";
 	}
 
 	if ($conn->query($sql) === TRUE) {
