@@ -93,6 +93,7 @@ $allocation = $conn->query($sql);
             <th>No.</th>
             <th>Agent Name</th>
             <th>Phone Number</th>
+            <th>Fire Type</th>
             <th>Caller's Name</th>
             <th>Caller's Phone</th>
             <th>Epoch</th>
@@ -110,6 +111,7 @@ $allocation = $conn->query($sql);
           <td class="No."><?php echo $row['id']; ?></td>
           <td class="Agent Name"><?php echo $row['agent_name']; ?></td>
           <td class="Phone"><?php echo $row['phone']; ?></td>
+          <td class="Fire Type"><?php echo $row['fire_type']; ?></td>
           <td class="Caller Name"><?php echo $row['caller_name']; ?></td>
           <td class="Caller Phone"><?php echo $row['caller_phone']; ?></td>
           <td class="Epoch"><?php echo $row['epoch']; ?></td>
@@ -143,6 +145,7 @@ $allocation = $conn->query($sql);
             <th>No.</th>
             <th>Agent Name</th>
             <th>Phone Number</th>
+            <th>Fire Type</th>
             <th>Caller's Name</th>
             <th>Caller's Phone</th>
             <th>Epoch</th>
@@ -160,6 +163,7 @@ $allocation = $conn->query($sql);
           <td class="No."><?php echo $row['id']; ?></td>
           <td class="Agent Name"><?php echo $row['agent_name']; ?></td>
           <td class="Phone"><?php echo $row['phone']; ?></td>
+          <td class="Fire Type"><?php echo $row['fire_type']; ?></td>
           <td class="Caller Name"><?php echo $row['caller_name']; ?></td>
           <td class="Caller Phone"><?php echo $row['caller_phone']; ?></td>
           <td class="Epoch"><?php echo $row['epoch']; ?></td>
@@ -206,6 +210,7 @@ $allocation = $conn->query($sql);
             <th>No.</th>
             <th>Agent Name</th>
             <th>Phone Number</th>
+            <th>Fire Type</th>
             <th>Caller's Name</th>
             <th>Caller's Phone</th>
             <th>Epoch</th>
@@ -223,6 +228,7 @@ $allocation = $conn->query($sql);
           <td class="No."><?php echo $row['id']; ?></td>
           <td class="Agent Name"><?php echo $row['agent_name']; ?></td>
           <td class="Phone"><?php echo $row['phone']; ?></td>
+          <td class="Fire Type"><?php echo $row['fire_type']; ?></td>
           <td class="Caller Name"><?php echo $row['caller_name']; ?></td>
           <td class="Caller Phone"><?php echo $row['caller_phone']; ?></td>
           <td class="Epoch"><?php echo $row['epoch']; ?></td>
