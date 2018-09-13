@@ -14,6 +14,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$fire_type = ($_SESSION['did_extension'] == "61870791062") ? "HV" : "LV";
 	$epoch = date("Y-m-d H:i:s", $_SESSION['epoch']);
 
+	$campaign = $_POST['campaign'];
+
 	$caller_name = $_POST['caller_name'];
 	$caller_phone = $_POST['caller_phone'];
 	$debtor_name = $_POST['debtor_name'];
@@ -27,17 +29,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$created_at = date("Y-m-d H:i:s");
 	$sent_status = 0;
 
-	$sql = "INSERT INTO engie_log (`agent_name`, `phone`, `fire_type`, `caller_name`, `caller_phone`, `debtor_name`, `site_name`, `address`, `building`, `powo`, `issue`, `urgency`, `tech_allocation_required`, `epoch`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$fire_type', '$caller_name', '$caller_phone', '$debtor_name', '$site_name', '$address', '$building', '$powo', '$issue', '$urgency', '$tech_allocation_required', '$epoch', '$created_at', '$sent_status')";
+	$sql = "INSERT INTO " . $campaign . "_log (`agent_name`, `phone`, `fire_type`, `caller_name`, `caller_phone`, ". ( isset($_POST['vs_job']) ? "`vs_job`, " : "") . "`debtor_name`, `site_name`, `address`, `building`, `powo`, `issue`, `urgency`, `tech_allocation_required`, `epoch`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$fire_type', '$caller_name', '$caller_phone', ". ( isset($_POST['vs_job']) ? "'" . $_POST['vs_job'] . "', " : "") . "'$debtor_name', '$site_name', '$address', '$building', '$powo', '$issue', '$urgency', '$tech_allocation_required', '$epoch', '$created_at', '$sent_status')";
 
 	switch ($_POST['tech_allocation_required']) {
 		case 'yes':
 
-			header('Location: ../_engie/tech-yes.php');
+			header('Location: ../_' . $campaign . '/tech-yes.php');
 			break;
 
 		case 'no':
 			//header('Location: ../_engie/tech-no.php?tech_allocation=no');
-			header('Location: ../_engie/tech-no.php');
+			header('Location: ../_' . $campaign . '/tech-no.php');
 			break;
 
 		default:
