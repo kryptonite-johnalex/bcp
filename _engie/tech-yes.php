@@ -58,7 +58,7 @@ $page_js = false;
       </div>
     </div>
 
-    <div class="w3-row showScript" style="margin-top: 50px; display: none">
+    <div class="w3-row" style="margin-top: 50px;">
       <div class="w3-row w3-padding">
         <button type="button" onclick="window.location.href='/_engie/'" class="w3-button w3-block w3-padding-32 w3-light-gray w3-margin-bottom w3-quarter w3-card">Back</button>
       </div>

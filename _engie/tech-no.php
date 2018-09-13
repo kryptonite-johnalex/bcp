@@ -81,7 +81,6 @@ $page_js = false;
             <option value="487M|servicent.anz@engie.com,service@contact121.com.au|889242900">487M</option>
             <option value="489M|alicespringsservice.anz@engie.com,service@contact121.com.au|889534404">489M</option>
             <option value="Outage|nac@anz.engie.com,service@contact121.com.au">Outage</option>
-            <option value="489M|johnalexladra@gmail.com|889534404">489M</option>
           </select>
         </div>
       </div><!-- </form> -->

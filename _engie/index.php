@@ -26,7 +26,7 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
 <?php include_once('../assets/style.html'); ?>
 <style>
   body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
-  body {font-size:16px;}ka>
+  body {font-size:16px;}
   .w3-half img{opacity: 1;cursor: pointer;display: block;}
   .w3-half img:hover{opacity:0.8}
 </style>
