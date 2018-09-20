@@ -22,25 +22,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$job_accept = $_POST["job_accept"];
 	//bu_code => string(66) "482M|servicensw.anz@engie.com; service@contact121.com.au|297144700" 
 																														
-	$bu_code_array = explode("|", $_POST["bu_code"]);
+	if($campaign = 'widescreen') { 
 
-	$bu_code = $bu_code_array[0];
+        // Creating POST variable and assign value
+        if(isset($_POST)) {
+            foreach($_POST as $key=>$value) {
+                $$key = $value;
+            }
+        }
 
-	// Define who recieves the emails
-	$recipient = $bu_code_array[1];
+        $recipient = '0425706467@transmitsms.com, 0474848811@transmitsms.com, service@contact121.com.au';
 
-	$subcontractor_phone_email = (isset($_POST["subcontractor_phone_email"])) ? $_POST["subcontractor_phone_email"] : "N/A";
-	$pronto_num = (isset($_POST["pronto_num"])) ? $_POST["pronto_num"] : "N/A";
-	$work_type = (isset($_POST["work_type"])) ? $_POST["work_type"] : "N/A";
-	$branch = (isset($_POST["branch"])) ? $_POST["branch"] : "N/A";
-	$branch_email = (isset($_POST["branch_email"])) ? $_POST["branch_email"] : "N/A";
-	$site_name = (isset($_POST["site_name"])) ? $_POST["site_name"] : "N/A";
-	$site_address = (isset($_POST["site_address"])) ? $_POST["site_address"] : "N/A";
-	$caller_name = (isset($_POST["caller_name"])) ? $_POST["caller_name"] : "N/A";
-	$caller_phone = (isset($_POST["caller_phone"])) ? $_POST["caller_phone"] : "N/A";
-	$subject = (isset($_POST["subject"])) ? $_POST["subject"] : "N/A";
-	$tech_allocated = (isset($_POST["tech_allocated"])) ? $_POST["tech_allocated"] : "N/A";
-	$tech_attends = (isset($_POST["tech_attends"])) ? $_POST["tech_attends"] : "N/A";
+    } else {
+        $bu_code_array = explode("|", $_POST["bu_code"]);
+
+    	$bu_code = $bu_code_array[0];
+
+    	// Define who recieves the emails
+    	$recipient = $bu_code_array[1];
+
+    	$subcontractor_phone_email = (isset($_POST["subcontractor_phone_email"])) ? $_POST["subcontractor_phone_email"] : "N/A";
+    	$pronto_num = (isset($_POST["pronto_num"])) ? $_POST["pronto_num"] : "N/A";
+    	$work_type = (isset($_POST["work_type"])) ? $_POST["work_type"] : "N/A";
+    	$branch = (isset($_POST["branch"])) ? $_POST["branch"] : "N/A";
+    	$branch_email = (isset($_POST["branch_email"])) ? $_POST["branch_email"] : "N/A";
+    	$site_name = (isset($_POST["site_name"])) ? $_POST["site_name"] : "N/A";
+    	$site_address = (isset($_POST["site_address"])) ? $_POST["site_address"] : "N/A";
+    	$caller_name = (isset($_POST["caller_name"])) ? $_POST["caller_name"] : "N/A";
+    	$caller_phone = (isset($_POST["caller_phone"])) ? $_POST["caller_phone"] : "N/A";
+    	$subject = (isset($_POST["subject"])) ? $_POST["subject"] : "N/A";
+    	$tech_allocated = (isset($_POST["tech_allocated"])) ? $_POST["tech_allocated"] : "N/A";
+    	$tech_attends = (isset($_POST["tech_attends"])) ? $_POST["tech_attends"] : "N/A";
+    }
 
 	if($form_type != 'direct') {
 		$issues = $_POST["issues"][0] . "<br>" . $_POST["issues"][1] . "<br>" . $_POST["issues"][2];
@@ -101,6 +114,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if($job_accept == 'no') {
         	$email_content .= "Type of Call: $call_type<br><br>";
 		}
+    } elseif ($campaign == 'widescreen' && $form_type == 'send_email') {
+        // Build the email content.
+        $email_content = "A new after hours emergency call out request has been recieved::<br><br><br>";
+
+        $email_content = "Insurance Brand/Retail : $brand <br>";
+        $email_content .= "Authorised By : $authorised<br>";
+        $email_content .= "Customer : $customer_name<br>";
+        $email_content .= "Phone Number : $phone_number<br>";
+        $email_content .= "Address : $address <br>";
+        $email_content .= "Claim Number : $claim_number <br>";
+        $email_content .= "Policy Number : $policy_number <br>";
+        $email_content .= "Vehicle Make : $vehicle <br>";
+        $email_content .= "Vehicle Model : $model <br>";
+        $email_content .= "Vehicle Year : $year <br>";
+        $email_content .= "Glass : $glass <br>";
+        $email_content .= "Price : $price <br><br><br>";
+
+        $email_content .= "Please respond to this number.<br><br>";
+
+        $email_content .= "Agent: $agent";
+
+        $date_time = date("m/d/Y H:m:s", $epoch);
+
+        $email_content .= "Time: $date_time";
+        //$email_content .= "Time: 09/09/2018 14:09:42";
     } else {
     	echo "<h1>Error! Please contact Development Engineer ASAP.</h1>";
     }
