@@ -45,7 +45,7 @@ $page_js = false;
 <div class="w3-main" style="margin:40px 40px 0 340px">
   <!-- Header -->
     <div class="w3-container" id="top" style="margin-top: 100px;">
-      <form action="../php/showData.php" method="POST">
+      <form action="../php/sendEmail.php" method="POST">
         <div class="w3-row">
           <div class="w3-col s3 w3-text-red"><p>Insurance Brand/Retail: </p></div>
           <div class="w3-col s8">
