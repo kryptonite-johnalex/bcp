@@ -14,7 +14,7 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
   $_SESSION["did_extension"] = "61870791760";
 }
 
-$page_js = false;
+// $page_js = false;
 
 ?>
 <!DOCTYPE html>
@@ -46,6 +46,8 @@ $page_js = false;
   <!-- Header -->
     <div class="w3-container" id="top" style="margin-top: 100px;">
       <form action="../php/sendEmail.php" method="POST">
+        <input class="w3-hide" type="hidden" name="form_type" value="log">
+        <input class="w3-hide" type="hidden" name="campaign" value="widescreen">
         <div class="w3-row">
           <div class="w3-col s3 w3-text-red"><p>Insurance Brand/Retail: </p></div>
           <div class="w3-col s8">

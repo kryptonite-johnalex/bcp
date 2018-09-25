@@ -48,33 +48,38 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
     </div>
 
     <div class="w3-container" style="margin-top: 100px;">
+      <p class="w3-text-purple"><b>MYNAGS Glass Codes - Please note that National Windscreens will fit like for like glass.</b></p>
+      <p class="w3-text-purple">Please refer to the list below if the Glass Code in MyNags ends in one or more of the letters.</p>
+    </div>
+
+    <div class="w3-container" style="margin-top: 20px;">
       <h3>
-        <?php switch ($_SESSION ['did_extension']) {
-          case 61870791760:
+        <?php switch ($_SESSION['did_extension']) {
+          case "61870791760":
             echo "RETAIL CALL: You MUST advise the customer that the booking time is next business day PM only, do not quote AM ever!";
             break;
-          case 61870791761:
+          case "61870791761":
             echo "RETAIL CALL: You MUST advise the customer that the booking time is next business day PM only, do not quote AM ever!";
             break;
-          case 61870791762:
+          case "61870791762":
             echo "Insurance: NRMA";
             break;
-          case 61870791763:
+          case "61870791763":
             echo "Insurance: RACV";
             break;
-          case 61870791764:
+          case "61870791764":
             echo "Insurance: SCGIO";
             break;
-          case 61870791765:
+          case "61870791765":
             echo "Insurance: SGIC";
             break;
-          case 61870791766:
+          case "61870791766":
             echo "Insurance: Real Insurance";
             break;
-          case 61870791767:
+          case "61870791767":
             echo "Insurance: Youi";
             break;
-          case 61870791768:
+          case "61870791768":
             echo "Insurance: Budget Direct and other insurance companies not in the portal";
             break;
           
@@ -83,11 +88,6 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
             break;
         } ?>
       </h3>
-    </div>
-
-    <div class="w3-container" style="margin-top: 100px;">
-      <p class="w3-text-purple"><b>MYNAGS Glass Codes - Please note that National Windscreens will fit like for like glass.</b></p>
-      <p class="w3-text-purple">Please refer to the list below if the Glass Code in MyNags ends in one or more of the letters.</p>
     </div>
 
     <div id="popUp" class="w3-modal">
