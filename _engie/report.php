@@ -75,9 +75,9 @@ $allocation = $conn->query($sql);
 
   <div class="w3-container">
     <div class="w3-row">
-      <a href="javascript:void(0)" onclick="openCity(event, 'Logs');">
+      <!-- <a href="javascript:void(0)" onclick="openCity(event, 'Reports');"> -->
         <div class="w3-quarter tablink w3-bottombar w3-hover-red w3-padding w3-border-black w3-red">Reports</div>
-      </a>
+      <!-- </a> -->
 <!--       <a href="javascript:void(0)" onclick="openCity(event, 'Allocation');">
         <div class="w3-quarter tablink w3-bottombar w3-hover-red w3-padding">Allocation</div>
       </a>
@@ -86,7 +86,7 @@ $allocation = $conn->query($sql);
       </a> -->
     </div>
 
-    <div id="Logs" class="tabs" style="">
+    <div id="Reports" class="tabs" style="">
       <table class="w3-table-all w3-hoverable">
         <thead>
           <tr class="w3-red">

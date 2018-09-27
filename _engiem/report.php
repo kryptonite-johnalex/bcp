@@ -75,18 +75,18 @@ $allocation = $conn->query($sql);
 
   <div class="w3-container">
     <div class="w3-row">
-      <a href="javascript:void(0)" onclick="openCity(event, 'Logs');">
-        <div class="w3-quarter tablink w3-bottombar w3-hover-red w3-padding w3-border-black w3-red">Logs</div>
-      </a>
-      <a href="javascript:void(0)" onclick="openCity(event, 'Allocation');">
+      <!-- <a href="javascript:void(0)" onclick="openCity(event, 'Reports');"> -->
+        <div class="w3-quarter tablink w3-bottombar w3-hover-red w3-padding w3-border-black w3-red">Reports</div>
+      <!-- </a> -->
+<!--       <a href="javascript:void(0)" onclick="openCity(event, 'Allocation');">
         <div class="w3-quarter tablink w3-bottombar w3-hover-red w3-padding">Allocation</div>
       </a>
       <a href="javascript:void(0)" onclick="openCity(event, 'Direct');">
         <div class="w3-quarter tablink w3-bottombar w3-hover-red w3-padding">Direct</div>
-      </a>
+      </a> -->
     </div>
 
-    <div id="Logs" class="tabs" style="">
+    <div id="Reports" class="tabs" style="">
       <table class="w3-table-all w3-hoverable">
         <thead>
           <tr class="w3-red">
@@ -102,13 +102,15 @@ $allocation = $conn->query($sql);
           </tr>
         </thead>
         <?php
+        $num = 1;
         if ($log->num_rows > 0) {
+
             $count=0;
             // output data of each row
             while($row = $log->fetch_assoc()) {
         ?>
         <tr>
-          <td class="No."><?php echo $row['id']; ?></td>
+          <td class="No."><?php echo $num; ?></td>
           <td class="Agent Name"><?php echo $row['agent_name']; ?></td>
           <td class="Phone"><?php echo $row['phone']; ?></td>
           <td class="Fire Type"><?php echo $row['fire_type']; ?></td>
@@ -118,7 +120,6 @@ $allocation = $conn->query($sql);
           <td class="Created At"><?php echo $row['created_at']; ?></td>
           <td class="Status"><?php echo ($row['sent_status']) ? 'Sent' : 'Failed'; ?></td>
           <!-- hide -->
-          <td class="Visionstream/Telstra/ACT" style="display: none"><?php echo ( isset($row['vs_job']) ? "yes" : "no"); ?></td>
           <td class="Debtor Name" style="display: none"><?php echo $row['debtor_name']; ?></td>
           <td class="Site Name" style="display: none"><?php echo $row['site_name']; ?></td>
           <td class="Address" style="display: none"><?php echo $row['address']; ?></td>
@@ -129,6 +130,90 @@ $allocation = $conn->query($sql);
           <td class="Is Tech Allocation Required?" style="display: none"><?php echo $row['tech_allocation_required']; ?></td>
         </tr>
         <?php
+              $num++;
+              if($row['sent_status'] == 1) $count++;
+            }
+          }
+        ?>
+        <?php
+        if ($allocation->num_rows > 0) {
+            $count=0;
+            // output data of each row
+            while($row = $allocation->fetch_assoc()) {
+        ?>
+        <tr>
+          <td class="No."><?php echo $num; ?></td>
+          <td class="Agent Name"><?php echo $row['agent_name']; ?></td>
+          <td class="Phone"><?php echo $row['phone']; ?></td>
+          <td class="Fire Type"><?php echo $row['fire_type']; ?></td>
+          <td class="Caller Name"><?php echo $row['caller_name']; ?></td>
+          <td class="Caller Phone"><?php echo $row['caller_phone']; ?></td>
+          <td class="Epoch"><?php echo $row['epoch']; ?></td>
+          <td class="Created At"><?php echo $row['created_at']; ?></td>
+          <td class="Status"><?php echo ($row['sent_status']) ? 'Sent' : 'Failed'; ?></td>
+          <!-- hide -->
+          <td class="Job Accept" style="display: none"><?php echo $row['job_accept']; ?></td>
+          <td class="BU Code" style="display: none"><?php echo $row['bu_code']; ?></td>
+          <td class="Subcontractor Phone/Email" style="display: none"><?php echo $row['subcontractor_phone_email']; ?></td>
+          <td class="Pronto Number" style="display: none"><?php echo $row['pronto_num']; ?></td>
+          <td class="Work Type" style="display: none"><?php echo $row['work_type']; ?></td>
+          <td class="Branch" style="display: none"><?php echo $row['branch']; ?></td>
+          <td class="Branch Email" style="display: none"><?php echo $row['branch_email']; ?></td>
+          <td class="Tech Allocated" style="display: none"><?php echo $row['site_name']; ?></td>
+          <td class="Is Tech Attending?" style="display: none"><?php echo $row['site_name']; ?></td>
+
+
+          <td class="Site Name" style="display: none"><?php echo $row['site_name']; ?></td>
+          <td class="Site Address" style="display: none"><?php echo $row['site_address']; ?></td>
+          <td class="Subject" style="display: none"><?php echo $row['subject']; ?></td>
+
+          <td class="Issue Reported" style="display: none"><?php echo $row['issues']; ?></td>
+          <td class="Additional Note" style="display: none"><?php echo $row['notes']; ?></td>
+
+
+          <td class="Is Tech Allocation Required?" style="display: none"><?php echo $row['tech_allocation_required']; ?></td>
+          <td class="Emergency/Urgent/Critical" style="display: none"><?php echo $row['call_type']; ?></td>
+        </tr>
+        <?php
+              $num++;
+              if($row['sent_status'] == 1) $count++;
+            }
+          }
+        ?>
+        <?php
+        if ($direct->num_rows > 0) {
+            $count=0;
+            // output data of each row
+            while($row = $direct->fetch_assoc()) {
+        ?>
+        <tr>
+          <td class="No."><?php echo $num; ?></td>
+          <td class="Agent Name"><?php echo $row['agent_name']; ?></td>
+          <td class="Phone"><?php echo $row['phone']; ?></td>
+          <td class="Fire Type"><?php echo $row['fire_type']; ?></td>
+          <td class="Caller Name"><?php echo $row['caller_name']; ?></td>
+          <td class="Caller Phone"><?php echo $row['caller_phone']; ?></td>
+          <td class="Epoch"><?php echo $row['epoch']; ?></td>
+          <td class="Created At"><?php echo $row['created_at']; ?></td>
+          <td class="Status"><?php echo ($row['sent_status']) ? 'Sent' : 'Failed'; ?></td>
+          <!-- hide -->
+          <td class="BU Code" style="display: none"><?php echo $row['bu_code']; ?></td>
+          <td class="Branch" style="display: none"><?php echo $row['branch']; ?></td>
+          <td class="Branch Email" style="display: none"><?php echo $row['branch_email']; ?></td>
+          <td class="Tech Allocated" style="display: none"><?php echo $row['site_name']; ?></td>
+          <td class="Is Tech Attending?" style="display: none"><?php echo $row['site_name']; ?></td>
+
+
+          <td class="Site Name" style="display: none"><?php echo $row['site_name']; ?></td>
+          <td class="Site Address" style="display: none"><?php echo $row['site_address']; ?></td>
+          <td class="Subject" style="display: none"><?php echo $row['subject']; ?></td>
+
+          <td class="Other" style="display: none"><?php echo $row['other']; ?></td>
+          <td class="Details" style="display: none"><?php echo $row['details']; ?></td>
+
+        </tr>
+        <?php
+              $num++;
               if($row['sent_status'] == 1) $count++;
             }
           }
