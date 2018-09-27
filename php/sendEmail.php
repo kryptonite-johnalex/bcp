@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$form_type = $_POST["form_type"];
 	$campaign = $_POST["campaign"];
 
-	if($campaign = 'widescreen') { 
+	if($campaign == 'widescreen') { 
 
         // Creating POST variable and assign value
         if(isset($_POST)) {
@@ -31,7 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $recipient = '0425706467@transmitsms.com, 0474848811@transmitsms.com, service@contact121.com.au';
 
-    } else {
+    } elseif ($campaign == 'engie' || $campaign == 'engiem') { 
+        $fire_type = ($_SESSION['did_extension'] == "61870791062") ? "HV" : "LV";
         $job_accept = $_POST["job_accept"];
         //bu_code => string(66) "482M|servicensw.anz@engie.com; service@contact121.com.au|297144700" 
         $bu_code_array = explode("|", $_POST["bu_code"]);
@@ -54,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     	$tech_allocated = (isset($_POST["tech_allocated"])) ? $_POST["tech_allocated"] : "N/A";
     	$tech_attends = (isset($_POST["tech_attends"])) ? $_POST["tech_attends"] : "N/A";
 
-    	if($form_type != 'direct') {
+    	if($form_type == 'allocation') {
     		$issues = $_POST["issues"][0] . "<br>" . $_POST["issues"][1] . "<br>" . $_POST["issues"][2];
     		$notes = $_POST["notes"][0] . "<br>" . $_POST["notes"][1] . "<br>" . $_POST["notes"][2];
     	} else {
@@ -66,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$tech_allocation_required = (isset($_POST["tech_allocation_required"])) ? $_POST["tech_allocation_required"] : "N/A";
 	$call_type = (isset($_POST["call_type"])) ? $_POST["call_type"] : "N/A";
 
-	if($campaign == 'engie' || $campaign == 'engiem' && $form_type == 'direct') {
+	if(($campaign == 'engie' && $form_type == 'direct') || ($campaign == 'engiem' && $form_type == 'direct')) {
 		// Build the email content.
         $email_content = "Contact Direct Details:<br><br><br>";
 
@@ -83,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email_content .= "Other: $other<br><br>";
         $email_content .= "Details: $details[0]<br>$details[1]<br>$details[2]<br><br>";
 
-	} elseif ($campaign == 'engie' || $campaign == 'engiem' && $form_type == 'allocation') {
+	} elseif (($campaign == 'engie' && $form_type == 'allocation') || ($campaign == 'engiem' && $form_type == 'allocation')) {
 		// Build the email content.
         $email_content = "Details:<br><br><br>";
 
@@ -94,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         	$email_content .= "Subcontractor Phone/Email: $subcontractor_phone_email<br>";
         }
         $email_content .= "Pronto Number: $pronto_num<br><br><br>";
-        $email_content .= "Work Type: $work_type<br><br>";
+        $email_content .= "Type of Work: $work_type<br><br>";
 
         $email_content .= "Branch: $branch<br><br>";
         if($job_accept == 'no') {
@@ -114,6 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if($job_accept == 'no') {
         	$email_content .= "Type of Call: $call_type<br><br>";
 		}
+        $email_content .= "<span style='color: red'><strong>*NOTE: A tech has NOT been allocated to this job. A tech will need to be allocated by the Branch.*</strong></span>";
     } elseif ($campaign == 'widescreen' && $form_type == 'log') {
 
         $subject = "Emergency Call Out";
@@ -166,12 +168,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sent_status = 0;
     }
 
-    if($form_type == 'direct') {
+    if(($campaign == 'engie' && $form_type == 'direct') || ($campaign == 'engiem' && $form_type == 'direct')) {
     	$sql = "INSERT INTO " . $campaign . "_direct (`agent_name`, `phone`, `fire_type`, `bu_code`, `branch`, `branch_email`, `site_name`, `site_address`, `caller_name`, `caller_phone`, `subject`, `other`, `details`, `epoch`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$fire_type', '$bu_code', '$branch', '$branch_email', '$site_name', '$site_address', '$caller_name', '$caller_phone', '$subject', '$other', '$details', '$epoch', '$created_at', '$sent_status')";
+    } elseif(($campaign == 'engie' && $form_type == 'allocation') || ($campaign == 'engiem' && $form_type == 'allocation')) {
+        $sql = "INSERT INTO " . $campaign . "_allocation (`agent_name`, `phone`, `fire_type`, `job_accept`, `bu_code`, `subcontractor_phone_email`, `pronto_num`, `work_type`, `branch`, `branch_email`, `site_name`, `site_address`, `caller_name`, `caller_phone`, `subject`, `tech_allocated`, `tech_attends`, `issues`, `notes`, `tech_allocation_required`, `call_type`, `epoch`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$fire_type', '$job_accept', '$bu_code', '$subcontractor_phone_email', '$pronto_num', 'work_type', '$branch', '$branch_email', '$site_name', '$site_address', '$caller_name', '$caller_phone', '$subject', '$tech_allocated', '$tech_attends', '$issues', '$notes', '$tech_allocation_required', '$call_type', '$epoch', '$created_at', '$sent_status')";
     } elseif ($campaign == 'widescreen' && $form_type == 'log') {
         $sql = "INSERT INTO widescreen_log (`agent_name`, `phone`, `brand`, `authorised`, `customer_name`, `phone_number`, `address`, `claim_number`, `policy_number`, `vehicle`, `model`, `year`, `glass`, `price`, `epoch`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$brand', '$authorised', '$customer_name', '$phone_number', '$address', '$claim_number', '$policy_number', '$vehicle', '$model', '$year', '$glass', '$price', '$epoch', '$created_at', '$sent_status')";
-    }else {
-		$sql = "INSERT INTO " . $campaign . "_allocation (`agent_name`, `phone`, `fire_type`, `job_accept`, `bu_code`, `subcontractor_phone_email`, `pronto_num`, `work_type`, `branch`, `branch_email`, `site_name`, `site_address`, `caller_name`, `caller_phone`, `subject`, `tech_allocated`, `tech_attends`, `issues`, `notes`, `tech_allocation_required`, `call_type`, `epoch`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$fire_type', '$job_accept', '$bu_code', '$subcontractor_phone_email', '$pronto_num', 'work_type', '$branch', '$branch_email', '$site_name', '$site_address', '$caller_name', '$caller_phone', '$subject', '$tech_allocated', '$tech_attends', '$issues', '$notes', '$tech_allocation_required', '$call_type', '$epoch', '$created_at', '$sent_status')";
+    } else {
+        echo "<h1>Error! Please contact Development Engineer ASAP.</h1>";
+		//$sql = "INSERT INTO " . $campaign . "_allocation (`agent_name`, `phone`, `fire_type`, `job_accept`, `bu_code`, `subcontractor_phone_email`, `pronto_num`, `work_type`, `branch`, `branch_email`, `site_name`, `site_address`, `caller_name`, `caller_phone`, `subject`, `tech_allocated`, `tech_attends`, `issues`, `notes`, `tech_allocation_required`, `call_type`, `epoch`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$fire_type', '$job_accept', '$bu_code', '$subcontractor_phone_email', '$pronto_num', 'work_type', '$branch', '$branch_email', '$site_name', '$site_address', '$caller_name', '$caller_phone', '$subject', '$tech_allocated', '$tech_attends', '$issues', '$notes', '$tech_allocation_required', '$call_type', '$epoch', '$created_at', '$sent_status')";
 	}
 
 	if ($conn->query($sql) === TRUE) {
