@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 include_once('db_connect.php');
 
 // Only process POST reqeusts.
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") { //var_dump($_POST);
 
 	// Define variables
     $name = 'Service';
@@ -155,6 +155,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email_headers .= "Content-type:text/html;charset=UTF-8" . "\n";
     $email_headers .= "From: $name <$email>";
 
+    if(false) {
     // Send the email.
     if (mail($recipient, $subject, $email_content, $email_headers)) {
         // Set a 200 (okay) response code.
@@ -167,11 +168,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Oops! Something went wrong and we couldn't send your message.";
         $sent_status = 0;
     }
+} else {
+    $sent_status = 0;
+}
 
     if(($campaign == 'engie' && $form_type == 'direct') || ($campaign == 'engiem' && $form_type == 'direct')) {
     	$sql = "INSERT INTO " . $campaign . "_direct (`agent_name`, `phone`, `fire_type`, `bu_code`, `branch`, `branch_email`, `site_name`, `site_address`, `caller_name`, `caller_phone`, `subject`, `other`, `details`, `epoch`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$fire_type', '$bu_code', '$branch', '$branch_email', '$site_name', '$site_address', '$caller_name', '$caller_phone', '$subject', '$other', '$details', '$epoch', '$created_at', '$sent_status')";
     } elseif(($campaign == 'engie' && $form_type == 'allocation') || ($campaign == 'engiem' && $form_type == 'allocation')) {
-        $sql = "INSERT INTO " . $campaign . "_allocation (`agent_name`, `phone`, `fire_type`, `job_accept`, `bu_code`, `subcontractor_phone_email`, `pronto_num`, `work_type`, `branch`, `branch_email`, `site_name`, `site_address`, `caller_name`, `caller_phone`, `subject`, `tech_allocated`, `tech_attends`, `issues`, `notes`, `tech_allocation_required`, `call_type`, `epoch`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$fire_type', '$job_accept', '$bu_code', '$subcontractor_phone_email', '$pronto_num', 'work_type', '$branch', '$branch_email', '$site_name', '$site_address', '$caller_name', '$caller_phone', '$subject', '$tech_allocated', '$tech_attends', '$issues', '$notes', '$tech_allocation_required', '$call_type', '$epoch', '$created_at', '$sent_status')";
+        $sql = "INSERT INTO " . $campaign . "_allocation (`agent_name`, `phone`, `fire_type`, `job_accept`, `bu_code`, `subcontractor_phone_email`, `pronto_num`, `work_type`, `branch`, `branch_email`, `site_name`, `site_address`, `caller_name`, `caller_phone`, `subject`, `tech_allocated`, `tech_attends`, `issues`, `notes`, `tech_allocation_required`, `call_type`, `epoch`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$fire_type', '$job_accept', '$bu_code', '$subcontractor_phone_email', '$pronto_num', '$work_type', '$branch', '$branch_email', '$site_name', '$site_address', '$caller_name', '$caller_phone', '$subject', '$tech_allocated', '$tech_attends', '$issues', '$notes', '$tech_allocation_required', '$call_type', '$epoch', '$created_at', '$sent_status')";
     } elseif ($campaign == 'widescreen' && $form_type == 'log') {
         $sql = "INSERT INTO widescreen_log (`agent_name`, `phone`, `brand`, `authorised`, `customer_name`, `phone_number`, `address`, `claim_number`, `policy_number`, `vehicle`, `model`, `year`, `glass`, `price`, `epoch`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$brand', '$authorised', '$customer_name', '$phone_number', '$address', '$claim_number', '$policy_number', '$vehicle', '$model', '$year', '$glass', '$price', '$epoch', '$created_at', '$sent_status')";
     } else {

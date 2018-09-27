@@ -86,19 +86,19 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Caller Name: </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="caller_name" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="caller_name" placeholder="">
               </div>
             </div>
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Caller Phone: </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="caller_phone" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="caller_phone" placeholder="">
               </div>
             </div>
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Debtor Name: </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="debtor_name" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="debtor_name" placeholder="">
               </div>
             </div>
 
@@ -108,25 +108,25 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Site Name: </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="site_name" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="site_name" placeholder="">
               </div>
             </div>
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Address: </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="address" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="address" placeholder="">
               </div>
             </div>
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Building Name: </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="building" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="building" placeholder="">
               </div>
             </div>
             <div class="w3-row">
               <div class="w3-col s5"><p>Purchase Order Number (PO#) or Work Order Number (WO#): </p></div>
               <div class="w3-col s7">
-                <input class="w3-input w3-border" type="text" name="powo" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="powo" placeholder="">
               </div>
             </div>
 
@@ -135,16 +135,16 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
             <div class="w3-row">
               <div class="w3-col s2"><p>Fault/Issue </p></div>
               <div class="w3-col s10">
-                <input class="w3-input w3-border" type="text" name="issue[]" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="issue[]" placeholder="">
                 <p></p>
-                <input class="w3-input w3-border" type="text" name="issue[]" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="issue[]" placeholder="">
               </div>
             </div>
           </div>
           <div class="w3-row w3-margin-top">
             <div class="w3-col s2"><p>Urgency </p></div>
             <div class="w3-col s4">
-              <input class="w3-input w3-border" type="text" name="urgency" required="" placeholder="">
+              <input class="w3-input w3-border" type="text" name="urgency" placeholder="">
             </div>
           </div>
 

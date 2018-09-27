@@ -93,7 +93,7 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
       <div class="w3-row w3-margin-top w3-twothird">
         <div class="w3-col s4"><p>Subcontractor Phone/Email: </p></div>
         <div class="w3-col s8">
-          <input class="w3-input w3-border" type="text" name="subcontractor_phone_email" required="" placeholder="">
+          <input class="w3-input w3-border" type="text" name="subcontractor_phone_email" placeholder="">
         </div>
         <span class=" w3-text-purple">IF APPLICABLE</span>
       </div>
@@ -108,19 +108,19 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Pronto Number: </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="pronto_num" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="pronto_num" placeholder="">
               </div>
             </div>
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Type of Work: </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="work_type" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="work_type" placeholder="">
               </div>
             </div>
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Branch (BU): </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="branch" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="branch" placeholder="">
               </div>
             </div>
 
@@ -130,31 +130,31 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Site Name: </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="site_name" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="site_name" placeholder="">
               </div>
             </div>
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Site Address: </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="site_address" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="site_address" placeholder="">
               </div>
             </div>
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Caller's Name: </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="caller_name" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="caller_name" placeholder="">
               </div>
             </div>
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Caller's Phone: </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="caller_phone" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="caller_phone" placeholder="">
               </div>
             </div>
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Subject: </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="subject" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="subject" placeholder="">
               </div>
             </div>
 
@@ -164,7 +164,7 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Tech Allocated: </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="tech_allocated" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="tech_allocated" placeholder="">
               </div>
             </div>
             <div class="w3-row w3-half">
@@ -183,22 +183,22 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
             <div class="w3-row">
               <div class="w3-col s12"><p>Issue Reported: </p></div>
               <div class="w3-col s12">
-                <input class="w3-input w3-border" type="text" name="issues[]" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="issues[]" placeholder="">
                 <p></p>
-                <input class="w3-input w3-border" type="text" name="issues[]" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="issues[]" placeholder="">
                 <p></p>
-                <input class="w3-input w3-border" type="text" name="issues[]" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="issues[]" placeholder="">
               </div>
             </div>
           </div>
           <div class="w3-row w3-margin-top">
             <div class="w3-col s12"><p>Additional Notes: </p></div>
             <div class="w3-col s12">
-              <input class="w3-input w3-border" type="text" name="notes[]" required="" placeholder="">
+              <input class="w3-input w3-border" type="text" name="notes[]" placeholder="">
                 <p></p>
-                <input class="w3-input w3-border" type="text" name="notes[]" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="notes[]" placeholder="">
                 <p></p>
-                <input class="w3-input w3-border" type="text" name="notes[]" required="" placeholder="">
+                <input class="w3-input w3-border" type="text" name="notes[]" placeholder="">
             </div>
           </div>
 
