@@ -155,7 +155,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //var_dump($_POST);
     $email_headers .= "Content-type:text/html;charset=UTF-8" . "\n";
     $email_headers .= "From: $name <$email>";
 
-    if(false) {
     // Send the email.
     if (mail($recipient, $subject, $email_content, $email_headers)) {
         // Set a 200 (okay) response code.
@@ -168,9 +167,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //var_dump($_POST);
         echo "Oops! Something went wrong and we couldn't send your message.";
         $sent_status = 0;
     }
-} else {
-    $sent_status = 0;
-}
 
     if(($campaign == 'engie' && $form_type == 'direct') || ($campaign == 'engiem' && $form_type == 'direct')) {
     	$sql = "INSERT INTO " . $campaign . "_direct (`agent_name`, `phone`, `fire_type`, `bu_code`, `branch`, `branch_email`, `site_name`, `site_address`, `caller_name`, `caller_phone`, `subject`, `other`, `details`, `epoch`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$fire_type', '$bu_code', '$branch', '$branch_email', '$site_name', '$site_address', '$caller_name', '$caller_phone', '$subject', '$other', '$details', '$epoch', '$created_at', '$sent_status')";
