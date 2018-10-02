@@ -8,8 +8,8 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
   $_SESSION["epoch"] = $_GET['epoch'];
   $_SESSION["did_extension"] = $_GET['did_extension'];
 } else {
-  $_SESSION["agent"] = 'N/A';
-  $_SESSION["phone"] = 'N/A';
+  $_SESSION["agent"] = 'C233';
+  $_SESSION["phone"] = '898977665';
   $_SESSION["epoch"] = 1536710194;
   $_SESSION["did_extension"] = "61870791061";
 }
@@ -45,7 +45,7 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
 <div class="w3-main" style="margin:40px 40px 0 340px">
   <div class="w3-container w3-margin-top">
     <div class="w3-quarter">
-      <p></p>
+      <p class="w3-text-green"><strong>Note: This is a WAMS Bunbury Call</strong></p>
       <!-- <button type="button" onclick="window.location.href = '/_melbourne/'" class="w3-button w3-block w3-card w3-padding-32 w3-cyan">Stop Recording</button> -->
     </div>
     <div class="w3-half">
@@ -53,7 +53,7 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
     </div>
     <div class="w3-quarter">
       <p></p>
-      <button type="button" onclick="window.location.href = '/_engie/contact_directly.php'" class="w3-button w3-block w3-card w3-padding-32 w3-khaki">Contact Branch (BU) Directly</button>
+      <button type="button" onclick="window.location.href = '/_engie_m/contact_directly.php'" class="w3-button w3-block w3-card w3-padding-32 w3-khaki">Contact Branch (BU) Directly</button>
     </div>
   </div>
 
@@ -71,16 +71,16 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
         <h3 style="text-decoration: underline;">This is a HIGH PRIORITY Engie Job and must be treated with extreme urgency!</h3>
       </div>
       <?php } ?>
-      <p class="w3-text-blue">Welcome to ENGIE Fire. My name is <?php echo $_SESSION['agent']; ?>. How can I help you?</p>
+      <p class="w3-text-blue">Welcome to ENGIE Mechanical. My name is <?php echo $_SESSION['agent']; ?>. How can I help you?</p>
     </div>
 
   <div class="w3-container" id="options" style="margin-top:20px">
     <div class="w3-row">
       <p class="w3-text-red">Fill in the following details</p>
       <div class="w3-col-12 w3-padding">
-        <form action="../php/test.php" method="POST">
+        <form action="../php/sendEmail.php" method="POST">
           <input class="w3-hide" type="text" name="form_type" value="log">
-          <input class="w3-hide" type="text" name="campaign" value="engie">
+          <input class="w3-hide" type="text" name="campaign" value="engie_m">
           <div class="w3-row">
 
             <div class="w3-row w3-half">
@@ -148,11 +148,16 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
             </div>
           </div>
 
+          <div class="w3-row w3-margin-top">
+            <p class="w3-text-purple">
+              <input class="w3-check" type="checkbox" name="vs_job" checked="checked">
+              <label>Is a job for Visionstream NSW or ACT or Telstra NSW or ACT? </label>
+            </p>
+          </div>
+
           <div class="w3-text-red">
-            <p><b>If the call is from "VisionStream." refer to UKS or the G Drive for KPI Timeframes</b></p>
+            <p>Check the 'National Contract KPI - Priorities' document in UKS for the response times for National clients, if relevant.</p>
             <p>Then, lauch 'Pronto' which is located on your desktop to log the job. Refer to UKS or the G Drive for further instructions on how to log a job in Pronto.</p>
-            <br>
-            <p>Also refer to the document 'Ad Hoc 9' in UKS or the G Drive to check for the correct Equipment/Item selection.</p>
           </div>
 
           <div class="w3-row w3-margin-top">
@@ -185,13 +190,11 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
 <script type="text/javascript">
   $(document).ready(function(){
     $("#tech").on("change", function(){
-      var flag = $('form')[0].checkValidity(); 
-      if(flag) {
-        this.form.action += "?form_empty=" + false;
-      } else {
-        this.form.action += "?form_empty=" + true;
-      }
-
+      var flag = $("input").filter(function () {
+                return $.trim($(this).val()).length == 0
+            }).length == 0;
+      this.form.action += "?not_empty=" + flag;
+      //this.form.action = "tech-" + $(this).val() + ".php";
       this.form.submit();
     });
   });

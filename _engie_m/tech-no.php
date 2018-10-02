@@ -1,16 +1,18 @@
 <?php
 session_start();
 
-if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])) {
-  // Set session variables
-  $_SESSION["agent"] = $_GET['user'];
-  $_SESSION["phone"] = $_GET['phone_number'];
-  $_SESSION["epoch"] = $_GET['epoch'];
-} else {
-  $_SESSION["agent"] = 'N/A';
-  $_SESSION["phone"] = 'N/A';
-  $_SESSION["epoch"] = 0000000001;
-}
+// if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])) {
+//   // Set session variables
+//   $_SESSION["agent"] = $_GET['user'];
+//   $_SESSION["phone"] = $_GET['phone_number'];
+//   $_SESSION["epoch"] = $_GET['epoch'];
+//   $_SESSION["did_extension"] = $_GET['did_extension'];
+// } else {
+//   $_SESSION["agent"] = 'C233';
+//   $_SESSION["phone"] = '898977665';
+//   $_SESSION["epoch"] = 1536710194;
+//   $_SESSION["did_extension"] = "61870791061";
+// }
 
 // $page_js = false;
 
@@ -63,34 +65,33 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
 
       <form action="../php/sendEmail.php" method="POST">
       <input class="w3-hide" type="text" name="form_type" value="allocation">
-      <input class="w3-hide" type="text" name="campaign" value="engie">
-      <input class="w3-hide" type="text" name="job_accept" value="<?php echo $_POST['job_accept']; ?>">
+      <input class="w3-hide" type="text" name="campaign" value="engie_m">
+      <input class="w3-hide" type="text" name="job_accept" value="<?php echo 'no'; ?>">
       <div class="w3-row w3-margin-top w3-third">
         <div class="w3-col s4"><p>ENGIE BU Code: </p></div>
         <div class="w3-col s6">
           <select id="bu_code" class="w3-select w3-border" name="bu_code">
             <option selected="" disabled="disabled"></option>
-            <option value="483M|vicservice.anz@engie.com; service@contact121.com.au|387926500">483M</option>
-            <option value="483M|vicservice.anz@engie.com; service@contact121.com.au|387926500">483M</option>
-            <option value="482M|servicensw.anz@engie.com; service@contact121.com.au|297144700">482M</option>
-            <option value="484M|qldservice.anz@engie.com; service@contact121.com.au|734578500">484M</option>
-            <option value="48TM|qldservice.anz@engie.com; service@contact121.com.au|734578500">48TM</option>
-            <option value="485M|servicesa.anz@engie.com; service@contact121.com.au|883505300">485M</option>
-            <option value="48ZM|servicesa.anz@engie.com; service@contact121.com.au|881826936">48ZM</option>
-            <option value="486M|service.wa.anz.fire@engie.com; service@contact121.com.au|892096170">486M</option>
-            <option value="487M|servicent.anz@engie.com; service@contact121.com.au|889242900">487M</option>
-            <option value="489M|alicespringsservice.anz@engie.com; service@contact121.com.au|889534404">489M</option>
-            <option value="Outage|nac@anz.engie.com; service@contact121.com.au">Outage</option>
+            <option value="4522|sydneyservice.anz@engie.com,service@contact121.com.au|297375400">4522</option>
+            <option value="45N2|newcastleservice.anz@engie.com,service@contact121.com.au|249545710">45N2</option>
+            <option value="45B2|sydneyservice.anz@engie.com,service@contact121.com.au|297375400">45B2</option>
+            <option value="45A2|sydneyservice.anz@engie.com,service@contact121.com.au|260515252">45A2</option>
+            <option value="45C2|sydneyservice.anz@engie.com,service@contact121.com.au|262803500">45C2</option>
+            <option value="4532|au.mech.servicevic@engie.com,service@contact121.com.au|387873211">4532</option>
+            <option value="4532|au.mech.servicevic@engie.com,service@contact121.com.au|387873211">4532</option>
+            <option value="4542|brisservice.anz@engie.com,service@contact121.com.au|730094440">4542</option>
+            <option value="45V2|brisservice.anz@engie.com,service@contact121.com.au|730094440">45V2</option>
+            <option value="45T2|servicefnq.anz@engie.com,service@contact121.com.au|747718300">45T2</option>
+            <option value="45U2|servicefnq.anz@engie.com,service@contact121.com.au|747718300">45U2</option>
+            <option value="4552|servicesa.anz1@engie.com,service@contact121.com.au|881931600">4552</option>
+            <option value="42Y2|bunbury.reception.anz@engie.com,service@contact121.com.au|862407488">42Y2</option>
+            <option value="4562|servicewa.anz.mech@engie.com,service@contact121.com.au|892490860">4562</option>
+            <option value="4572|servicewa.anz.mech@engie.com,service@contact121.com.au|892490860">4572</option>
+            <option value="4113|nac@anz.engie.com,service@contact121.com.au|730094240">4113</option>
+            <option value="Outage|nac@anz.engie.com,service@contact121.com.au">Outage</option>
           </select>
         </div>
-      </div>
-      <div class="w3-row w3-margin-top w3-twothird">
-        <div class="w3-col s4"><p>Subcontractor Phone/Email: </p></div>
-        <div class="w3-col s8">
-          <input class="w3-input w3-border" type="text" name="subcontractor_phone_email"  placeholder="">
-        </div>
-        <span class=" w3-text-purple">IF APPLICABLE</span>
-      </div>
+      </div><!-- </form> -->
     </div>
 
   <div class="w3-container w3-light-gray" id="options" style="margin-top:20px">
@@ -102,19 +103,25 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Pronto Number: </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="pronto_num"  placeholder="">
+                <input class="w3-input w3-border" type="text" name="pronto_num" placeholder="">
               </div>
             </div>
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Type of Work: </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="work_type"  placeholder="">
+                <input class="w3-input w3-border" type="text" name="work_type" placeholder="">
               </div>
             </div>
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Branch (BU): </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="branch"  placeholder="">
+                <input class="w3-input w3-border" type="text" name="branch" placeholder="">
+              </div>
+            </div>
+            <div class="w3-row w3-half">
+              <div class="w3-col s4 w3-center"><p>Branch Email: </p></div>
+              <div class="w3-col s8">
+                <input class="w3-input w3-border" type="text" name="branch_email" placeholder="">
               </div>
             </div>
 
@@ -124,31 +131,31 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Site Name: </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="site_name"  placeholder="">
+                <input class="w3-input w3-border" type="text" name="site_name" placeholder="">
               </div>
             </div>
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Site Address: </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="site_address"  placeholder="">
+                <input class="w3-input w3-border" type="text" name="site_address" placeholder="">
               </div>
             </div>
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Caller's Name: </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="caller_name"  placeholder="">
+                <input class="w3-input w3-border" type="text" name="caller_name" placeholder="">
               </div>
             </div>
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Caller's Phone: </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="caller_phone"  placeholder="">
+                <input class="w3-input w3-border" type="text" name="caller_phone" placeholder="">
               </div>
             </div>
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Subject: </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="subject"  placeholder="">
+                <input class="w3-input w3-border" type="text" name="subject" placeholder="">
               </div>
             </div>
 
@@ -158,7 +165,7 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Tech Allocated: </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="tech_allocated"  placeholder="">
+                <input class="w3-input w3-border" type="text" name="tech_allocated" placeholder="">
               </div>
             </div>
             <div class="w3-row w3-half">
@@ -177,22 +184,22 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
             <div class="w3-row">
               <div class="w3-col s12"><p>Issue Reported: </p></div>
               <div class="w3-col s12">
-                <input class="w3-input w3-border" type="text" name="issues[]"  placeholder="">
+                <input class="w3-input w3-border" type="text" name="issue[]" placeholder="">
                 <p></p>
-                <input class="w3-input w3-border" type="text" name="issues[]"  placeholder="">
+                <input class="w3-input w3-border" type="text" name="issue[]" placeholder="">
                 <p></p>
-                <input class="w3-input w3-border" type="text" name="issues[]"  placeholder="">
+                <input class="w3-input w3-border" type="text" name="issue[]" placeholder="">
               </div>
             </div>
           </div>
           <div class="w3-row w3-margin-top">
             <div class="w3-col s12"><p>Additional Notes: </p></div>
             <div class="w3-col s12">
-              <input class="w3-input w3-border" type="text" name="notes[]"  placeholder="">
+              <input class="w3-input w3-border" type="text" name="notes[]" placeholder="">
                 <p></p>
-                <input class="w3-input w3-border" type="text" name="notes[]"  placeholder="">
+                <input class="w3-input w3-border" type="text" name="notes[]" placeholder="">
                 <p></p>
-                <input class="w3-input w3-border" type="text" name="notes[]"  placeholder="">
+                <input class="w3-input w3-border" type="text" name="notes[]" placeholder="">
             </div>
           </div>
 
@@ -204,8 +211,8 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
           </div>
 
           <div class="w3-row w3-margin-top">
-            <div class="w3-col s3"><p>Is TECH allocation required? </p></div>
-            <div class="w3-col s2">
+            <div class="w3-col s2"><p>Is TECH allocation required? </p></div>
+            <div class="w3-col s4">
               <select id="tech" class="w3-select w3-border" name="tech_allocation_required">
                 <option selected="" disabled="disabled"></option>
                 <option value="yes">Yes</option>
@@ -217,7 +224,7 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
           <div class="w3-padding">
             <button type="submit" class="w3-button w3-block w3-padding-32 w3-purple w3-margin-bottom w3-quarter">Send Email</button>
           </div>
-        </form> 
+        
       </div>
 
       <!-- <div class="w3-row w3-padding">
@@ -231,10 +238,20 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
     </div>
 
   </div>
-
+  <div class="w3-row w3-margin-top">
+    <div class="w3-col s5"><p>Is the call an Emergency, Critical or Urgent (i.e. a P0-P1 call)?</p></div>
+    <div class="w3-col s2">
+      <select id="callType" class="w3-select w3-border" name="call_type">
+        <option selected="" disabled="disabled"></option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+    </div>
+  </div>
+	</form>
   <div class="w3-row showScript" style="margin-top: 50px;">
     <div class="w3-row w3-padding">
-      <button type="button" onclick="window.location.href='tech-yes.php'" class="w3-button w3-block w3-padding-32 w3-light-gray w3-margin-bottom w3-quarter w3-card w3-right">Back</button>
+      <button type="button" onclick="window.location.href='/_engie_m/'" class="w3-button w3-block w3-padding-32 w3-light-gray w3-margin-bottom w3-quarter w3-card w3-right">Back</button>
     </div>
   </div>
 

@@ -29,7 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$created_at = date("Y-m-d H:i:s");
 	$sent_status = 0;
 
-	$sql = "INSERT INTO " . $campaign . "_log (`agent_name`, `phone`, `fire_type`, `caller_name`, `caller_phone`, ". ( isset($_POST['vs_job']) ? "`vs_job`, " : "") . "`debtor_name`, `site_name`, `address`, `building`, `powo`, `issue`, `urgency`, `tech_allocation_required`, `epoch`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$fire_type', '$caller_name', '$caller_phone', ". ( isset($_POST['vs_job']) ? "'" . $_POST['vs_job'] . "', " : "") . "'$debtor_name', '$site_name', '$address', '$building', '$powo', '$issue', '$urgency', '$tech_allocation_required', '$epoch', '$created_at', '$sent_status')";
+
+	// $sql = "INSERT INTO " . $campaign . "_log (`agent_name`, `phone`, `fire_type`, `caller_name`, `caller_phone`, ". ( isset($_POST['vs_job']) ? "`vs_job`, " : "") . "`debtor_name`, `site_name`, `address`, `building`, `powo`, `issue`, `urgency`, `tech_allocation_required`, `epoch`, `created_at`, `sent_status`) VALUES ('$agent', '$phone', '$fire_type', '$caller_name', '$caller_phone', ". ( isset($_POST['vs_job']) ? "'" . $_POST['vs_job'] . "', " : "") . "'$debtor_name', '$site_name', '$address', '$building', '$powo', '$issue', '$urgency', '$tech_allocation_required', '$epoch', '$created_at', '$sent_status')";
 
 	switch ($_POST['tech_allocation_required']) {
 		case 'yes':
@@ -47,17 +48,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			break;
 	}
 
+	// if($campaign == 'engie' || $campaign == 'engiem') {
+
+	// 	$subject = "Emergency Call Out";
+
+	//     // Build the email content.
+	//     $email_content = "A new after hours emergency call out request has been recieved::<br><br><br>";
+
+	//     $email_content .= "";
+
+	// } else {
+	// 	echo "<h1>Error! Please contact Development Engineer ASAP.</h1>";
+	// }
+
 	// Remove below due PHP version compatibility 
 	// if(filter_var($_GET['form_empty'], FILTER_VALIDATE_BOOLEAN) != true) {
-	if($_GET['form_empty'] == 'false') {
-		if ($conn->query($sql) === TRUE) {
-	        // echo "New record created successfully";
-	    } else {
-	        echo "Error: " . $sql . "<br>" . $conn->error;
-	    }
-	}
+	// if($_GET['form_empty'] == 'false') {
+	// 	if ($conn->query($sql) === TRUE) {
+	//         // echo "New record created successfully";
+	//     } else {
+	//         echo "Error: " . $sql . "<br>" . $conn->error;
+	//     }
+	// }
 
-    $conn->close();
+ 	// $conn->close();
 
 } else {
     // Not a POST request, set a 403 (forbidden) response code.

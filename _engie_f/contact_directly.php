@@ -1,16 +1,16 @@
 <?php
 session_start();
 
-if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])) {
-  // Set session variables
-  $_SESSION["agent"] = $_GET['user'];
-  $_SESSION["phone"] = $_GET['phone_number'];
-  $_SESSION["epoch"] = $_GET['epoch'];
-} else {
-  $_SESSION["agent"] = 'N/A';
-  $_SESSION["phone"] = 'N/A';
-  $_SESSION["epoch"] = 0000000001;
-}
+// if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])) {
+//   // Set session variables
+//   $_SESSION["agent"] = $_GET['user'];
+//   $_SESSION["phone"] = $_GET['phone_number'];
+//   $_SESSION["epoch"] = $_GET['epoch'];
+// } else {
+//   $_SESSION["agent"] = 'C223';
+//   $_SESSION["phone"] = '92342360';
+//   $_SESSION["epoch"] = 1538471463;
+// }
 
 // $page_js = false;
 
@@ -62,7 +62,7 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
 
       <form action="../php/sendEmail.php" method="POST">
       <input class="w3-hide" type="text" name="form_type" value="direct">
-      <input class="w3-hide" type="text" name="campaign" value="engiem">
+      <input class="w3-hide" type="text" name="campaign" value="engie_f">
       <input class="w3-hide" type="text" name="job_accept" value="<?php echo 'no'; ?>">
       <div class="w3-row w3-margin-top w3-third">
         <div class="w3-col s4"><p>ENGIE BU Code: </p></div>
@@ -80,7 +80,6 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
             <option value="487M|servicent.anz@engie.com,service@contact121.com.au|889242900">487M</option>
             <option value="489M|alicespringsservice.anz@engie.com,service@contact121.com.au|889534404">489M</option>
             <option value="Outage|nac@anz.engie.com,service@contact121.com.au">Outage</option>
-            <option value="489M|johnalexladra@gmail.com|889534404">489M</option>
           </select>
         </div>
       </div><!-- </form> -->
@@ -152,7 +151,7 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
           </div>
           <div class="w3-row">
             <div class="w3-row">
-              <div class="w3-col s12"><p>Details: </p></div>
+              <div class="w3-col s12"><p>Details of Call: </p></div>
               <div class="w3-col s12">
                 <input class="w3-input w3-border" type="text" name="details[]" placeholder="">
                 <p></p>
@@ -171,14 +170,6 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
         
       </div>
 
-      <!-- <div class="w3-row w3-padding">
-        <div class="w3-half w3-padding">
-          <button type="button" onclick="window.location.href = '/_melbourne/faq.php'" class="w3-button w3-padding-32 w3-block w3-pale-red w3-margin-bottom w3-card" style="width: 80%;margin:0 auto;"><h2 style="margin: 13px 0;">FAQ</h2></button>
-        </div>
-        <div class="w3-half w3-padding">
-          <button type="button" onclick="window.location.href = '/_melbourne/escalation.php'" class="w3-button w3-padding-32 w3-block w3-yellow w3-margin-bottom w3-card" style="width: 80%;margin:0 auto;"><h2 style="margin: 13px 0;">Escalation</h2></button>
-        </div>
-      </div> -->
     </div>
 
   </div>
@@ -186,10 +177,9 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
 	</form>
   <div class="w3-row showScript" style="margin-top: 50px;">
     <div class="w3-row w3-padding">
-      <button type="button" onclick="window.location.href='/_engiem/'" class="w3-button w3-block w3-padding-32 w3-light-gray w3-margin-bottom w3-quarter w3-card w3-right">Back</button>
+      <button type="button" onclick="window.location.href='/_engie_f/'" class="w3-button w3-block w3-padding-32 w3-light-gray w3-margin-bottom w3-quarter w3-card w3-right">Back</button>
     </div>
   </div>
-
 
 <!-- End page content -->
 </div>
@@ -198,17 +188,6 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
 <?php include_once('../partials/footer.php'); ?>
 
 <?php include_once('../assets/scripts.html'); ?>
-<!-- 
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("#callType").on("change", function(){
-      if($(this).val() == 'yes') {
-      	console.log('Page JS = False');
-      	<?php $page_js = false; ?>
-      }
-    });
-  });
-</script>
--->
+
 </body>
 </html>

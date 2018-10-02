@@ -1,5 +1,7 @@
 <?php
 session_start();
+// $_POST = $_SESSION;
+// session_destroy();
 
 $page_js = false;
 
@@ -31,9 +33,23 @@ $page_js = false;
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
 
-  <form action="new-form.php" method="POST">
-    <input class="w3-hide" type="text" name="form_type" value="job_confirm">
-    <input class="w3-hide" type="text" name="campaign" value="engiem">
+  <form action="new-form.php?job_accept=yes" method="POST">
+<?php
+
+  if ($_SERVER["REQUEST_METHOD"] == "GET") { 
+    if(isset($_POST)) {
+      foreach($_POST as $key=>$value) {
+        if(!is_array($value)) {
+          echo '<input class="w3-hide" type="text" name="' . $key  . '" value="' . $value . '">';
+        } else {
+          foreach ($value as $key => $value) {
+            echo '<input class="w3-hide" type="text" name="issue[]" value="' . $value . '">';
+          }
+        }
+      }
+    }
+  }
+?>
     <div class="w3-container">
       <div style="margin-top: 150px;">
         <p class="w3-text-red">Refer to the Master AH & On-Call Roster for current AH & On-Call personnel to dispatch the job to.</p>
@@ -58,9 +74,9 @@ $page_js = false;
       </div>
     </div>
 
-    <div class="w3-row showScript" style="margin-top: 50px;">
+    <div class="w3-row" style="margin-top: 50px;">
       <div class="w3-row w3-padding">
-        <button type="button" onclick="window.location.href='/_engiem/'" class="w3-button w3-block w3-padding-32 w3-light-gray w3-margin-bottom w3-quarter w3-card">Back</button>
+        <button type="button" onclick="window.location.href='/_engie_f/'" class="w3-button w3-block w3-padding-32 w3-light-gray w3-margin-bottom w3-quarter w3-card">Back</button>
       </div>
     </div>
   </form>

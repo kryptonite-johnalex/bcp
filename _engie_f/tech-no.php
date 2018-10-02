@@ -1,16 +1,18 @@
 <?php
 session_start();
 
-if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])) {
-  // Set session variables
-  $_SESSION["agent"] = $_GET['user'];
-  $_SESSION["phone"] = $_GET['phone_number'];
-  $_SESSION["epoch"] = $_GET['epoch'];
-} else {
-  $_SESSION["agent"] = 'N/A';
-  $_SESSION["phone"] = 'N/A';
-  $_SESSION["epoch"] = 0000000001;
-}
+// if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])) {
+//   // Set session variables
+//   $_SESSION["agent"] = $_GET['user'];
+//   $_SESSION["phone"] = $_GET['phone_number'];
+//   $_SESSION["epoch"] = $_GET['epoch'];
+//   $_SESSION["did_extension"] = $_GET['did_extension'];
+// } else {
+//   $_SESSION["agent"] = 'C233';
+//   $_SESSION["phone"] = '898977665';
+//   $_SESSION["epoch"] = 1536710194;
+//   $_SESSION["did_extension"] = "61870791061";
+// }
 
 // $page_js = false;
 
@@ -59,10 +61,11 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
     <div class="w3-container" id="top">
 
       <p class="w3-text-red" style="text-decoration: underline;"><b>Use the email function below to send an email notification to the applicable ENGIE BU.</b></p>
+      <p class="w3-text-red">Confirm that you have completed the call logging in Pronto and paste the ENGIE BU code from Pronto into the box.</p>
 
       <form action="../php/sendEmail.php" method="POST">
-      <input class="w3-hide" type="text" name="form_type" value="direct">
-      <input class="w3-hide" type="text" name="campaign" value="engie">
+      <input class="w3-hide" type="text" name="form_type" value="allocation">
+      <input class="w3-hide" type="text" name="campaign" value="engie_f">
       <input class="w3-hide" type="text" name="job_accept" value="<?php echo 'no'; ?>">
       <div class="w3-row w3-margin-top w3-third">
         <div class="w3-col s4"><p>ENGIE BU Code: </p></div>
@@ -80,7 +83,6 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
             <option value="487M|servicent.anz@engie.com,service@contact121.com.au|889242900">487M</option>
             <option value="489M|alicespringsservice.anz@engie.com,service@contact121.com.au|889534404">489M</option>
             <option value="Outage|nac@anz.engie.com,service@contact121.com.au">Outage</option>
-            <option value="489M|johnalexladra@gmail.com|889534404">489M</option>
           </select>
         </div>
       </div><!-- </form> -->
@@ -92,6 +94,18 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
         
           <div class="w3-row">
 
+            <div class="w3-row w3-half">
+              <div class="w3-col s4 w3-center"><p>Pronto Number: </p></div>
+              <div class="w3-col s8">
+                <input class="w3-input w3-border" type="text" name="pronto_num" placeholder="">
+              </div>
+            </div>
+            <div class="w3-row w3-half">
+              <div class="w3-col s4 w3-center"><p>Type of Work: </p></div>
+              <div class="w3-col s8">
+                <input class="w3-input w3-border" type="text" name="work_type" placeholder="">
+              </div>
+            </div>
             <div class="w3-row w3-half">
               <div class="w3-col s4 w3-center"><p>Branch (BU): </p></div>
               <div class="w3-col s8">
@@ -143,31 +157,67 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
           <div class="w3-row">
 
             <div class="w3-row w3-half">
-              <div class="w3-col s4 w3-center"><p>Other: </p></div>
+              <div class="w3-col s4 w3-center"><p>Tech Allocated: </p></div>
               <div class="w3-col s8">
-                <input class="w3-input w3-border" type="text" name="other" placeholder="">
+                <input class="w3-input w3-border" type="text" name="tech_allocated" placeholder="">
+              </div>
+            </div>
+            <div class="w3-row w3-half">
+              <div class="w3-col s4 w3-center"><p>Is the Tech Attending? </p></div>
+              <div class="w3-col s8">
+                <select id="tech_attends" class="w3-select w3-border" name="tech_attends">
+                <option selected="" disabled="disabled"></option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
               </div>
             </div>
 
           </div>
           <div class="w3-row">
             <div class="w3-row">
-              <div class="w3-col s12"><p>Details: </p></div>
+              <div class="w3-col s12"><p>Issue Reported: </p></div>
               <div class="w3-col s12">
-                <input class="w3-input w3-border" type="text" name="details[]" placeholder="">
+                <input class="w3-input w3-border" type="text" name="issue[]" placeholder="">
                 <p></p>
-                <input class="w3-input w3-border" type="text" name="details[]" placeholder="">
+                <input class="w3-input w3-border" type="text" name="issue[]" placeholder="">
                 <p></p>
-                <input class="w3-input w3-border" type="text" name="details[]" placeholder="">
+                <input class="w3-input w3-border" type="text" name="issue[]" placeholder="">
               </div>
             </div>
           </div>
+          <div class="w3-row w3-margin-top">
+            <div class="w3-col s12"><p>Additional Notes: </p></div>
+            <div class="w3-col s12">
+              <input class="w3-input w3-border" type="text" name="notes[]" placeholder="">
+                <p></p>
+                <input class="w3-input w3-border" type="text" name="notes[]" placeholder="">
+                <p></p>
+                <input class="w3-input w3-border" type="text" name="notes[]" placeholder="">
+            </div>
+          </div>
+
+          <div class="w3-text-red">
+            <p><b>If the call is from "VisionStream." refer to UKS or the G Drive for KPI Timeframes</b></p>
+            <p>Then, lauch 'Pronto' which is located on your desktop to log the job. Refer to UKS or the G Drive for further instructions on how to log a job in Pronto.</p>
+            <br>
+            <p>Also refer to the document 'Ad Hoc 9' in UKS or the G Drive to check for the correct Equipment/Item selection.</p>
+          </div>
 
           <div class="w3-row w3-margin-top">
-	          <div class="w3-row">
-	            <button type="submit" class="w3-button w3-block w3-padding-32 w3-purple w3-margin-bottom w3-quarter">Send Email</button>
-	          </div>
-	      </div>
+            <div class="w3-col s2"><p>Is TECH allocation required? </p></div>
+            <div class="w3-col s4">
+              <select id="tech" class="w3-select w3-border" name="tech_allocation_required">
+                <option selected="" disabled="disabled"></option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="w3-padding">
+            <button type="submit" class="w3-button w3-block w3-padding-32 w3-purple w3-margin-bottom w3-quarter">Send Email</button>
+          </div>
         
       </div>
 
@@ -182,11 +232,20 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
     </div>
 
   </div>
-
+  <div class="w3-row w3-margin-top">
+    <div class="w3-col s5"><p>Is the call an Emergency, Critical or Urgent (i.e. a P0-P1 call)?</p></div>
+    <div class="w3-col s2">
+      <select id="callType" class="w3-select w3-border" name="call_type">
+        <option selected="" disabled="disabled"></option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+    </div>
+  </div>
 	</form>
   <div class="w3-row showScript" style="margin-top: 50px;">
     <div class="w3-row w3-padding">
-      <button type="button" onclick="window.location.href='/_engie/'" class="w3-button w3-block w3-padding-32 w3-light-gray w3-margin-bottom w3-quarter w3-card w3-right">Back</button>
+      <button type="button" onclick="window.location.href='/_engie_f/'" class="w3-button w3-block w3-padding-32 w3-light-gray w3-margin-bottom w3-quarter w3-card w3-right">Back</button>
     </div>
   </div>
 
@@ -198,17 +257,6 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
 <?php include_once('../partials/footer.php'); ?>
 
 <?php include_once('../assets/scripts.html'); ?>
-<!-- 
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("#callType").on("change", function(){
-      if($(this).val() == 'yes') {
-      	console.log('Page JS = False');
-      	<?php $page_js = false; ?>
-      }
-    });
-  });
-</script>
--->
+
 </body>
 </html>

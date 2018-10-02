@@ -1,19 +1,6 @@
 <?php
 session_start();
 
-if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])) {
-  // Set session variables
-  $_SESSION["agent"] = $_GET['user'];
-  $_SESSION["phone"] = $_GET['phone_number'];
-  $_SESSION["epoch"] = $_GET['epoch'];
-  $_SESSION["did_extension"] = $_GET['did_extension'];
-} else {
-  $_SESSION["agent"] = 'N/A';
-  $_SESSION["phone"] = 'N/A';
-  $_SESSION["epoch"] = 1536710194;
-  $_SESSION["did_extension"] = "61870791760";
-}
-
 // $page_js = false;
 
 ?>
@@ -45,79 +32,87 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
 <div class="w3-main" style="margin:40px 40px 0 340px">
   <!-- Header -->
     <div class="w3-container" id="top" style="margin-top: 100px;">
+
+      <div id="form-messages" class="w3-panel w3-hide w3-display-container">
+        <span onclick="$(this).parent().fadeOut()"
+        class="w3-button w3-large w3-display-topright">&times;</span>
+        <h3>Success!</h3>
+        <p>Green often indicates something successful or positive.</p>
+      </div>
+
       <form action="../php/sendEmail.php" method="POST">
         <input class="w3-hide" type="hidden" name="form_type" value="log">
         <input class="w3-hide" type="hidden" name="campaign" value="widescreen">
         <div class="w3-row">
           <div class="w3-col s3 w3-text-red"><p>Insurance Brand/Retail: </p></div>
           <div class="w3-col s8">
-            <input class="w3-input w3-border" type="text" name="brand" required="" placeholder="">
+            <input class="w3-input w3-border" type="text" name="brand" placeholder="">
           </div>
         </div>
         <div class="w3-row">
           <div class="w3-col s3 w3-text-red"><p>Authorised By: </p></div>
           <div class="w3-col s8">
-            <input class="w3-input w3-border" type="text" name="authorised" required="" placeholder="">
+            <input class="w3-input w3-border" type="text" name="authorised" placeholder="">
           </div>
         </div>
         <div class="w3-row">
           <div class="w3-col s3 w3-text-red"><p>Customer Name: </p></div>
           <div class="w3-col s8">
-            <input class="w3-input w3-border" type="text" name="customer_name" required="" placeholder="">
+            <input class="w3-input w3-border" type="text" name="customer_name" placeholder="">
           </div>
         </div>
         <div class="w3-row">
           <div class="w3-col s3 w3-text-red"><p>Phone Number: </p></div>
           <div class="w3-col s8">
-            <input class="w3-input w3-border" type="text" name="phone_number" required="" placeholder="">
+            <input class="w3-input w3-border" type="text" name="phone_number" placeholder="">
           </div>
         </div>
         <div class="w3-row">
           <div class="w3-col s3 w3-text-red"><p>Address: </p></div>
           <div class="w3-col s8">
-            <input class="w3-input w3-border" type="text" name="address" required="" placeholder="">
+            <input class="w3-input w3-border" type="text" name="address" placeholder="">
           </div>
         </div>
         <div class="w3-row">
           <div class="w3-col s3 w3-text-red"><p>Claim Number: </p></div>
           <div class="w3-col s8">
-            <input class="w3-input w3-border" type="text" name="claim_number" required="" placeholder="">
+            <input class="w3-input w3-border" type="text" name="claim_number" placeholder="">
           </div>
         </div>
         <div class="w3-row">
           <div class="w3-col s3 w3-text-red"><p>Policy Number: </p></div>
           <div class="w3-col s8">
-            <input class="w3-input w3-border" type="text" name="policy_number" required="" placeholder="">
+            <input class="w3-input w3-border" type="text" name="policy_number" placeholder="">
           </div>
         </div>
         <div class="w3-row">
           <div class="w3-col s3 w3-text-red"><p>Vehicle Make: </p></div>
           <div class="w3-col s8">
-            <input class="w3-input w3-border" type="text" name="vehicle" required="" placeholder="">
+            <input class="w3-input w3-border" type="text" name="vehicle" placeholder="">
           </div>
         </div>
         <div class="w3-row w3-half">
           <div class="w3-col s6 w3-text-red"><p>Model: </p></div>
           <div class="w3-col s6">
-            <input class="w3-input w3-border" type="text" name="model" required="" placeholder="">
+            <input class="w3-input w3-border" type="text" name="model" placeholder="">
           </div>
         </div>
         <div class="w3-row w3-half">
           <div class="w3-col s3 w3-text-red w3-center"><p>Year: </p></div>
           <div class="w3-col s7">
-            <input class="w3-input w3-border" type="text" name="year" required="" placeholder="">
+            <input class="w3-input w3-border" type="text" name="year" placeholder="">
           </div>
         </div>
         <div class="w3-row">
-          <div class="w3-col s3 w3-text-red"><p>GLass: </p></div>
+          <div class="w3-col s3 w3-text-red"><p>Glass: </p></div>
           <div class="w3-col s8">
-            <input class="w3-input w3-border" type="text" name="glass" required="" placeholder="">
+            <input class="w3-input w3-border" type="text" name="glass" placeholder="">
           </div>
         </div>
         <div class="w3-row">
           <div class="w3-col s3 w3-text-red"><p>Price: </p></div>
           <div class="w3-col s8">
-            <input class="w3-input w3-border" type="text" name="price" required="" placeholder="">
+            <input class="w3-input w3-border" type="text" name="price" placeholder="">
           </div>
         </div>
 

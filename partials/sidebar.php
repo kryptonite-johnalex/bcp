@@ -65,15 +65,15 @@
     ENGIE FIRE  <i class="fa fa-caret-down w3-right"></i>
     </button>
     <div id="list9" class="w3-hide w3-white w3-card">
-      <a href="/_engie" class="w3-bar-item w3-button">Initial</a>
-      <a href="/_engie/report.php" class="w3-bar-item w3-button">Reports</a>
+      <a href="/_engie_f" class="w3-bar-item w3-button">Initial</a>
+      <a href="/_engie_f/report.php" class="w3-bar-item w3-button">Reports</a>
     </div>
     <button class="w3-bar-item w3-button w3-hover-white" onclick="myAccFunc('list10')">
     ENGIE MECHANICAL  <i class="fa fa-caret-down w3-right"></i>
     </button>
     <div id="list10" class="w3-hide w3-white w3-card">
-      <a href="/_engiem" class="w3-bar-item w3-button">Initial</a>
-      <a href="/_engiem/report.php" class="w3-bar-item w3-button">Reports</a>
+      <a href="/_engie_m" class="w3-bar-item w3-button">Initial</a>
+      <a href="/_engie_m/report.php" class="w3-bar-item w3-button">Reports</a>
     </div>
     <button class="w3-bar-item w3-button w3-hover-white" onclick="myAccFunc('list11')">
     NATIONAL WIDESCREEN  <i class="fa fa-caret-down w3-right"></i>

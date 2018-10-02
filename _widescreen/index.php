@@ -8,8 +8,8 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
   $_SESSION["epoch"] = $_GET['epoch'];
   $_SESSION["did_extension"] = $_GET['did_extension'];
 } else {
-  $_SESSION["agent"] = 'N/A';
-  $_SESSION["phone"] = 'N/A';
+  $_SESSION["agent"] = 'C223';
+  $_SESSION["phone"] = '5654534';
   $_SESSION["epoch"] = 1536710194;
   $_SESSION["did_extension"] = "61870791760";
 }
