@@ -91,9 +91,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $subject = "Engie";
 
-            $email_content .= "Details:<br><br>";
-            $email_content .= "Job Accept: $job_accept<br>";
-            $email_content .= "BU Code: $bu_code<br><br>";
+            #$email_content .= "Details:<br><br>";
+            #$email_content .= "Job Accept: $job_accept<br>";
+            #$email_content .= "BU Code: $bu_code<br><br>";
             
             if($job_accept == 'yes') {
                 $email_content .= "Subcontractor Phone/Email: $subcontractor_phone_email<br>";
@@ -110,12 +110,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $email_content .= "Caller Name: $caller_name<br>";
             $email_content .= "Caller Phone: $caller_phone<br>";
             $email_content .= "Subject: $subject<br>";
-            $email_content .= "Tech Allocated: $tech_allocated<br>";
-            $email_content .= "Is the Tech Attending?: $tech_attends<br>";
-            $email_content .= "Issue Reported: $issue[0]<br>$issue[1]<br>$issue[2]<br>";
-            $email_content .= "Additional Notes: $notes[0]<br>$notes[1]<br>$notes[2]<br>";
+            #$email_content .= "Tech Allocated: $tech_allocated<br>";
+            #$email_content .= "Is the Tech Attending?: $tech_attends<br>";
+            $email_content .= "Issue Reported: <br>$issue[0].$issue[1].$issue[2]<br><br>";
+            $email_content .= "Additional Notes: <br>$notes[0].$notes[1].$notes[2]<br>";
 
-            $email_content .= "Is Tech Allocation Required?: $tech_allocation_required<br><br>";
+            #$email_content .= "Is Tech Allocation Required?: $tech_allocation_required<br><br>";
             if($job_accept == 'no') {
                 $email_content .= "Type of Call: $call_type<br><br>";
             }
@@ -190,6 +190,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $_POST['created_at'] = $created_at = date("Y-m-d H:i:s");
+    $_POST['sent_status'] = $sent_status;
 
     // Insert in Database
     if($campaign == 'engie_f' || $campaign == 'engie_m') {
