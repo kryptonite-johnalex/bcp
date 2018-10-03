@@ -137,6 +137,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $email_content .= "Fault/Issue: $issue[0]<br>$issue[1]<br>";
             $email_content .= "Urgency: $urgency<br>";
             $email_content .= "Is Tech Allocation Required?: $tech_allocation_required<br><br>";
+
+            $recipient = '0425706467@transmitsms.com, 0474848811@transmitsms.com, service@contact121.com.au';
         } else {
             echo "<h1>Error in Building a Email Template (Engie)! <br> Please contact Development Engineer ASAP.</h1>";
         }
