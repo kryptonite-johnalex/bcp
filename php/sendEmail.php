@@ -69,6 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if($campaign == 'engie_f' || $campaign == 'engie_m') {
 
         if($form_type == 'direct') {
+
             $subject = "Contact Direct Details";
 
             $email_content .= "<h4><strong>Contact Direct Details:</strong></h4><br>";
@@ -85,6 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Email Receiver
             $recipient = $bu_email;
+
         } elseif($form_type == 'allocation') {
 
             $subject = "Engie";
@@ -118,6 +120,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $email_content .= "Type of Call: $call_type<br><br>";
             }
             $email_content .= "<span style='color: red'><strong>*NOTE: A tech has NOT been allocated to this job. A tech will need to be allocated by the Branch.*</strong></span>";
+
+            // Email Receiver
+            $recipient = $bu_email;
+
         } elseif($form_type == 'log') {
             $subject = "Engie Log Details";
 
@@ -155,6 +161,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Email Receiver
         $recipient = '0425706467@transmitsms.com, 0474848811@transmitsms.com, service@contact121.com.au';
+
     } else {
         echo "<h1>Error in Building a Email Template! <br> Please contact Development Engineer ASAP.</h1>";
     }
