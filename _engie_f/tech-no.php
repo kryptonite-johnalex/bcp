@@ -67,6 +67,7 @@ session_start();
       <input class="w3-hide" type="text" name="form_type" value="allocation">
       <input class="w3-hide" type="text" name="campaign" value="engie_f">
       <input class="w3-hide" type="text" name="job_accept" value="<?php echo 'no'; ?>">
+      <input class="w3-hide" type="text" name="tech_allocate" value="<?php echo 'no' ?>">
       <div class="w3-row w3-margin-top w3-third">
         <div class="w3-col s4"><p>ENGIE BU Code: </p></div>
         <div class="w3-col s6">

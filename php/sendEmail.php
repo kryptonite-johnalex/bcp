@@ -4,9 +4,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-
-
-#include_once('db_connect.php');
+include_once('db_connect.php');
 
 // Only process POST reqeusts.
 if ($_SERVER["REQUEST_METHOD"] == "POST") { 
@@ -53,9 +51,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header('Location: ../_' . $campaign . '/tech-yes.php');
                 break;
             case 'no':
-                header('Location: ../_' . $campaign . '/tech-no.php?tech_allocate=no');
-
-                //header('Location: ../_' . $campaign . '/tech-no.php');
+                //header('Location: ../_' . $campaign . '/tech-no.php?tech_allocate=no');
+                header('Location: ../_' . $campaign . '/tech-no.php');
                 break;
             default:
                 # code...
@@ -120,7 +117,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             #$email_content .= "Is Tech Allocation Required?: $tech_allocation_required<br><br>";
 
-            if($_GET['tech_allocate'] == "no") {
+            if($_POST['tech_allocate'] == "no") {
             	#if($job_accept == 'no') {
                 #	$email_content .= "Type of Call: $call_type<br><br>";
             	#}
