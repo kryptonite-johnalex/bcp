@@ -122,9 +122,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 	#	$email_content .= "Type of Call: $call_type<br><br>";
             		#}
             		$string = "NOT ";
-            	} else {
-            		$string = "";
-            	}
+            	} 
+            } else {
+            	$string = "";
             }
             
             $email_content .= "<span style='color: red'><strong>*NOTE: A tech has " . $string . "been allocated to this job. A tech will need to be allocated by the Branch.*</strong></span><br>";
