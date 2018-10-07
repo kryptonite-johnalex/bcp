@@ -51,8 +51,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header('Location: ../_' . $campaign . '/tech-yes.php');
                 break;
             case 'no':
-                //header('Location: ../_engie/tech-no.php?tech_allocation=no');
-                header('Location: ../_' . $campaign . '/tech-no.php');
+                header('Location: ../_engie/tech-no.php?tech_allocation=no');
+                //header('Location: ../_' . $campaign . '/tech-no.php');
                 break;
             default:
                 # code...
@@ -119,7 +119,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if($job_accept == 'no') {
                 $email_content .= "Type of Call: $call_type<br><br>";
             }
-            $email_content .= "<span style='color: red'><strong>*NOTE: A tech has NOT been allocated to this job. A tech will need to be allocated by the Branch.*</strong></span>";
+
+            if($tech_allocation == "no") {
+            	$string = "NOT ";
+            }
+            
+            $email_content .= "<span style='color: red'><strong>*NOTE: A tech has " . $string . "been allocated to this job. A tech will need to be allocated by the Branch.*</strong></span>";
 
             // Email Receiver
             $recipient = $bu_email;
@@ -168,7 +173,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<h1>Error in Building a Email Template! <br> Please contact Development Engineer ASAP.</h1>";
     }
 
-    $email_content .= "This call was taken by $agent at $epoch<br>";
+    $email_content .= "<br>This call was taken by $agent at $epoch<br>";
 
     // Build the email headers.
     $email_headers = "MIME-Version: 1.0" . "\n";
