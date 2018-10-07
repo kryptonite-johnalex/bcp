@@ -116,12 +116,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $email_content .= "Additional Notes: <br>$notes[0].$notes[1].$notes[2]<br>";
 
             #$email_content .= "Is Tech Allocation Required?: $tech_allocation_required<br><br>";
-
-            if($_POST['tech_allocate'] == "no") {
-            	#if($job_accept == 'no') {
-                #	$email_content .= "Type of Call: $call_type<br><br>";
-            	#}
-            	$string = "NOT ";
+            if($job_accept == 'no') {
+            	if($_POST['tech_allocate'] == "no") {
+            		#if($job_accept == 'no') {
+                	#	$email_content .= "Type of Call: $call_type<br><br>";
+            		#}
+            		$string = "NOT ";
+            	}
             }
             
             $email_content .= "<span style='color: red'><strong>*NOTE: A tech has " . $string . "been allocated to this job. A tech will need to be allocated by the Branch.*</strong></span><br>";
