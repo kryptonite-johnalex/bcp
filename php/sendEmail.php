@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header('Location: ../_' . $campaign . '/tech-yes.php');
                 break;
             case 'no':
-                header('Location: ../_' . $campaign . '/tech-no.php?tech_allocation=no');
+                header('Location: ../_' . $campaign . '/tech-no.php?tech_allocate=no');
                 //header('Location: ../_' . $campaign . '/tech-no.php');
                 break;
             default:
@@ -120,7 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $email_content .= "Type of Call: $call_type<br><br>";
             }
 
-            if($tech_allocation == "no") {
+            if($_POST['tech_allocate'] == "no") {
             	$string = "NOT ";
             }
             
