@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header('Location: ../_' . $campaign . '/tech-yes.php');
                 break;
             case 'no':
-                header('Location: ../_engie/tech-no.php?tech_allocation=no');
+                header('Location: ../_' . $campaign . '/tech-no.php?tech_allocation=no');
                 //header('Location: ../_' . $campaign . '/tech-no.php');
                 break;
             default:
