@@ -203,7 +203,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_POST['fire_type'] = $fire_type = ($_SESSION['did_extension'] == "61870791062") ? "HV" : "LV";
 
         // unset($_POST['form_type']); unset($_POST['campaign']); unset($_POST['job_accept']); // or
-        $exclude = array("campaign","job_accept");
+        $exclude = array("campaign","job_accept", "tech_allocate");
         $sql = insert_array($campaign . "_log", $_POST, $exclude);
 
     } elseif($campaign == 'widescreen') {
