@@ -4,7 +4,9 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-include_once('db_connect.php');
+
+
+#include_once('db_connect.php');
 
 // Only process POST reqeusts.
 if ($_SERVER["REQUEST_METHOD"] == "POST") { 
@@ -52,6 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 break;
             case 'no':
                 header('Location: ../_' . $campaign . '/tech-no.php?tech_allocate=no');
+
                 //header('Location: ../_' . $campaign . '/tech-no.php');
                 break;
             default:
@@ -116,15 +119,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $email_content .= "Additional Notes: <br>$notes[0].$notes[1].$notes[2]<br>";
 
             #$email_content .= "Is Tech Allocation Required?: $tech_allocation_required<br><br>";
-            if($job_accept == 'no') {
-                $email_content .= "Type of Call: $call_type<br><br>";
-            }
 
-            if($_POST['tech_allocate'] == "no") {
+            if($_GET['tech_allocate'] == "no") {
+            	#if($job_accept == 'no') {
+                #	$email_content .= "Type of Call: $call_type<br><br>";
+            	#}
             	$string = "NOT ";
             }
             
-            $email_content .= "<span style='color: red'><strong>*NOTE: A tech has " . $string . "been allocated to this job. A tech will need to be allocated by the Branch.*</strong></span>";
+            $email_content .= "<span style='color: red'><strong>*NOTE: A tech has " . $string . "been allocated to this job. A tech will need to be allocated by the Branch.*</strong></span><br>";
 
             // Email Receiver
             $recipient = $bu_email;
