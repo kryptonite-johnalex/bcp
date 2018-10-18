@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header('Location: ../_' . $campaign . '/tech-yes.php');
                 break;
             case 'no':
-                //header('Location: ../_engie/tech-no.php?tech_allocation=no');
+                //header('Location: ../_' . $campaign . '/tech-no.php?tech_allocate=no');
                 header('Location: ../_' . $campaign . '/tech-no.php');
                 break;
             default:
@@ -117,9 +117,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             #$email_content .= "Is Tech Allocation Required?: $tech_allocation_required<br><br>";
             if($job_accept == 'no') {
-                $email_content .= "Type of Call: $call_type<br><br>";
+            	if($_POST['tech_allocate'] == "no") {
+            		#if($job_accept == 'no') {
+                	#	$email_content .= "Type of Call: $call_type<br><br>";
+            		#}
+            		$string = "NOT ";
+            	} 
+            } else {
+            	$string = "";
             }
-            $email_content .= "<span style='color: red'><strong>*NOTE: A tech has NOT been allocated to this job. A tech will need to be allocated by the Branch.*</strong></span>";
+            
+            $email_content .= "<span style='color: red'><strong>*NOTE: A tech has " . $string . "been allocated to this job. A tech will need to be allocated by the Branch.*</strong></span><br>";
 
             // Email Receiver
             $recipient = $bu_email;
@@ -168,7 +176,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<h1>Error in Building a Email Template! <br> Please contact Development Engineer ASAP.</h1>";
     }
 
-    $email_content .= "This call was taken by $agent at $epoch<br>";
+    $email_content .= "<br>This call was taken by $agent at $epoch<br>";
 
     // Build the email headers.
     $email_headers = "MIME-Version: 1.0" . "\n";
@@ -197,7 +205,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_POST['fire_type'] = $fire_type = ($_SESSION['did_extension'] == "61870791062") ? "HV" : "LV";
 
         // unset($_POST['form_type']); unset($_POST['campaign']); unset($_POST['job_accept']); // or
-        $exclude = array("campaign","job_accept");
+        $exclude = array("campaign","job_accept", "tech_allocate");
         $sql = insert_array($campaign . "_log", $_POST, $exclude);
 
     } elseif($campaign == 'widescreen') {
