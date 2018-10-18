@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         case 'adelaide':
             // Set the recipient email address.
-            $recipient = "marveelou@gmail.com,quu@contact121.com.au,blendedtl@contact121.com.au,overnight@contact121.com.au";
+            $recipient = "quu@contact121.com.au,blendedtl@contact121.com.au,overnight@contact121.com.au";
             // Set the email subject.
             $subject = "Adelaide Lottery Order";
             // Set the table name.
@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         case 'melbourne':
             // Set the recipient email address.
-            $recipient = "marveelou@gmail.com,info@rmhhomelottery.com.au;blendedtl@contact121.com.au;emily.bill@contact121.com.au";
+            $recipient = "info@rmhhomelottery.com.au;blendedtl@contact121.com.au;emily.bill@contact121.com.au";
             // Set the email subject.
             $subject = "Melbourne Lottery Order";
             // Set the table name.
