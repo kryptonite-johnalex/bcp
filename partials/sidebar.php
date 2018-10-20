@@ -89,6 +89,13 @@
       <a href="/_petbarn" class="w3-bar-item w3-button">Initial</a>
       <a href="/_petbarn/report.php" class="w3-bar-item w3-button">Reports</a>
     </div>
+    <button class="w3-bar-item w3-button w3-hover-white" onclick="myAccFunc('list13')">
+    CCNA  <i class="fa fa-caret-down w3-right"></i>
+    </button>
+    <div id="list13" class="w3-hide w3-white w3-card">
+      <a href="/_ccna" class="w3-bar-item w3-button">Initial</a>
+      <a href="/_ccna/report.php" class="w3-bar-item w3-button">Reports</a>
+    </div>
     <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Coming Soon...</a> 
     <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About</a> 
     <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
