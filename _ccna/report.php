@@ -8,24 +8,12 @@ error_reporting(E_ALL);
 
 require_once('../php/db_connect.php');
 
-$sql = "SELECT * FROM petbarn_log WHERE form_type = 'quote'";
+$sql = "SELECT * FROM ccna_log";
 
-$quote = $conn->query($sql);
-
-$sql = "SELECT * FROM petbarn_log WHERE form_type = 'general_enquiry'";
-
-$general_enquiry = $conn->query($sql);
-
-$sql = "SELECT * FROM petbarn_log WHERE form_type = 'customer_service'";
-
-$customer_service = $conn->query($sql);
-
-$sql = "SELECT * FROM petbarn_log WHERE form_type = 'escalation'";
-
-$escalation = $conn->query($sql);
+$log = $conn->query($sql);
 
 // $data = array();
-// while($row = mysqli_fetch_assoc($quote))
+// while($row = mysqli_fetch_assoc($log))
 // {
 //     foreach($row as $key => $value) {
 //         $data[$row['id']][$key] = $value;
@@ -63,7 +51,7 @@ $escalation = $conn->query($sql);
 
   <!-- Header -->
   <div class="w3-container" style="margin-top:80px" id="top">
-    <h1 class="w3-jumbo"><b>PETBARN AUSTRALIA</b></h1>
+    <h1 class="w3-jumbo"><b>CCNA</b></h1>
     <h1 class="w3-xxxlarge w3-text-red"><b>Reports Screen</b></h1>
     <hr style="width:50px;border:5px solid red" class="w3-round">
   </div>
@@ -89,21 +77,14 @@ $escalation = $conn->query($sql);
 
   <div class="w3-container">
     <div class="w3-row">
-      <a href="javascript:void(0)" onclick="openCity(event, 'Quote');">
-        <div class="w3-quarter tablink w3-bottombar w3-hover-red w3-padding w3-border-black w3-red">Quote</div>
+      <!-- <a href="javascript:void(0)" onclick="openCity(event, 'Log');"> -->
+      <a href="javascript:void(0)">
+        <div class="w3-quarter tablink w3-bottombar w3-hover-red w3-padding w3-border-black w3-red">Log</div>
       </a>
-      <a href="javascript:void(0)" onclick="openCity(event, 'General');">
-        <div class="w3-quarter tablink w3-bottombar w3-hover-red w3-padding">General Enquiry</div>
-      </a>
-      <a href="javascript:void(0)" onclick="openCity(event, 'Customer');">
-        <div class="w3-quarter tablink w3-bottombar w3-hover-red w3-padding">Customer Service</div>
-      </a>
-      <a href="javascript:void(0)" onclick="openCity(event, 'Escalation');">
-        <div class="w3-quarter tablink w3-bottombar w3-hover-red w3-padding">Escalation</div>
       </a>
     </div>
 
-    <div id="Quote" class="tabs" style="">
+    <div id="Log" class="tabs" style="">
       <table class="w3-table-all w3-hoverable">
         <thead>
           <tr class="w3-red">
@@ -116,10 +97,10 @@ $escalation = $conn->query($sql);
         </thead>
         <?php
         $num = 1;
-        if ($quote->num_rows > 0) {
+        if ($log->num_rows > 0) {
             $count=0;
             // output data of each row
-            while($row = $quote->fetch_assoc()) {
+            while($row = $log->fetch_assoc()) {
               
         ?>
         <tr>
@@ -142,7 +123,7 @@ $escalation = $conn->query($sql);
         ?>
       </table>
       <tfoot>
-        <p>Total Count: <?php echo $quote->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo isset($count) ? $count : 0; ?></span></p>
+        <p>Total Count: <?php echo $log->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo isset($count) ? $count : 0; ?></span></p>
       </tfoot>
     </div>
     <div id="General" class="tabs" style="display:none">
@@ -187,90 +168,6 @@ $escalation = $conn->query($sql);
         <p>Total Count: <?php echo $general_enquiry->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo isset($count) ? $count : 0; ?></span></p>
       </tfoot>
     </div>
-    <div id="Customer" class="tabs" style="display:none">
-      <table class="w3-table-all w3-hoverable">
-        <thead>
-          <tr class="w3-red">
-            <th>No.</th>
-            <th>Agent Name</th>
-            <th>Phone</th>
-            <th>Submitted at</th>
-            <th>Sent Status</th>
-          </tr>
-        </thead>
-        <?php
-        $num = 1;
-        if ($customer_service->num_rows > 0) {
-            $count=0;
-            // output data of each row
-            while($row = $customer_service->fetch_assoc()) {
-              
-        ?>
-        <tr>
-          <td class="id"><?php echo $num; ?></td>
-          <td class="agent_name"><?php echo !empty($row['agent_name']) ? $row['agent_name'] : "&nbsp;"; ?></td>
-          <td class="phone"><?php echo !empty($row['phone']) ? $row['phone'] : "&nbsp;"; ?></td>
-          <td class="time"><?php echo $row['created_at']; ?></td>
-          <td class="status"><?php echo ($row['sent_status']) ? 'Sent' : 'Failed'; ?></td>
-          <!-- hide -->
-          <?php
-          foreach ($row as $key => $value) {
-                echo '<td class="' . $key . '" style="display: none;">' . $value . '</td>';
-              } ?>
-        </tr>
-        <?php
-              $num++;
-              if($row['sent_status'] == 1) $count++;
-            }
-          }
-        ?>
-      </table>
-      <tfoot>
-        <p>Total Count: <?php echo $customer_service->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo isset($count) ? $count : 0; ?></span></p>
-      </tfoot>
-    </div>
-    <div id="Escalation" class="tabs" style="display:none">
-      <table class="w3-table-all w3-hoverable">
-        <thead>
-          <tr class="w3-red">
-            <th>No.</th>
-            <th>Agent Name</th>
-            <th>Phone</th>
-            <th>Submitted at</th>
-            <th>Sent Status</th>
-          </tr>
-        </thead>
-        <?php
-        $num = 1;
-        if ($escalation->num_rows > 0) {
-            $count=0;
-            // output data of each row
-            while($row = $escalation->fetch_assoc()) {
-              
-        ?>
-        <tr>
-          <td class="id"><?php echo $num; ?></td>
-          <td class="agent_name"><?php echo !empty($row['agent_name']) ? $row['agent_name'] : "&nbsp;"; ?></td>
-          <td class="phone"><?php echo !empty($row['phone']) ? $row['phone'] : "&nbsp;"; ?></td>
-          <td class="time"><?php echo $row['created_at']; ?></td>
-          <td class="status"><?php echo ($row['sent_status']) ? 'Sent' : 'Failed'; ?></td>
-          <!-- hide -->
-          <?php
-          foreach ($row as $key => $value) {
-                echo '<td class="' . $key . '" style="display: none;">' . $value . '</td>';
-              } ?>
-        </tr>
-        <?php
-              $num++;
-              if($row['sent_status'] == 1) $count++;
-            }
-          }
-        ?>
-      </table>
-      <tfoot>
-        <p>Total Count: <?php echo $escalation->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo isset($count) ? $count : 0; ?></span></p>
-      </tfoot>
-    </div>
 
   </div>
 
@@ -297,10 +194,10 @@ $(document).ready(function() {
       data += '<div class="w3-col s4 w3-large"><strong>' + this.className + ': </strong></div> <div class="w3-col s8 w3-large">' + $( this ).html() + '</div>';
     });
     var id = $(this).find('td.id').text();
-    var account = $(this).find('td.account').text();
+    var ticket_number = $(this).find('td.ticket_number').text();
     var time = $(this).find('td.time').text();
     var status = $(this).find('td.status').text();
-    $('#id01').show().find('header > h2').text("Account: " + account);
+    $('#id01').show().find('header > h2').text("Ticket Number: " + ticket_number);
     $('#id01').find('footer > p').html("Timestamp: " + time + "<span style='float:right;'> Status: " + status + "</span>");
     $('#id01 > div > .data').html(data);
   });

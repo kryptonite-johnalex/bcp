@@ -62,7 +62,7 @@ if($_GET['type'] == 'new') {
       <div class="w3-row w3-half">
         <div class="w3-col s3 w3-text-black"><p>Ticket Number: </p></div>
         <div class="w3-col s7">
-          <input class="w3-input w3-border" type="text" name="ticket" placeholder="">
+          <input class="w3-input w3-border" type="text" name="ticket_number" placeholder="">
         </div>
       </div>
       <div class="w3-row" style="margin-bottom: 20px">

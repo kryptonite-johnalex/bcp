@@ -53,7 +53,7 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
     <div class="w3-container" style="margin-top: 20px;">
       <div class="w3-row">
         <div class="w3-col w3-padding w3-half"><button onclick="window.location.href='/_ccna/ticket.php?type=new'" class="w3-button w3-block w3-pink w3-padding-32" style="float: none; margin: 0 auto">Raise New Ticket</button></div>
-        <div class="w3-col w3-padding w3-half"><button onclick="window.location.href='/_ccna/ticket.php?type=exist'" class="w3-button w3-block w3-purple w3-padding-32" style="float: none; margin: 0 auto">Update Existing Ticket</button></div>
+        <div class="w3-col w3-padding w3-half"><button onclick="window.location.href='/_ccna/ticket.php?type=update'" class="w3-button w3-block w3-purple w3-padding-32" style="float: none; margin: 0 auto">Update Existing Ticket</button></div>
         <div class="w3-col w3-padding" style="margin: 30px auto;"><button onclick="window.location.href='/_ccna/other.php'" class="w3-button w3-block w3-orange w3-padding-32 w3-half" style="float: none; margin: 0 auto">Other</button></div>
         <div class="w3-col w3-padding"><button onclick="window.location.href='/_ccna/noticket.php'" class="w3-button w3-block w3-green w3-padding-32 w3-half" style="float: none; margin: 0 auto">No ticket Required To Be Raised</button></div>
       </div>
