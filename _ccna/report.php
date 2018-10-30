@@ -91,8 +91,10 @@ $log = $conn->query($sql);
             <th>No.</th>
             <th>Agent Name</th>
             <th>Phone</th>
+            <th>Ticket Number</th>
+            <th>Escalated</th>
             <th>Submitted at</th>
-            <th>Sent Status</th>
+            <th>Status</th>
           </tr>
         </thead>
         <?php
@@ -104,11 +106,13 @@ $log = $conn->query($sql);
               
         ?>
         <tr>
-          <td class="id"><?php echo $num; ?></td>
-          <td class="agent_name"><?php echo !empty($row['agent_name']) ? $row['agent_name'] : "&nbsp;"; ?></td>
-          <td class="phone"><?php echo !empty($row['phone']) ? $row['phone'] : "&nbsp;"; ?></td>
-          <td class="time"><?php echo $row['created_at']; ?></td>
-          <td class="status"><?php echo ($row['sent_status']) ? 'Sent' : 'Failed'; ?></td>
+          <td class="not"><?php echo $num; ?></td>
+          <td class="not"><?php echo !empty($row['agent_name']) ? $row['agent_name'] : "&nbsp;"; ?></td>
+          <td class="not"><?php echo !empty($row['phone']) ? $row['phone'] : "&nbsp;"; ?></td>
+          <td class="not"><?php echo $row['ticket_number']; ?></td>
+          <td class="not"><?php echo $row['escalated']; ?></td>
+          <td class="not"><?php echo $row['created_at']; ?></td>
+          <td class="not"><?php echo $row['form_type']; ?></td>
           <!-- hide -->
           <?php
           foreach ($row as $key => $value) {
@@ -124,48 +128,6 @@ $log = $conn->query($sql);
       </table>
       <tfoot>
         <p>Total Count: <?php echo $log->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo isset($count) ? $count : 0; ?></span></p>
-      </tfoot>
-    </div>
-    <div id="General" class="tabs" style="display:none">
-      <table class="w3-table-all w3-hoverable">
-        <thead>
-          <tr class="w3-red">
-            <th>No.</th>
-            <th>Agent Name</th>
-            <th>Phone</th>
-            <th>Submitted at</th>
-            <th>Sent Status</th>
-          </tr>
-        </thead>
-        <?php
-        $num = 1;
-        if ($general_enquiry->num_rows > 0) {
-            $count=0;
-            // output data of each row
-            while($row = $general_enquiry->fetch_assoc()) {
-              
-        ?>
-        <tr>
-          <td class="id"><?php echo $num; ?></td>
-          <td class="agent_name"><?php echo !empty($row['agent_name']) ? $row['agent_name'] : "&nbsp;"; ?></td>
-          <td class="phone"><?php echo !empty($row['phone']) ? $row['phone'] : "&nbsp;"; ?></td>
-          <td class="time"><?php echo $row['created_at']; ?></td>
-          <td class="status"><?php echo ($row['sent_status']) ? 'Sent' : 'Failed'; ?></td>
-          <!-- hide -->
-          <?php
-          foreach ($row as $key => $value) {
-                echo '<td class="' . $key . '" style="display: none;">' . $value . '</td>';
-              } ?>
-        </tr>
-        <?php
-              $num++;
-              if($row['sent_status'] == 1) $count++;
-            }
-          }
-        ?>
-      </table>
-      <tfoot>
-        <p>Total Count: <?php echo $general_enquiry->num_rows; ?> <span class="w3-right">Mail Sent : <?php echo isset($count) ? $count : 0; ?></span></p>
       </tfoot>
     </div>
 
@@ -190,15 +152,15 @@ $(document).ready(function() {
 
   $("tr:not(.w3-red)").click(function() {
     var data = '<div class="w3-row w3-margin">';
-    $(this).find('td').each(function( index ) {
+    $(this).find('td').not('.not').each(function( index ) {
       data += '<div class="w3-col s4 w3-large"><strong>' + this.className + ': </strong></div> <div class="w3-col s8 w3-large">' + $( this ).html() + '</div>';
     });
     var id = $(this).find('td.id').text();
     var ticket_number = $(this).find('td.ticket_number').text();
-    var time = $(this).find('td.time').text();
-    var status = $(this).find('td.status').text();
+    var epoch = $(this).find('td.epoch').text();
+    var status = $(this).find('td.form_type').text();
     $('#id01').show().find('header > h2').text("Ticket Number: " + ticket_number);
-    $('#id01').find('footer > p').html("Timestamp: " + time + "<span style='float:right;'> Status: " + status + "</span>");
+    $('#id01').find('footer > p').html("Timestamp: " + epoch + "<span style='float:right;'> Status: " + status + "</span>");
     $('#id01 > div > .data').html(data);
   });
 });

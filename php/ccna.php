@@ -35,8 +35,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif ($form_type == 'update_ticket') {
     	// $sql = 'UPDATE ' . $campaign . '_log SET '
     	$_POST['updated_at'] = $updated_at = date("Y-m-d H:i:s");
-    	$exclude = array("campaign", "action", "created_at");
-    	$sql = update_array($campaign . "_log", $_POST, $_POST['ticket_number'], $exclude);
+    	$exclude = array("campaign", "action");
+        // UPDATE
+        $_POST['created_at'] = $created_at = date("Y-m-d H:i:s"); // exclude this for UPDATE
+    	//$sql = update_array($campaign . "_log", $_POST, $_POST['ticket_number'], $exclude);
+        $sql = insert_array($campaign . "_log", $_POST, $exclude);
     } elseif ($form_type == 'other') {
         $_POST['created_at'] = $created_at = date("Y-m-d H:i:s");
         $exclude = array("campaign", "action", "updated_at");
