@@ -31,23 +31,29 @@ session_start();
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin:40px 40px 0 340px">
   <!-- Header -->
+  <div id="form-messages" class="w3-panel w3-hide w3-display-container">
+    <span onclick="$(this).parent().fadeOut()"
+    class="w3-button w3-large w3-display-topright">&times;</span>
+    <h3>Success!</h3>
+    <p>Green often indicates something successful or positive.</p>
+  </div>
 
   <div class="w3-container" style="margin-top: 115px;">
-    <form action="../_ccna/contact.php" method="POST">
+    <form action="../php/ccna.php" method="POST">
       <input class="w3-hide" type="hidden" name="form_type" value="no_ticket">
       <input class="w3-hide" type="hidden" name="campaign" value="ccna">
       <div class="w3-row" style="margin-bottom: 20px">
         <p class="w3-text-red">If the ticket does not need to be raised, used the button below to terminate the call. </p>
       </div>
       <div class="w3-col w3-padding w3-half" style="margin: 0 auto; float: none;">
-        <button onclick="window.location.href=`/index.php`" class="w3-button w3-block w3-red w3-padding-32">Terminate Call</button>
+        <button type="submit" class="w3-button w3-block w3-red w3-padding-32">Terminate Call</button>
       </div>
     </form>
   </div>
 
   <div class="w3-container" style="margin-top: 100px;">
     <div class="w3-row">
-      <div class="w3-col w3-padding w3-quarter w3-right"><button onclick="window.history.back()" class="w3-button w3-block w3-gray w3-padding-32">Back</button></div>
+      <div class="w3-col w3-padding w3-quarter w3-right"><button class="w3-button w3-block w3-gray w3-padding-32">Back</button></div>
     </div>
   </div>
 
