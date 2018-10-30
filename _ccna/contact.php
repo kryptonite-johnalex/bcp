@@ -153,6 +153,7 @@ Contact&#39; first. If they don&#39;t pick up, call the &#39;Second Contact&#39;
         $('form').submit();
       }else{
         $('#confirm-message').html('<div class="w3-col s6 w3-text-red"><strong class="w3-text-red" style="text-decoration: underline;">Call the CCNA Staff Member! This is an essential part of the call process and MUST be done before you can terminate the call.</strong></div>');
+        $('form').submit();
       }
     });
     // $('.save').on('click', function(){
