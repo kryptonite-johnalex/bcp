@@ -7,7 +7,7 @@ if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch'])
   $_SESSION["agent"] = $_GET['user'];
   $_SESSION["phone"] = $_GET['phone_number'];
   $_SESSION["epoch"] = $_GET['epoch'];
-  $_SESSION["did_extension"] = $_GET['did_extension'];
+  $_SESSION["did_description"] = $_GET['did_description'];
 } else {
   $_SESSION["agent"] = 'N/A';
   $_SESSION["phone"] = 'N/A';
@@ -62,7 +62,7 @@ $page_js = false;
 
       <p class="w3-text-red">In Control <?php switch(isset($_GET['did_extension'])) { case '61870791713': echo "Secure"; break; case '61870791714': echo "Emergency Assistance"; break; default: echo "N/A"; break; } ?>, how can I help you?</p>
 
-      <p class="w3-text-blue"> <?php echo "DNIS: 882396".$_GET['did_extension']?></p>
+      <p class="w3-text-blue"> <?php echo "DNIS: 882396".$_GET['did_description']?></p>
 
       <div class="w3-row">
         <div class="w3-half">
