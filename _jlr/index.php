@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-var_dump($GET);
+//var_dump($GET);
 if(isset($_GET['user']) && isset($_GET['phone_number']) && isset($_GET['epoch']) && isset($_GET['did_extension'])) {
   // Set session variables
   $_SESSION["agent"] = $_GET['user'];
@@ -61,8 +61,8 @@ $page_js = false;
       <input class="w3-hide" type="hidden" name="campaign" value="jlr">
 
       <p class="w3-text-red">In Control <?php switch(isset($_GET['did_extension'])) { case '61870791713': echo "Secure"; break; case '61870791714': echo "Emergency Assistance"; break; default: echo "N/A"; break; } ?>, how can I help you?</p>
-      
-      <p class="w3-text-blue"> <?php echo "DNIS: 882396."$_GET['did_extension']?></p>
+
+      <p class="w3-text-blue"> <?php echo "DNIS: 882396".$_GET['did_extension']?></p>
 
       <div class="w3-row">
         <div class="w3-half">
