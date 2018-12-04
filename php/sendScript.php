@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // $email_headers .= 'Bcc: johnalexladra@gmail.com';
 
     // Send the email.
-    if (mail($recipient, $subject, $email_content, $email_headers)) {
+    if (mail($recipient, $subject, $email_content, $email_headers, '-f service@contact121.com.au')) {
         // Set a 200 (okay) response code.
         http_response_code(200);
         echo "Thank You! Your message has been sent.";
